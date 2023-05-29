@@ -1,0 +1,28 @@
+{
+  "id": "2711c308-1a72-4e2e-9569-8a58b8bbc00d",
+  "name": "SD Seminar",
+  "publisher": "D.E. veloper",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "16.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "5.3",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
