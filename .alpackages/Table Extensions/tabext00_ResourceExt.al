@@ -13,7 +13,7 @@ tableextension 50100 "CSD ResourceExt" extends Resource
         }
         modify(Type)
         {
-            OptionCaption = 'Instructor,Room';
+            Caption = 'Instructor,Room';
         }
         field(50101; "CSD Resource Type"; Option)
         {
