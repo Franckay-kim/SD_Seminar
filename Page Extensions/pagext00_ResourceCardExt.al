@@ -1,15 +1,16 @@
 pageextension 50100 "CSD ResourceCardExt" extends "Resource Card"
 // CSD1.00 - 2023-30-05 - D. E. Veloper
+//chapter 5 Lab: 1 and 2
 {
     layout
     {
         addlast(General)
         {
-            field("CSD Resource Type"; "CSD Resource Type")
+            field("CSD Resource Type"; Rec."CSD Resource Type")
             {
 
             }
-            field("CSD Quantity Per Day"; "CSD Quantity Per Day")
+            field("CSD Quantity Per Day"; Rec."CSD Quantity Per Day")
             {
 
             }
@@ -20,7 +21,7 @@ pageextension 50100 "CSD ResourceCardExt" extends "Resource Card"
             {
                 Caption = 'room';
                 Visible = ShowMaxField;
-                field("CSD Maximum Participants"; "CSD Maximum Participants")
+                field("CSD Maximum Participants"; Rec."CSD Maximum Participants")
                 {
 
                 }
@@ -34,7 +35,7 @@ pageextension 50100 "CSD ResourceCardExt" extends "Resource Card"
     }
     trigger OnAfterGetRecord()
     begin
-        ShowMaxField := (Type = Type::Machine);
+        ShowMaxField := (Rec.Type = Rec.Type::Machine);
         CurrPage.Update(false);
     end;
 
