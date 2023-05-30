@@ -1,5 +1,5 @@
 tableextension 50100 "CSD ResourceExt" extends Resource
-// CSD1.00 - 2018-01-01 - D. E. Veloper
+// CSD1.00 - 2023-29-05 - D. E. Veloper
 {
     fields
     {
