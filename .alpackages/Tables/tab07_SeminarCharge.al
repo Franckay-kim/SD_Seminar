@@ -19,13 +19,10 @@ table 50112 "CSD Seminar Charge"
                             Resource.TestField(Blocked, false);
                             Resource.TestField("Gen. Prod. Posting Group");
                             Description := Resource.Name;
-                            "Gen. Prod. Posting Group" := Resource."Gen. Prod. 
-                    Posting Group ";
-                    "VAT Prod. Posting Group" := Resource."VAT Prod. 
-                    Posting Group ";
-                    "Unit of Measure Code" := Resource."Base Unit of 
-                    Measure ";
-                    "Unit Price" := Resource."Unit Price";
+                            "Gen. Prod. Posting Group" := Resource."Gen. Prod. Posting Group ";
+                            "VAT Prod. Posting Group" := Resource."VAT Prod. Posting Group ";
+                            "Unit of Measure Code" := Resource."Base Unit of Measure ";
+                            "Unit Price" := Resource."Unit Price";
                         end;
                     Type::"G/L Account":
                         begin
@@ -33,10 +30,8 @@ table 50112 "CSD Seminar Charge"
                             GLAccount.CheckGLAcc();
                             GLAccount.TestField("Direct Posting", true);
                             Description := GLAccount.Name;
-                            "Gen. Prod. Posting Group" := GLAccount."Gen. Bus. 
-                    Posting Group ";
-                    "VAT Prod. Posting Group" := GLAccount."VAT Bus. 
-                    Posting Group ";
+                            "Gen. Prod. Posting Group" := GLAccount."Gen. Bus. Posting Group ";
+                            "VAT Prod. Posting Group" := GLAccount."VAT Bus. Posting Group ";
                         end;
                 end;
             end;

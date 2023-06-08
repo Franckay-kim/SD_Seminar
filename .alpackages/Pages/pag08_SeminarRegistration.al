@@ -1,6 +1,6 @@
 page 50110 "CSD Seminar Registration"
 {
-    PageType = List;
+    PageType = Document;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Seminar Registration Header";
@@ -39,6 +39,10 @@ page 50110 "CSD Seminar Registration"
         }
         area(Factboxes)
         {
+            part("Seminar Details FactBox"; "CSD Seminar Details FactBox")
+            {
+                SubPageLink = "No." = field("Seminar No.");
+            }
 
         }
     }

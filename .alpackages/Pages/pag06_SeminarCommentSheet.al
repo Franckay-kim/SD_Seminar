@@ -4,7 +4,7 @@ page 50106 "CSD Seminar Comment Sheet"
     UsageCategory = Lists;
     SourceTable = "CSD Seminar Comment Line";
     Caption = 'seminar comment sheet';
-
+    AutoSplitKey = true;
 
     layout
     {
@@ -27,4 +27,10 @@ page 50106 "CSD Seminar Comment Sheet"
             }
         }
     }
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+
+    begin
+        rec.SetupNewLine;
+    end;
 }

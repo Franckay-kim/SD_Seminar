@@ -1,9 +1,11 @@
 page 50111 "CSD Seminar Reg Subpage"
 {
-    PageType = List;
+    PageType = ListPart;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "CSD Seminar Registration Line";
+    Caption = 'Lines';
+    AutoSplitKey = true;
 
     layout
     {
@@ -11,16 +13,31 @@ page 50111 "CSD Seminar Reg Subpage"
         {
             repeater(GroupName)
             {
-                field(Name; NameSource)
+                field("Bill-to Customer No"; rec."Bill-to Customer No")
                 {
-                    ApplicationArea = All;
+
+                }
+                field("Participant Contact No."; rec."Participant Contact No.")
+                {
+
+                }
+                field("Seminar Price"; rec."Seminar Price")
+                {
+
+                }
+                field("Line Discount %"; rec."Line Discount %")
+                {
+
+                }
+                field("Line Discount Amount"; rec."Line Discount Amount")
+                {
+
+                }
+                field("Amount"; rec.Amount)
+                {
 
                 }
             }
-        }
-        area(Factboxes)
-        {
-
         }
     }
 
