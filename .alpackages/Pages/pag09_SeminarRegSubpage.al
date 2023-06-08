@@ -37,6 +37,10 @@ page 50111 "CSD Seminar Reg Subpage"
                 {
 
                 }
+                field("Document No."; rec."Document No.")
+                {
+
+                }
             }
         }
     }

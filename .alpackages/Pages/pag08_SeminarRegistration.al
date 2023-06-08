@@ -5,10 +5,17 @@ page 50110 "CSD Seminar Registration"
     UsageCategory = Lists;
     SourceTable = "Seminar Registration Header";
 
+
     layout
     {
         area(Content)
         {
+            part(SeminarRegistrationLines; "CSD Seminar Reg Subpage")
+            {
+                Caption = 'Lines';
+                SubPageLink = "Document No." = field("No.");
+            }
+
             repeater(GroupName)
             {
                 field("No."; rec."No.")
@@ -42,6 +49,12 @@ page 50110 "CSD Seminar Registration"
             part("Seminar Details FactBox"; "CSD Seminar Details FactBox")
             {
                 SubPageLink = "No." = field("Seminar No.");
+            }
+
+            part("Customer Details Factbox"; "Customer Details FactBox")
+            {
+                Provider = SeminarRegistrationLines;
+                SubPageLink = "No." = field("Bill-to Customer No.");
             }
 
         }

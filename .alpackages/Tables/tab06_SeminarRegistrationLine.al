@@ -7,7 +7,7 @@ table 50111 "CSD Seminar Registration Line"
 
     fields
     {
-        field(1; "Bill-to Customer No"; Integer)
+        field(1; "Bill-to Customer No."; Code[20])
         {
             Caption = 'Bill-to Customer No';
         }
@@ -30,6 +30,10 @@ table 50111 "CSD Seminar Registration Line"
         field(6; "Amount"; Decimal)
         {
             Caption = 'Amount';
+        }
+        field(7; "Document No."; code[20])
+        {
+            Caption = 'Document No.';
         }
     }
 
