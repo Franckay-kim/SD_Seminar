@@ -13,7 +13,7 @@ page 50111 "CSD Seminar Reg Subpage"
         {
             repeater(GroupName)
             {
-                field("Bill-to Customer No"; rec."Bill-to Customer No")
+                field("Bill-to Customer No"; rec."Bill-to Customer No.")
                 {
 
                 }
