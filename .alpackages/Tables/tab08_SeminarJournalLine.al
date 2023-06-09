@@ -44,6 +44,31 @@ table 50131 "CSD Seminar Journal Line"
         {
             caption = 'Quantity';
         }
+        field(10; "Instructor Resource No."; code[20])
+        {
+            Caption = 'Instructor Resource No.';
+        }
+        field(11; "Charge Type"; Option)
+        {
+            caption = 'Charge Type';
+            OptionMembers = "Instructor","Room","Participant";
+        }
+        field(12; "Participant Contact No."; code[20])
+        {
+            caption = 'Participant Contact No.';
+        }
+        field(13; "Room Resource No."; code[20])
+        {
+            caption = 'Room Resorce No.';
+        }
+        field(14; "Chargeable"; Boolean)
+        {
+            Caption = 'Chargeable';
+        }
+        field(15; "Bill-to Customer No."; code[20])
+        {
+            caption = 'Bill-to Customer No.';
+        }
 
     }
 

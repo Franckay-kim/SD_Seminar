@@ -14,7 +14,7 @@ table 50110 "Seminar Registration Header"
             begin
                 if "No." <> xRec."No." then begin
                     SeminarSetup.GET;
-                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Registration Nos.");
+                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Registration Nos");
                 end;
             end;
 
@@ -111,7 +111,7 @@ table 50110 "Seminar Registration Header"
                     SeminarRegLine.SETRANGE("Document No.", "No.");
                     SeminarRegLine.SETRANGE(Registered, FALSE);
                     if SeminarRegLine.FINDSET(FALSE, FALSE) then
-                        if CONFIRM(Text005, FALSE,
+                        if CONFIRM('Text005', FALSE,
                         FieldCaption("Seminar Price"),
                         SeminarRegLine.TableCaption) then
                             repeat
@@ -124,18 +124,17 @@ table 50110 "Seminar Registration Header"
 
             end;
         }
-        field(15; "Posting No. Series"; Integer)
+        field(15; "Posting No. Series"; Code[20])
         {
             caption = 'Posting No. Series';
             trigger OnValidate();
             begin
                 if "Posting No. Series" <> '' then begin
                     SeminarSetup.GET;
-                    SeminarSetup.TestField("Seminar Registration Nos.");
-                    SeminarSetup.TestField("Posted Seminar Reg. Nos.");
-                    NoSeriesMgt.TestSeries(SeminarSetup."Posted Seminar 
- Reg. Nos.", "Posting No. Series");
- end;
+                    SeminarSetup.TestField("Seminar Registration Nos");
+                    SeminarSetup.TestField("Posted Seminar Reg. Nos");
+                    NoSeriesMgt.TestSeries(SeminarSetup."Posted Seminar Reg. Nos", "Posting No. Series");
+                end;
                 TestField("Posting No.", '');
             end;
 
@@ -144,14 +143,22 @@ table 50110 "Seminar Registration Header"
                 with SeminarRegHeader do begin
                     SeminarRegHeader := Rec;
                     SeminarSetup.GET;
-                    SeminarSetup.TestField("Seminar Registration Nos.");
-                    SeminarSetup.TestField("Posted Seminar Reg. Nos.");
-                    if NoSeriesMgt.LookupSeries(SeminarSetup."Posted Seminar Reg. Nos.", "Posting No. Series") then begin
+                    SeminarSetup.TestField("Seminar Registration Nos");
+                    SeminarSetup.TestField("Posted Seminar Reg. Nos");
+                    if NoSeriesMgt.LookupSeries(SeminarSetup."Posted Seminar Reg. Nos", "Posting No. Series") then begin
                         validate("Posting No. Series");
                     end;
                     Rec := SeminarRegHeader;
                 end;
             end;
+        }
+        field(16; "Document No."; code[20])
+        {
+            Caption = 'Document No.';
+        }
+        field(17; "Posting No."; Integer)
+        {
+            Caption = 'Posting No.';
         }
     }
 
@@ -164,14 +171,24 @@ table 50110 "Seminar Registration Header"
     }
 
 
+    var
+        SeminarSetup: Record "CSD Seminar Setup";
+        SeminarRegLine: Record "CSD Seminar Registration Line";
+        NoSeriesMgt: Codeunit "NoSeriesManagement";
+        SeminarCharge: Record "CSD Seminar Charge";
+        SeminarCommentLine: Record "CSD Seminar Comment Line";
+        SeminarRegHeader: Record "Seminar Registration Header";
+        PostCode: Codeunit "Postcode Service Manager";
+
+
 
 
     trigger OnInsert()
     begin
         if "No." = '' then begin
             SeminarSetup.GET;
-            SeminarSetup.TESTFIELD("Seminar Registration Nos.");
-            NoSeriesMgt.InitSeries(SeminarSetup."Seminar Registration Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            SeminarSetup.TESTFIELD("Seminar Registration Nos");
+            NoSeriesMgt.InitSeries(SeminarSetup."Seminar Registration Nos", xRec."No. Series", 0D, "No.", "No. Series");
         end;
         InitRecord;
     end;
@@ -190,23 +207,22 @@ table 50110 "Seminar Registration Header"
         SeminarRegLine.SETRANGE(Registered, TRUE);
         if SeminarRegLine.FIND('-') then
             ERROR(
-            Text001,
+            'Text001',
             SeminarRegLine.TABLECAPTION,
-            SeminarRegLine.FIELDCAPTION(Registered),
-            TRUE);
+            SeminarRegLine.FIELDCAPTION(Registered), TRUE
+            );
         SeminarRegLine.SETRANGE(Registered);
         SeminarRegLine.DELETEALL(TRUE);
 
         SeminarCharge.RESET;
         SeminarCharge.SETRANGE("Document No.", "No.");
         if not SeminarCharge.ISEMPTY then
-            ERROR(Text006, SeminarCharge.TABLECAPTION);
+            ERROR('Text006', SeminarCharge.TABLECAPTION);
 
         SeminarCommentLine.RESET;
         SeminarCommentLine.SETRANGE("Table Name",
-        SeminarCommentLine."Table Name"::"Seminar 
- Registration");
- SeminarCommentLine.SETRANGE("No.", "No.");
+        SeminarCommentLine."Table Name"::"Seminar Registration");
+        SeminarCommentLine.SETRANGE("No.", "No.");
         SeminarCommentLine.DELETEALL;
 
 
@@ -228,16 +244,15 @@ table 50110 "Seminar Registration Header"
         SeminarSetup."Posted Seminar Reg. Nos.");
     end;
 
-    procedure AssistEdit(OldSeminarRegHeader: Record “CSD 
-Seminar Reg. Header”): Boolean;
+    procedure AssistEdit(OldSeminarRegHeader: Record "Seminar Registration Header"): Boolean;
     begin
         with SeminarRegHeader do begin
             SeminarRegHeader := Rec;
             SeminarSetup.GET;
-            SeminarSetup.TestField("Seminar Registration Nos.");
-            if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Registration Nos.", OldSeminarRegHeader."No. Series", "No. Series") then begin
+            SeminarSetup.TestField("Seminar Registration Nos");
+            if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Registration Nos", OldSeminarRegHeader."No. Series", "No. Series") then begin
                 SeminarSetup.GET;
-                SeminarSetup.TestField("Seminar Registration Nos.");
+                SeminarSetup.TestField("Seminar Registration Nos");
                 NoSeriesMgt.SetSeries("No.");
                 Rec := SeminarRegHeader;
                 exit(True);

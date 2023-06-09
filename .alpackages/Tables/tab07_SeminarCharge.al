@@ -37,9 +37,10 @@ table 50112 "CSD Seminar Charge"
             end;
 
         }
-        field(2; "Type"; Text[20])
+        field(2; "Type"; Option)
         {
             caption = 'Type';
+            OptionMembers = "Resource","G/L Account";
             trigger OnValidate();
             var
                 OldType: Integer;
@@ -94,14 +95,11 @@ table 50112 "CSD Seminar Charge"
                         begin
                             Resource.Get("No.");
                             if "Unit of Measure Code" = '' then begin
-                                "Unit of Measure Code" := Resource."Base Unit 
- of Measure ";
+                                "Unit of Measure Code" := Resource."Base Unit of Measure ";
                             end;
                             ResourceUofM.Get("No.", "Unit of Measure Code");
-                            "Qty. per Unit of Measure" := ResourceUofM."Qty. 
-                    per Unit of Measure ";
-                    "Total Price" := Round(Resource."Unit Price" *
-                    "Qty. per Unit of Measure");
+                            "Qty. per Unit of Measure" := ResourceUofM."Qty.per Unit of Measure ";
+                            " Total Price " := Round(Resource." Unit Price " * " Qty.per Unit of Measure ");
                         end;
                     Type::"G/L Account":
                         begin
@@ -113,6 +111,10 @@ table 50112 "CSD Seminar Charge"
                 end;
             end;
 
+        }
+        field(7; "Document No."; Code[20])
+        {
+            Caption = 'Document No.';
         }
 
     }
@@ -126,6 +128,10 @@ table 50112 "CSD Seminar Charge"
 
     var
         myInt: Integer;
+        Resource: Record "Resource";
+        GLAccount: Record "G/L Account";
+        ResourceUofM: Record "Resource Unit of Measure";
+
 
     trigger OnInsert()
     begin

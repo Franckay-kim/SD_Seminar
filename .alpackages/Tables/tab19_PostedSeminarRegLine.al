@@ -1,9 +1,9 @@
-table 50111 "CSD Seminar Registration Line"
-// CSD1.00 - 2023-06-06 - D. E. Veloper
-//chapter 6 - Lab 1
-//Created new table
+table 50119 "CSD Posted Seminar Reg. Line"
+// CSD1.00 - 2023-06-09 - D. E. Veloper
+// Chapter 7 - Lab 3-3
+
 {
-    Caption = 'Seminar Registration Line';
+    Caption = 'CSD Posted Seminar Reg. Line';
 
     fields
     {
@@ -53,25 +53,9 @@ table 50111 "CSD Seminar Registration Line"
         }
     }
 
-    var
-        myInt: Integer;
-        SeminarRegHeader: Record "Seminar Registration Header";
-        GLSetup: Record "General Ledger Setup";
 
-    trigger OnInsert()
-    begin
-        GetSeminarRegHeader;
-        "Registration Date" := WorkDate;
-        "Seminar Price" := SeminarRegHeader."Seminar Price";
-        Amount := SeminarRegHeader."Seminar Price";
-    end;
 
     trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
     begin
 
     end;
@@ -81,17 +65,5 @@ table 50111 "CSD Seminar Registration Line"
 
     end;
 
-    local procedure GetSeminarRegHeader();
-    begin
-        if SeminarRegHeader."No." <> "Document No." then
-            SeminarRegHeader.Get("Document No.");
-    end;
-
-    local procedure UpdateAmount();
-    begin
-        GLSetup.Get;
-        Amount := Round("Seminar Price" - "Line Discount Amount",
-        GLSetup."Amount Rounding Precision");
-    end;
 
 }

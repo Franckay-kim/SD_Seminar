@@ -40,7 +40,7 @@ table 50132 "CSD Seminar Ledger Entry"
         field(9; "Charge Type"; Option)
         {
             caption = 'Charge Type';
-            OptionMembers = "";
+            OptionMembers = "Instructor","Room","Participant";
         }
         field(10; "Type"; Option)
         {
