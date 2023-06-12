@@ -51,7 +51,7 @@ table 50131 "CSD Seminar Journal Line"
         field(11; "Charge Type"; Option)
         {
             caption = 'Charge Type';
-            OptionMembers = "Instructor","Room","Participant";
+            OptionMembers = "Instructor","Room","Participant","Charge";
         }
         field(12; "Participant Contact No."; code[20])
         {
@@ -69,7 +69,56 @@ table 50131 "CSD Seminar Journal Line"
         {
             caption = 'Bill-to Customer No.';
         }
-
+        field(16; "Source Type"; option)
+        {
+            caption = 'Source Type';
+            OptionMembers = "seminar";
+        }
+        field(17; "Document No."; code[20])
+        {
+            caption = 'Document No.';
+        }
+        field(18; "Starting Date"; Date)
+        {
+            caption = 'Strating Date';
+        }
+        field(19; "Seminar Registration No."; Code[20])
+        {
+            Caption = 'Seminar Registration No.';
+        }
+        field(20; "Source No."; Code[20])
+        {
+            caption = 'Source No.';
+        }
+        field(21; "Posting No. Series"; Code[20])
+        {
+            caption = 'Posting No. Series';
+        }
+        field(22; type; Option)
+        {
+            caption = 'type';
+            OptionMembers = "Resource";
+        }
+        field(23; Description; text[50])
+        {
+            caption = 'Description';
+        }
+        field(24; "Res. Ledger Entry No."; Code[20])
+        {
+            caption = 'Res. Ledger Entry No.';
+        }
+        field(25; "Participant Name"; Text[50])
+        {
+            caption = 'Participant Name';
+        }
+        field(26; "Unit Price"; Decimal)
+        {
+            Caption = 'Unit Price';
+        }
+        field(27; "Total Price"; Decimal)
+        {
+            caption = 'Total Price';
+        }
     }
 
     keys

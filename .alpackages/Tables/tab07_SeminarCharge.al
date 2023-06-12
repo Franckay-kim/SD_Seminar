@@ -116,7 +116,18 @@ table 50112 "CSD Seminar Charge"
         {
             Caption = 'Document No.';
         }
-
+        field(8; "Description"; Text[50])
+        {
+            caption = 'Description';
+        }
+        field(9; "Bill-to Customer No."; code[20])
+        {
+            caption = 'Bill-to Customer No.';
+        }
+        field(10; "To Invoice"; Boolean)
+        {
+            caption = 'To Invoice';
+        }
     }
     keys
     {

@@ -1,4 +1,8 @@
 page 50110 "CSD Seminar Registration"
+// CSD1.00 - 2023-06-12 - D. E. Veloper
+// Chapter 7 - Lab 4-8
+// Added Action Post
+
 {
     PageType = Document;
     ApplicationArea = All;
@@ -59,20 +63,24 @@ page 50110 "CSD Seminar Registration"
 
         }
     }
-
+    // Chapter 7 - Lab 4-8
+    // Added Action Post
     actions
     {
         area(Processing)
         {
-            action(ActionName)
+            action("&Post")
             {
-                ApplicationArea = All;
-
-                trigger OnAction();
-                begin
-
-                end;
+                Caption = '&Post';
+                Image = PostDocument;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                ShortcutKey = F9;
+                RunObject = codeunit "CSD Seminar-Post (Yes/No)";
             }
+
+
         }
     }
 }

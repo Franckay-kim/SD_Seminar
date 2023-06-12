@@ -43,7 +43,7 @@ table 50118 "CSD Posted Seminar Reg. Header"
         {
             Caption = 'Seminar Registration Nos.';
         }
-        field(8; "No. Series"; Integer)
+        field(8; "No. Series"; Code[20])
         {
             caption = 'No. Series';
         }

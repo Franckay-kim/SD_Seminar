@@ -53,7 +53,7 @@ table 50110 "Seminar Registration Header"
         }
         field(9; "status"; Option)
         {
-            OptionMembers = "open","active","canceled","planning";
+            OptionMembers = "open","active","canceled","planning","closed";
             Caption = 'status';
         }
         field(10; "Starting Date"; Date)
@@ -76,7 +76,7 @@ table 50110 "Seminar Registration Header"
                     SeminarRegLine.SETRANGE(Registered, TRUE);
                     if not SeminarRegLine.ISEMPTY then
                         ERROR(
-                        Text002,
+                        'Text002',
                         FieldCaption("Seminar No.")
                         )
                 end;
@@ -156,9 +156,37 @@ table 50110 "Seminar Registration Header"
         {
             Caption = 'Document No.';
         }
-        field(17; "Posting No."; Integer)
+        field(17; "Posting No."; Code[20])
         {
             Caption = 'Posting No.';
+        }
+        field(18; "Posting Date"; Date)
+        {
+            Caption = 'Posting Date';
+        }
+        field(19; "Reason Code"; code[20])
+        {
+            Caption = 'Reason Code';
+        }
+        field(20; "Seminar Name"; Text[50])
+        {
+            Caption = 'Seminar Name';
+        }
+        field(21; "Gen. Prod. Posting Group"; code[20])
+        {
+            Caption = 'Gen. Prod. Posting Group';
+        }
+        field(22; "SourceCode"; code[20])
+        {
+            caption = 'SourceCode';
+        }
+        field(23; "Document Date"; Date)
+        {
+            caption = 'Document Date';
+        }
+        field(24; Duration; Decimal)
+        {
+            caption = 'Duration';
         }
     }
 
@@ -241,7 +269,7 @@ table 50110 "Seminar Registration Header"
         "Document Date" := WORKDATE;
         SeminarSetup.GET;
         NoSeriesMgt.SetDefaultSeries("Posting No. Series",
-        SeminarSetup."Posted Seminar Reg. Nos.");
+        SeminarSetup."Posted Seminar Reg. Nos");
     end;
 
     procedure AssistEdit(OldSeminarRegHeader: Record "Seminar Registration Header"): Boolean;

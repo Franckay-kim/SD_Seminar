@@ -43,6 +43,14 @@ table 50111 "CSD Seminar Registration Line"
         {
             caption = 'Registration Date';
         }
+        field(10; "Participant Name"; text[50])
+        {
+            caption = 'Participant Name';
+        }
+        field(11; "To Invoice"; Boolean)
+        {
+            Caption = 'To Invoice';
+        }
     }
 
     keys
