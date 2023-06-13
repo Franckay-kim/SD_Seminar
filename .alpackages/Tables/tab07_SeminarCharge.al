@@ -19,9 +19,9 @@ table 50112 "CSD Seminar Charge"
                             Resource.TestField(Blocked, false);
                             Resource.TestField("Gen. Prod. Posting Group");
                             Description := Resource.Name;
-                            "Gen. Prod. Posting Group" := Resource."Gen. Prod. Posting Group ";
-                            "VAT Prod. Posting Group" := Resource."VAT Prod. Posting Group ";
-                            "Unit of Measure Code" := Resource."Base Unit of Measure ";
+                            // "Gen. Prod. Posting Group" := Resource."Gen. Prod. Posting Group ";
+                            //"VAT Prod. Posting Group" := Resource."VAT Prod. Posting Group ";
+                            //"Unit of Measure Code" := Resource."Base Unit of Measure ";
                             "Unit Price" := Resource."Unit Price";
                         end;
                     Type::"G/L Account":
@@ -30,8 +30,8 @@ table 50112 "CSD Seminar Charge"
                             GLAccount.CheckGLAcc();
                             GLAccount.TestField("Direct Posting", true);
                             Description := GLAccount.Name;
-                            "Gen. Prod. Posting Group" := GLAccount."Gen. Bus. Posting Group ";
-                            "VAT Prod. Posting Group" := GLAccount."VAT Bus. Posting Group ";
+                            //"Gen. Prod. Posting Group" := GLAccount."Gen. Bus. Posting Group ";
+                            // "VAT Prod. Posting Group" := GLAccount."VAT Bus. Posting Group ";
                         end;
                 end;
             end;
@@ -95,15 +95,15 @@ table 50112 "CSD Seminar Charge"
                         begin
                             Resource.Get("No.");
                             if "Unit of Measure Code" = '' then begin
-                                "Unit of Measure Code" := Resource."Base Unit of Measure ";
+                                //    "Unit of Measure Code" := Resource."Base Unit of Measure ";
                             end;
                             ResourceUofM.Get("No.", "Unit of Measure Code");
-                            "Qty. per Unit of Measure" := ResourceUofM."Qty.per Unit of Measure ";
-                            " Total Price " := Round(Resource." Unit Price " * " Qty.per Unit of Measure ");
+                            // "Qty. per Unit of Measure" := ResourceUofM."Qty.per Unit of Measure ";
+                            // " Total Price " := Round(Resource." Unit Price " * " Qty.per Unit of Measure ");
                         end;
                     Type::"G/L Account":
                         begin
-                            "Qty. per Unit of Measure" := 1;
+                            // "Qty. per Unit of Measure" := 1;
                         end;
                 end;
                 if CurrFieldNo = FieldNo("Unit of Measure Code") then begin

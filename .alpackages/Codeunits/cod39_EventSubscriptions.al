@@ -89,10 +89,8 @@ codeunit 50139 "CSD EventSubscriptions"
                 end;
             Database::"CSD Seminar Ledger Entry":
                 begin
-                    SeminarLedgerEntry.SetFilter("Document No.",
-                    DocNoFilter);
-                    SeminarLedgerEntry.SetFilter("Posting Date",
-                    PostingDateFilter);
+                    SeminarLedgerEntry.SetFilter("Document No.", DocNoFilter);
+                    SeminarLedgerEntry.SetFilter("Posting Date", PostingDateFilter);
                     Page.Run(0, SeminarLedgerEntry);
                 end;
         end;

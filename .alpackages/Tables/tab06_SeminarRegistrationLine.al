@@ -51,6 +51,10 @@ table 50111 "CSD Seminar Registration Line"
         {
             Caption = 'To Invoice';
         }
+        field(12; "Line No."; Code[20])
+        {
+            Caption = 'Line No.';
+        }
     }
 
     keys
@@ -58,6 +62,10 @@ table 50111 "CSD Seminar Registration Line"
         key(Pk; "participant Contact No.")
         {
             Clustered = true;
+        }
+        key(key2; "Document No.", "Line No.")
+        {
+
         }
     }
 

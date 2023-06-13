@@ -47,7 +47,7 @@ table 50110 "Seminar Registration Header"
         {
             Caption = 'Seminar Registration Nos.';
         }
-        field(8; "No. Series"; Integer)
+        field(8; "No. Series"; Code[20])
         {
             caption = 'No. Series';
         }
@@ -87,7 +87,7 @@ table 50110 "Seminar Registration Header"
             Caption = 'Room Post Code';
             trigger OnValidate();
             begin
-                PostCode.ValidatePostCode("Room City", "Room Post Code", "Room County", "Room Country/Reg. Code", (CurrFieldNo <> 0) and GUIALLOWED);
+                // PostCode.ValidatePostCode("Room City", "Room Post Code", "Room County", "Room Country/Reg. Code", (CurrFieldNo <> 0) and GUIALLOWED);
             end;
 
         }
@@ -96,7 +96,7 @@ table 50110 "Seminar Registration Header"
             Caption = 'Room City';
             trigger OnValidate();
             begin
-                PostCode.ValidatePostCode("Room City", "Room Post Code", "Room County", "Room Country/Reg. Code", (CurrFieldNo <> 0) and GUIALLOWED);
+                //   PostCode.ValidatePostCode("Room City", "Room Post Code", "Room County", "Room Country/Reg. Code", (CurrFieldNo <> 0) and GUIALLOWED);
             end;
 
         }
@@ -140,16 +140,16 @@ table 50110 "Seminar Registration Header"
 
             trigger OnLookup();
             begin
-                with SeminarRegHeader do begin
-                    SeminarRegHeader := Rec;
-                    SeminarSetup.GET;
-                    SeminarSetup.TestField("Seminar Registration Nos");
-                    SeminarSetup.TestField("Posted Seminar Reg. Nos");
-                    if NoSeriesMgt.LookupSeries(SeminarSetup."Posted Seminar Reg. Nos", "Posting No. Series") then begin
-                        validate("Posting No. Series");
-                    end;
-                    Rec := SeminarRegHeader;
+                //  with SeminarRegHeader do begin
+                SeminarRegHeader := Rec;
+                SeminarSetup.GET;
+                SeminarSetup.TestField("Seminar Registration Nos");
+                SeminarSetup.TestField("Posted Seminar Reg. Nos");
+                if NoSeriesMgt.LookupSeries(SeminarSetup."Posted Seminar Reg. Nos", "Posting No. Series") then begin
+                    validate("Posting No. Series");
                 end;
+                Rec := SeminarRegHeader;
+                // end;
             end;
         }
         field(16; "Document No."; code[20])
@@ -187,6 +187,18 @@ table 50110 "Seminar Registration Header"
         field(24; Duration; Decimal)
         {
             caption = 'Duration';
+        }
+        // Chapter 9 - Lab 1-1
+        // - Added new field "No. Printed
+
+        field(25; "No. Printed"; Integer)
+        {
+            Caption = 'No. Printed';
+            Editable = false;
+        }
+        field(26; "Room Name"; Text[50])
+        {
+            caption = 'Room Name';
         }
     }
 
@@ -282,17 +294,17 @@ table 50110 "Seminar Registration Header"
 
     procedure AssistEdit(OldSeminarRegHeader: Record "Seminar Registration Header"): Boolean;
     begin
-        with SeminarRegHeader do begin
-            SeminarRegHeader := Rec;
+        //with SeminarRegHeader do begin
+        SeminarRegHeader := Rec;
+        SeminarSetup.GET;
+        SeminarSetup.TestField("Seminar Registration Nos");
+        if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Registration Nos", OldSeminarRegHeader."No. Series", "No. Series") then begin
             SeminarSetup.GET;
             SeminarSetup.TestField("Seminar Registration Nos");
-            if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Registration Nos", OldSeminarRegHeader."No. Series", "No. Series") then begin
-                SeminarSetup.GET;
-                SeminarSetup.TestField("Seminar Registration Nos");
-                NoSeriesMgt.SetSeries("No.");
-                Rec := SeminarRegHeader;
-                exit(True);
-            end;
+            NoSeriesMgt.SetSeries("No.");
+            Rec := SeminarRegHeader;
+            exit(True);
         end;
+        //end;
     end;
 }

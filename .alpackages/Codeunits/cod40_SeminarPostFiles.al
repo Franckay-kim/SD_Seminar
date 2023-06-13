@@ -1,11 +1,10 @@
-codeunit 50140 "CSD Seminar Post Files"
-/ CSD1.00 - 2023-06-12 - D. E. Veloper
+codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
 // Chapter 7 - Lab 4-7
 {
     trigger OnRun()
     begin
         ClearAll;
-        SeminarRegHeader := Rec;
+        //SeminarRegHeader := Rec;
         with SeminarRegHeader do begin
             TestField("Posting Date");
             TestField("Document Date");
@@ -19,7 +18,7 @@ codeunit 50140 "CSD Seminar Post Files"
             if SeminarRegLine.IsEmpty then
                 Error('Text001');
             //open a dialog box to showthe posting progress
-            Window.Update(1, StrSubstNo('Text004', "No.", PstdSeminarRegHeader."No."));
+            //Window.Update(1, StrSubstNo('Text004', "No.", PstdSeminarRegHeader."No."));
 
 
             if SeminarRegHeader."Posting No." = '' then begin
@@ -49,7 +48,7 @@ codeunit 50140 "CSD Seminar Post Files"
             CopyCharges("No.", PstdSeminarRegHeader."No.");
 
             //set the line count variable to zero.
-            LineCount := 0;
+            //LineCount := 0;
             SeminarRegLine.Reset;
             SeminarRegLine.SetRange("Document No.", "No.");
             if SeminarRegLine.FindSet then begin
@@ -57,7 +56,7 @@ codeunit 50140 "CSD Seminar Post Files"
                 until SeminarRegLine.Next = 0;
             end;
 
-            Window.Update(2, LineCount);
+            // Window.Update(2, LineCount);
             SeminarRegLine.TestField("Bill-to Customer No.");
             SeminarRegLine.TestField("Participant Contact No.");
             if not SeminarRegLine."To Invoice" then begin
@@ -86,7 +85,7 @@ codeunit 50140 "CSD Seminar Post Files"
             //Delete the registration header, lines, comments and charges.
             Delete(true);
         end;
-        Rec := SeminarRegHeader;
+        //Rec := SeminarRegHeader;
     end;
 
 
@@ -98,7 +97,7 @@ codeunit 50140 "CSD Seminar Post Files"
         SeminarRegHeader: Record "Seminar Registration Header";
         ResJnlLine: Record "Res. Journal Line";
         PstdSeminarRegHeader: Record "CSD Posted Seminar Reg. Header";
-        ResJnlPostLine: Codeunit "Res. Jnl.-Post Line";
+        //ResJnlPostLine: Codeunit "Res. Jnl.-Post Line";
         ResLedgEntry: Record "Res. Ledger Entry";
         SeminarJnlLine: Record "CSD Seminar Journal Line";
         SeminarRegLine: Record "CSD Seminar Registration Line";
@@ -163,7 +162,7 @@ codeunit 50140 "CSD Seminar Post Files"
             ResJnlLine."CSD Seminar No." := "Seminar No.";
             ResJnlLine."CSD Seminar Registration No." :=
             PstdSeminarRegHeader."No.";
-            ResJnlPostLine.RunWithCheck(ResJnlLine);
+            // ResJnlPostLine.RunWithCheck(ResJnlLine);
         end;
 
         ResLedgEntry.FindLast;
@@ -194,23 +193,23 @@ codeunit 50140 "CSD Seminar Post Files"
             case ChargeType of
                 ChargeType::Instructor:
                     begin
-                        Instructor.get("Instructor Resource No.");
-                        SeminarJnlLine.Description := Instructor.Name;
+                        //Instructor.get("Instructor Resource No.");
+                        //SeminarJnlLine.Description := Instructor.Name;
                         SeminarJnlLine.Type := SeminarJnlLine.Type::Resource;
                         SeminarJnlLine.Chargeable := false;
                         SeminarJnlLine.Quantity := Duration;
-                        SeminarJnlLine."Res. Ledger Entry No." := PostResJnlLine(Instructor);
+                        //SeminarJnlLine."Res. Ledger Entry No." := PostResJnlLine(Instructor);
                     end;
                 ChargeType::Room:
                     begin
-                        Room.GET("Room Resource No.");
-                        SeminarJnlLine.Description := Room.Name;
+                        //Room.GET("Room Resource No.");
+                        //SeminarJnlLine.Description := Room.Name;
                         SeminarJnlLine.Type := SeminarJnlLine.Type::Resource;
                         SeminarJnlLine.Chargeable := false;
                         SeminarJnlLine.Quantity := Duration;
                         // Post to resource ledger
-                        SeminarJnlLine."Res. Ledger Entry No." :=
-                        PostResJnlLine(Room);
+                        //SeminarJnlLine."Res. Ledger Entry No." :=
+                        //PostResJnlLine(Room);
                     end;
                 ChargeType::Participant:
                     begin
