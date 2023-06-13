@@ -106,13 +106,21 @@ page 50121 "CSD Seminar Ledger Entries"
     {
         area(Processing)
         {
-            action(ActionName)
+            // Chapter 8 - Lab 2 - 4
+            // Added Action Navigate
+
+            action("&Navigate")
             {
-                ApplicationArea = All;
-
+                Caption = '&Navigate';
+                Image = Navigate;
+                Promoted = true;
+                PromotedCategory = Process;
                 trigger OnAction();
+                var
+                    Navigate: page Navigate;
                 begin
-
+                    Navigate.SetDoc(rec."Posting Date", rec."Document No.");
+                    Navigate.RUN;
                 end;
             }
         }

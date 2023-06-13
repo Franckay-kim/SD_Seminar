@@ -4,6 +4,12 @@ table 50118 "CSD Posted Seminar Reg. Header"
 
 {
     Caption = 'Posted Seminar Reg. Header';
+    // Chapter 8 - Lab 2 - 3
+    // Added LookupPageId & DrilldownPageId properties
+    LookupPageId = "CSD Posted Seminar Reg. List";
+    DrillDownPageId = "CSD Posted Seminar Reg. List";
+
+
 
     fields
     {
@@ -74,16 +80,20 @@ table 50118 "CSD Posted Seminar Reg. Header"
         {
             caption = 'Seminar Price';
         }
-        field(29; "User Id"; Code[50])
+        field(15; "User Id"; Code[50])
         {
             Caption = 'User Id';
             TableRelation = User;
             ValidateTableRelation = false;
         }
-        field(30; "Source Code"; Code[10])
+        field(16; "Source Code"; Code[10])
         {
             Caption = 'Source Code';
             TableRelation = "Source Code";
+        }
+        field(17; "Posting Date"; Date)
+        {
+            Caption = 'Posting Date';
         }
     }
 
