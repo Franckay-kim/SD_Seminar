@@ -40,22 +40,22 @@ report 50102 "CSD Create Seminar Invoices"
                     if SeminarLedgerEntry."Bill-to Customer No." <>
                     SalesHeader."Bill-to Customer No." then begin
                         Window.Update(1, "Bill-to Customer No.");
-                        if SalesHeader."No." <> '' then
-                            FinalizeSalesInvoiceHeader;
-                        InsertSalesInvoiceHeader;
+                        //if SalesHeader."No." <> '' then
+                        //FinalizeSalesInvoiceHeader;
+                        //InsertSalesInvoiceHeader;
                     end;
-                    Window.Update(2, "Seminar Registration No.");
+                    Window.Update(2, SeminarLedgerEntry."Seminar Registration No.");
                     case Type of
                         Type::Resource:
                             begin
                                 SalesLine.Type := SalesLine.Type::Resource;
                                 case "Charge Type" of
                                     "Charge Type"::Instructor:
-                                        SalesLine."No." := "Instructor Resource No.";
+                                        SalesLine."No." := SeminarLedgerEntry."Instructor Resource No.";
                                     "Charge Type"::Room:
-                                        SalesLine."No." := "Room Resource No.";
+                                        SalesLine."No." := SeminarLedgerEntry."Room Resource No.";
                                     "Charge Type"::Participant:
-                                        SalesLine."No." := "Instructor Resource No.";
+                                        SalesLine."No." := SeminarLedgerEntry."Instructor Resource No.";
                                 end;
                             end;
                     end;
@@ -89,7 +89,7 @@ report 50102 "CSD Create Seminar Invoices"
                 if SalesHeader."No." = '' then begin
                     Message(Text007);
                 end else begin
-                    FinalizeSalesInvoiceHeader;
+                    //FinalizeSalesInvoiceHeader;
                     if NoofSalesInvErrors = 0 then
                         Message(Text005, NoofSalesInv)
                     else

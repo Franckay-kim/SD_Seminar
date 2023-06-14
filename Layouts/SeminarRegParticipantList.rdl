@@ -1015,7 +1015,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Filters>
               <Filter>
-                <FilterExpression>=Len(Fields!Seminar_No_.Value)&gt;0</FilterExpression>
+                <FilterExpression>=Len(Fields!Seminar_No.Value)&gt;0</FilterExpression>
                 <Operator>Equal</Operator>
                 <FilterValues>
                   <FilterValue DataType="Boolean">true</FilterValue>

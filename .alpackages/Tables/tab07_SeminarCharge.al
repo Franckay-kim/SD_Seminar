@@ -128,6 +128,11 @@ table 50112 "CSD Seminar Charge"
         {
             caption = 'To Invoice';
         }
+        field(11; "Charge Type"; Option)
+        {
+            Caption = 'Charge Type';
+            OptionMembers = "Instructor","Room","Participant";
+        }
     }
     keys
     {
