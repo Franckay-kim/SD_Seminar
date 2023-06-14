@@ -53,7 +53,7 @@ table 50110 "Seminar Registration Header"
         }
         field(9; "status"; Option)
         {
-            OptionMembers = "open","active","canceled","planning","closed";
+            OptionMembers = "open","active","canceled","planning","closed","Registration";
             Caption = 'status';
         }
         field(10; "Starting Date"; Date)

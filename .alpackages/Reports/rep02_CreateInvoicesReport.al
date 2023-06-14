@@ -1,4 +1,4 @@
-report 50102 "CSD Create Invoices Report"
+report 50102 "CSD Create Seminar Invoices"
 // CSD1.00 - 2023-06-13 - D. E. Veloper
 // Chapter 9 - Lab 2
 // - Created new report
@@ -6,9 +6,6 @@ report 50102 "CSD Create Invoices Report"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     ProcessingOnly = true;
-
-
-
 
 
     dataset
@@ -19,6 +16,90 @@ report 50102 "CSD Create Invoices Report"
             {
 
             }
+
+            trigger OnPreDataItem();
+            begin
+                if PostingDateReq = 0D then
+                    ERROR(Text000);
+                if docDateReq = 0D then
+                    ERROR(Text001);
+                Window.Open(
+                Text002 +
+                Text003 +
+                Text004);
+            end;
+
+            trigger OnAfterGetRecord();
+            begin
+                if "Bill-to Customer No." <> Customer."No." then
+                    Customer.Get("Bill-to Customer No.");
+                if Customer.Blocked in [Customer.Blocked::All,
+                Customer.Blocked::Invoice] then begin
+                    NoofSalesInvErrors := NoofSalesInvErrors + 1;
+                end else begin
+                    if SeminarLedgerEntry."Bill-to Customer No." <>
+                    SalesHeader."Bill-to Customer No." then begin
+                        Window.Update(1, "Bill-to Customer No.");
+                        if SalesHeader."No." <> '' then
+                            FinalizeSalesInvoiceHeader;
+                        InsertSalesInvoiceHeader;
+                    end;
+                    Window.Update(2, "Seminar Registration No.");
+                    case Type of
+                        Type::Resource:
+                            begin
+                                SalesLine.Type := SalesLine.Type::Resource;
+                                case "Charge Type" of
+                                    "Charge Type"::Instructor:
+                                        SalesLine."No." := "Instructor Resource No.";
+                                    "Charge Type"::Room:
+                                        SalesLine."No." := "Room Resource No.";
+                                    "Charge Type"::Participant:
+                                        SalesLine."No." := "Instructor Resource No.";
+                                end;
+                            end;
+                    end;
+                    SalesLine."document Type" := SalesHeader."document Type";
+                    SalesLine."document No." := SalesHeader."No.";
+                    SalesLine."Line No." := NextLineNo;
+                    SalesLine.Validate("No.");
+                    Seminar.Get(SeminarLedgerEntry."Seminar No.");
+                    if SeminarLedgerEntry.Description <> '' then
+                        SalesLine.Description := SeminarLedgerEntry.Description
+                    else
+                        SalesLine.Description := Seminar.Name;
+                    SalesLine."Unit Price" := "Unit Price";
+                    if SalesHeader."Currency Code" <> '' then begin
+                        SalesHeader.TestField("Currency Factor");
+                        SalesLine."Unit Price" :=
+                        ROUND(CurrencyExchRate.ExchangeAmtLCYTofCY(
+                        WorkDate, SalesHeader."Currency Code",
+                        SalesLine."Unit Price",
+                        SalesHeader."Currency Factor"));
+                    end;
+                    SalesLine.Validate(Quantity, Quantity);
+                    SalesLine.Insert;
+                    NextLineNo := NextLineNo + 10000;
+                end;
+            end;
+
+            trigger OnPostDataItem();
+            begin
+                Window.Close;
+                if SalesHeader."No." = '' then begin
+                    Message(Text007);
+                end else begin
+                    FinalizeSalesInvoiceHeader;
+                    if NoofSalesInvErrors = 0 then
+                        Message(Text005, NoofSalesInv)
+                    else
+                        Message(Text006, NoofSalesInvErrors)
+                end;
+            end;
+
+
+
+
         }
     }
 
@@ -51,6 +132,7 @@ report 50102 "CSD Create Invoices Report"
             }
         }
 
+
         actions
         {
             area(processing)
@@ -62,7 +144,61 @@ report 50102 "CSD Create Invoices Report"
                 }
             }
         }
+
+
+
+        trigger OnOpenPage();
+        begin
+            if PostingDateReq = 0D then
+                PostingDateReq := WorkDate;
+            if docDateReq = 0D then
+                docDateReq := WorkDate;
+            SalesSetup.Get;
+            CalcInvoiceDiscount := SalesSetup."Calc. Inv. Discount";
+        end;
+
+
+        local procedure FinalizeSalesInvoiceHeader();
+        begin
+            with SalesHeader do begin
+                if CalcInvoiceDiscount then
+                    SalesCalcDiscount.Run(SalesLine);
+                Get("document Type", "No.");
+                Commit;
+                Clear(SalesCalcDiscount);
+                Clear(SalesPost);
+                NoofSalesInv := NoofSalesInv + 1;
+                if PostInvoices then begin
+                    Clear(SalesPost);
+                    if not SalesPost.Run(SalesHeader) then
+                        NoofSalesInvErrors := NoofSalesInvErrors + 1;
+                end;
+            end;
+        end;
+
+        local procedure InsertSalesInvoiceHeader();
+        begin
+            with SalesHeader do begin
+                Init;
+                "document Type" := "document Type"::Invoice;
+                "No." := '';
+                Insert(true);
+                Validate("Sell-to Customer No.", SeminarLedgerEntry."Bill-to Customer No.");
+                if "Bill-to Customer No." <> "Sell-to Customer No."
+                then
+                    Validate("Bill-to Customer No.", SeminarLedgerEntry."Bill-to Customer No.");
+                Validate("Posting Date", PostingDateReq);
+                Validate("document Date", docDateReq);
+                Validate("Currency Code", '');
+                Modify;
+                Commit;
+                NextLineNo := 10000;
+            end;
+        end;
+
     }
+
+
 
     var
         CurrencyExchRate: Record "Currency Exchange Rate";
@@ -82,6 +218,8 @@ report 50102 "CSD Create Invoices Report"
         docDateReq: Date;
         Window: Dialog;
         Seminar: Record "CSD Seminar";
+        SeminarLedgerEntry: Record "CSD Seminar Ledger Entry";
+
 
     var
         Text000: Label 'Please enter the posting date.';
@@ -92,4 +230,6 @@ report 50102 "CSD Create Invoices Report"
         Text005: Label 'The number of invoice(s) created is %1.';
         Text006: Label 'not all the invoices were posted. A total of %1 invoices were not posted.';
         Text007: Label 'There is nothing to invoice.';
+
+
 }
