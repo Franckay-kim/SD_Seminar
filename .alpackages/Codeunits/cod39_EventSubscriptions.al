@@ -28,22 +28,22 @@ codeunit 50139 "CSD EventSubscriptions"
             PostingDateFilter);
             DocNoOfRecords := PostedSeminarRegHeader.Count;
 
-            With DocumentEntry do begin
-                if DocNoOfRecords = 0 then
-                    exit;
-                if FindLast then
-                    NextEntryNo := "Entry No." + 1
-                else
-                    NextEntryNo := 1;
-                Init;
-                "Entry No." := NextEntryNo;
-                "Table ID" := Database::"CSD Posted Seminar Reg. Header";
-                "Document Type" := 0;
-                "Table Name" := COPYSTR(PostedSeminarRegHeader.
-                TableCaption, 1, MAXSTRLEN("Table Name"));
-                "No. of Records" := DocNoOfRecords;
-                Insert;
-            end;
+            // With DocumentEntry do begin
+            if DocNoOfRecords = 0 then
+                exit;
+            if DocumentEntry.FindLast then
+                NextEntryNo := DocumentEntry."Entry No." + 1
+            else
+                NextEntryNo := 1;
+            DocumentEntry.Init;
+            DocumentEntry."Entry No." := NextEntryNo;
+            DocumentEntry."Table ID" := Database::"CSD Posted Seminar Reg. Header";
+            DocumentEntry."Document Type" := 0;
+            DocumentEntry."Table Name" := COPYSTR(PostedSeminarRegHeader.
+            TableCaption, 1, MAXSTRLEN(DocumentEntry."Table Name"));
+            DocumentEntry."No. of Records" := DocNoOfRecords;
+            DocumentEntry.Insert;
+            //end;
         end;
 
         if SeminarLedgerEntry.ReadPermission then begin
@@ -53,22 +53,22 @@ codeunit 50139 "CSD EventSubscriptions"
             PostingDateFilter);
             DocNoOfRecords := SeminarLedgerEntry.Count;
 
-            With DocumentEntry do begin
-                if DocNoOfRecords = 0 then
-                    exit;
-                if FindLast then
-                    NextEntryNo := "Entry No." + 1
-                else
-                    NextEntryNo := 1;
-                Init;
-                "Entry No." := NextEntryNo;
-                "Table ID" := Database::"CSD Seminar Ledger Entry";
-                "Document Type" := 0;
-                "Table Name" := COPYSTR(SeminarLedgerEntry.
-                TableCaption, 1, MAXSTRLEN("Table Name"));
-                "No. of Records" := DocNoOfRecords;
-                Insert;
-            end;
+            //With DocumentEntry do begin
+            if DocNoOfRecords = 0 then
+                exit;
+            if DocumentEntry.FindLast then
+                NextEntryNo := DocumentEntry."Entry No." + 1
+            else
+                NextEntryNo := 1;
+            DocumentEntry.Init;
+            DocumentEntry."Entry No." := NextEntryNo;
+            DocumentEntry."Table ID" := Database::"CSD Seminar Ledger Entry";
+            DocumentEntry."Document Type" := 0;
+            DocumentEntry."Table Name" := COPYSTR(SeminarLedgerEntry.
+            TableCaption, 1, MAXSTRLEN(DocumentEntry."Table Name"));
+            DocumentEntry."No. of Records" := DocNoOfRecords;
+            DocumentEntry.Insert;
+            //end;
         end;
     end;
 
