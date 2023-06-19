@@ -56,7 +56,7 @@ codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
             until SeminarRegLine.Next = 0;
         end;
 
-        // Window.Update(2, LineCount);
+        //Window.Update(2, LineCount);
         SeminarRegLine.TestField("Bill-to Customer No.");
         SeminarRegLine.TestField("Participant Contact No.");
         if not SeminarRegLine."To Invoice" then begin

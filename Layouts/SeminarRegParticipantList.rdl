@@ -1080,34 +1080,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Globals!PageName</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>12pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value> &amp; </Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>12pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Globals!TotalPages</Value>
+                      <Value>Globals!PageNumber &amp; "of " &amp; Globals!TotalPages</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Times New Roman</FontFamily>
@@ -1124,7 +1097,7 @@
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>0.49875in</Top>
               <Left>5.39458in</Left>
-              <Height>0.48958in</Height>
+              <Height>0.47569in</Height>
               <Width>1.79167in</Width>
               <ZIndex>2</ZIndex>
               <Style>
@@ -1152,7 +1125,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
-              <Top>1.24306in</Top>
+              <Top>1.04389in</Top>
               <Left>5.39458in</Left>
               <Height>0.25in</Height>
               <Width>1.79167in</Width>
