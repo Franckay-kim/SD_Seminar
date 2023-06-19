@@ -211,7 +211,7 @@ codeunit 50140 "CSD Seminar Post Files"
                 end;
             ChargeType::Room:
                 begin
-                    Room.GET(SeminarRegHeader."Room Resource No.");
+                    // Room.GET(SeminarRegHeader."Room Resource No.");
                     //SeminarJnlLine.Description := Room.Name;
                     SeminarJnlLine.Type := SeminarJnlLine.Type::Resource;
                     SeminarJnlLine.Chargeable := false;
