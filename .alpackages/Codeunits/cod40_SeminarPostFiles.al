@@ -9,7 +9,7 @@ codeunit 50140 "CSD Seminar Post Files"
     trigger OnRun()
     begin
         ClearAll;
-        //SeminarRegHeader := Rec;
+        SeminarRegHeader := Rec;
         //with SeminarRegHeader do begin
         SeminarRegHeader.TestField("Posting Date");
         SeminarRegHeader.TestField("Document Date");
@@ -90,7 +90,7 @@ codeunit 50140 "CSD Seminar Post Files"
         //Delete the registration header, lines, comments and charges.
         SeminarRegHeader.Delete(true);
         //end;
-        //Rec := SeminarRegHeader;
+        Rec := SeminarRegHeader;
     end;
 
 
@@ -112,8 +112,8 @@ codeunit 50140 "CSD Seminar Post Files"
         PstdSeminarRegLine: Record "CSD Posted Seminar Reg. Line";
         LineCount: Integer;
         window: Dialog;
-        Instructor: char;
-
+        Rec: Record "Seminar Registration Header";
+        Resource: record "Resource";
 
     local procedure CopyCommentLines(FromDocumentType: Integer; ToDocumentType: Integer; FromNumber: Code[20]; ToNumber: Code[20]);
 
@@ -202,7 +202,7 @@ codeunit 50140 "CSD Seminar Post Files"
         case ChargeType of
             ChargeType::Instructor:
                 begin
-                    //Instructor.get(SeminarRegHeader."Instructor Resource No.");
+                    ///Instructor.get(SeminarRegHeader."Instructor Resource No.");
                     //SeminarJnlLine.Description := Instructor.Name;
                     SeminarJnlLine.Type := SeminarJnlLine.Type::Resource;
                     SeminarJnlLine.Chargeable := false;
@@ -211,14 +211,13 @@ codeunit 50140 "CSD Seminar Post Files"
                 end;
             ChargeType::Room:
                 begin
-                    //Room.GET("Room Resource No.");
+                    Room.GET(SeminarRegHeader."Room Resource No.");
                     //SeminarJnlLine.Description := Room.Name;
                     SeminarJnlLine.Type := SeminarJnlLine.Type::Resource;
                     SeminarJnlLine.Chargeable := false;
                     SeminarJnlLine.Quantity := SeminarRegHeader.Duration;
                     //Post to resource ledger
-                    //SeminarJnlLine."Res. Ledger Entry No." :=
-                    //PostResJnlLine(Room);
+                    //SeminarJnlLine."Res. Ledger Entry No." :=PostResJnlLine(Room);
                 end;
             ChargeType::Participant:
                 begin

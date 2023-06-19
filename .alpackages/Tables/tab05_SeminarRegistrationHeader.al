@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Seminar Registration Header (ID 50110).
+/// </summary>
 table 50110 "Seminar Registration Header"
 // CSD1.00 - 2023-06-06 - D. E. Veloper
 //chapter 6 - Lab 1
@@ -22,7 +25,7 @@ table 50110 "Seminar Registration Header"
         field(2; "Instructor Name"; Text[100])
         {
             Caption = 'Instructor Name';
-            CalcFormula = lookup(Resource.Name where("No." = field("Instructor Resource No."), Type = const(person)));
+            CalcFormula = lookup(Resource.Name /*where("No." = field("Instructor Resource No."),*/where(Type = const(person)));
 
             Editable = false;
             FieldClass = FlowField;
@@ -96,7 +99,7 @@ table 50110 "Seminar Registration Header"
             Caption = 'Room City';
             trigger OnValidate();
             begin
-                //   PostCode.ValidatePostCode("Room City", "Room Post Code", "Room County", "Room Country/Reg. Code", (CurrFieldNo <> 0) and GUIALLOWED);
+                // PostCode.ValidatePostCode("Room City", rec."Room Post Code", rec."Room City", "Room Country/Reg. Code", (CurrFieldNo <> 0) and GUIALLOWED);
             end;
 
         }
@@ -292,6 +295,11 @@ table 50110 "Seminar Registration Header"
         SeminarSetup."Posted Seminar Reg. Nos");
     end;
 
+    /// <summary>
+    /// AssistEdit.
+    /// </summary>
+    /// <param name="OldSeminarRegHeader">Record "Seminar Registration Header".</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure AssistEdit(OldSeminarRegHeader: Record "Seminar Registration Header"): Boolean;
     begin
         //with SeminarRegHeader do begin

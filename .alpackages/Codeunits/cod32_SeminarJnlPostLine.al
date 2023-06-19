@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit CSD Seminar Jnl.-Post Line (ID 50132).
+/// </summary>
 codeunit 50132 "CSD Seminar Jnl.-Post Line"
 // CSD1.00 - 2023-06-09 - D. E. Veloper
 // Chapter 7 - Lab 2-8
@@ -17,6 +20,10 @@ codeunit 50132 "CSD Seminar Jnl.-Post Line"
         SeminarJnlCheckLine: Codeunit "CSD Seminar Jnl.-Check Line";
         NextEntryNo: Integer;
 
+    /// <summary>
+    /// RunWithCheck.
+    /// </summary>
+    /// <param name="SeminarJnLine2">VAR Record "CSD Seminar Journal Line".</param>
     procedure RunWithCheck(var SeminarJnLine2: Record "CSD Seminar Journal Line");
     // CSD1.00 - 2023-06-09 - D. E. Veloper
 
