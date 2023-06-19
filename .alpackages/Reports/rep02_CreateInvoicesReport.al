@@ -160,40 +160,40 @@ report 50102 "CSD Create Seminar Invoices"
 
         local procedure FinalizeSalesInvoiceHeader();
         begin
-            with SalesHeader do begin
-                if CalcInvoiceDiscount then
-                    SalesCalcDiscount.Run(SalesLine);
-                Get("document Type", "No.");
-                Commit;
-                Clear(SalesCalcDiscount);
+            //with SalesHeader do begin
+            if CalcInvoiceDiscount then
+                SalesCalcDiscount.Run(SalesLine);
+            SalesHeader.Get(SalesHeader."document Type", SalesHeader."No.");
+            Commit;
+            Clear(SalesCalcDiscount);
+            Clear(SalesPost);
+            NoofSalesInv := NoofSalesInv + 1;
+            if PostInvoices then begin
                 Clear(SalesPost);
-                NoofSalesInv := NoofSalesInv + 1;
-                if PostInvoices then begin
-                    Clear(SalesPost);
-                    if not SalesPost.Run(SalesHeader) then
-                        NoofSalesInvErrors := NoofSalesInvErrors + 1;
-                end;
+                if not SalesPost.Run(SalesHeader) then
+                    NoofSalesInvErrors := NoofSalesInvErrors + 1;
             end;
+            //end;
         end;
 
         local procedure InsertSalesInvoiceHeader();
         begin
-            with SalesHeader do begin
-                Init;
-                "document Type" := "document Type"::Invoice;
-                "No." := '';
-                Insert(true);
-                Validate("Sell-to Customer No.", SeminarLedgerEntry."Bill-to Customer No.");
-                if "Bill-to Customer No." <> "Sell-to Customer No."
-                then
-                    Validate("Bill-to Customer No.", SeminarLedgerEntry."Bill-to Customer No.");
-                Validate("Posting Date", PostingDateReq);
-                Validate("document Date", docDateReq);
-                Validate("Currency Code", '');
-                Modify;
-                Commit;
-                NextLineNo := 10000;
-            end;
+            //with SalesHeader do begin
+            SalesHeader.Init;
+            SalesHeader."document Type" := SalesHeader."document Type"::Invoice;
+            SalesHeader."No." := '';
+            SalesHeader.Insert(true);
+            SalesHeader.Validate("Sell-to Customer No.", SeminarLedgerEntry."Bill-to Customer No.");
+            if SalesHeader."Bill-to Customer No." <> SalesHeader."Sell-to Customer No."
+            then
+                SalesHeader.Validate("Bill-to Customer No.", SeminarLedgerEntry."Bill-to Customer No.");
+            SalesHeader.Validate("Posting Date", PostingDateReq);
+            SalesHeader.Validate("document Date", docDateReq);
+            SalesHeader.Validate("Currency Code", '');
+            SalesHeader.Modify;
+            Commit;
+            NextLineNo := 10000;
+            //end;
         end;
 
     }
