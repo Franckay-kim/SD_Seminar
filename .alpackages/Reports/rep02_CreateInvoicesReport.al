@@ -2,6 +2,7 @@ report 50102 "CSD Create Seminar Invoices"
 // CSD1.00 - 2023-06-13 - D. E. Veloper
 // Chapter 9 - Lab 2
 // - Created new report
+//2023-06-19 - D. E. veloper - edited the report layout
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;

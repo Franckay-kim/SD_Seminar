@@ -1,5 +1,7 @@
-codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
+codeunit 50140 "CSD Seminar Post Files"
+//CSD1.00 - 2023-06-12 - D. E. Veloper
 // Chapter 7 - Lab 4-7
+//2023-06-19 - D. E. veloper - added code to the triggers 
 {
     trigger OnRun()
     begin
