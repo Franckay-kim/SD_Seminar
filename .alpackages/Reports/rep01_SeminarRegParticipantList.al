@@ -1,3 +1,6 @@
+/// <summary>
+/// Report CSD SeminarRegParticipantList (ID 50101).
+/// </summary>
 report 50101 "CSD SeminarRegParticipantList"
 {
     UsageCategory = ReportsAndAnalysis;

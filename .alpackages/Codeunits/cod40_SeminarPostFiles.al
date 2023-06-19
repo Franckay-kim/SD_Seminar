@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit CSD Seminar Post Files (ID 50140).
+/// </summary>
 codeunit 50140 "CSD Seminar Post Files"
 //CSD1.00 - 2023-06-12 - D. E. Veloper
 // Chapter 7 - Lab 4-7

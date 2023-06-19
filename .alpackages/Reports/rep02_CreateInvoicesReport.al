@@ -1,3 +1,6 @@
+/// <summary>
+/// Report CSD Create Seminar Invoices (ID 50102).
+/// </summary>
 report 50102 "CSD Create Seminar Invoices"
 // CSD1.00 - 2023-06-13 - D. E. Veloper
 // Chapter 9 - Lab 2
