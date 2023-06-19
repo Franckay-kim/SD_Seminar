@@ -18,7 +18,7 @@ codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
         if SeminarRegLine.IsEmpty then
             Error('Text001');
         //open a dialog box to showthe posting progress
-        //Window.Update(1, StrSubstNo('Text004', "No.", PstdSeminarRegHeader."No."));
+        Window.Update(1, StrSubstNo('Text004', SeminarRegHeader."No.", PstdSeminarRegHeader."No."));
 
 
         if SeminarRegHeader."Posting No." = '' then begin
@@ -48,7 +48,7 @@ codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
         CopyCharges(SeminarRegHeader."No.", PstdSeminarRegHeader."No.");
 
         //set the line count variable to zero.
-        //LineCount := 0;
+        LineCount := 0;
         SeminarRegLine.Reset;
         SeminarRegLine.SetRange("Document No.", SeminarRegHeader."No.");
         if SeminarRegLine.FindSet then begin
@@ -56,7 +56,7 @@ codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
             until SeminarRegLine.Next = 0;
         end;
 
-        //Window.Update(2, LineCount);
+        Window.Update(2, LineCount);
         SeminarRegLine.TestField("Bill-to Customer No.");
         SeminarRegLine.TestField("Participant Contact No.");
         if not SeminarRegLine."To Invoice" then begin
@@ -105,6 +105,10 @@ codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
         NoSeriesMgt: Codeunit "NoSeriesManagement";
         SourceCodeSetup: Record "Source Code Setup";
         PstdSeminarRegLine: Record "CSD Posted Seminar Reg. Line";
+        LineCount: Integer;
+        window: Dialog;
+        Instructor: char;
+
 
     local procedure CopyCommentLines(FromDocumentType: Integer; ToDocumentType: Integer; FromNumber: Code[20]; ToNumber: Code[20]);
 
@@ -193,7 +197,7 @@ codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
         case ChargeType of
             ChargeType::Instructor:
                 begin
-                    //Instructor.get("Instructor Resource No.");
+                    //Instructor.get(SeminarRegHeader."Instructor Resource No.");
                     //SeminarJnlLine.Description := Instructor.Name;
                     SeminarJnlLine.Type := SeminarJnlLine.Type::Resource;
                     SeminarJnlLine.Chargeable := false;
@@ -207,7 +211,7 @@ codeunit 50140 "CSD Seminar Post Files"//CSD1.00 - 2023-06-12 - D. E. Veloper
                     SeminarJnlLine.Type := SeminarJnlLine.Type::Resource;
                     SeminarJnlLine.Chargeable := false;
                     SeminarJnlLine.Quantity := SeminarRegHeader.Duration;
-                    // Post to resource ledger
+                    //Post to resource ledger
                     //SeminarJnlLine."Res. Ledger Entry No." :=
                     //PostResJnlLine(Room);
                 end;
