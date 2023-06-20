@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Reg Subpage (ID 50111).
+/// </summary>
 page 50111 "CSD Seminar Reg Subpage"
 {
     PageType = ListPart;

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table  CSD Posted Seminar Charge (ID 50121).
+/// </summary>
 table 50121 " CSD Posted Seminar Charge"
 // CSD1.00 - 2023-06-09 - D. E. Veloper
 // Chapter 7 - Lab 3-4

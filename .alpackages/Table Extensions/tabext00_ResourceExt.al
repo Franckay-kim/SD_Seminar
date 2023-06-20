@@ -1,3 +1,6 @@
+/// <summary>
+/// TableExtension CSD ResourceExt (ID 50100) extends Record Resource.
+/// </summary>
 tableextension 50100 "CSD ResourceExt" extends Resource
 // CSD1.00 - 2023-29-05 - D. E. Veloper
 {

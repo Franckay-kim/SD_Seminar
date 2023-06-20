@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar (ID 50101).
+/// </summary>
 table 50101 "CSD Seminar"
 //CSD1.00 - 2023-30-05 - D. E. Veloper
 //seminar table
@@ -152,6 +155,10 @@ table 50101 "CSD Seminar"
         "Last Date Modified" := Today;
     end;
 
+    /// <summary>
+    /// AssistEdit.
+    /// </summary>
+    /// <returns>Return value of type Boolean.</returns>
     procedure AssistEdit(): Boolean;
 
     begin

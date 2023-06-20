@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Report Selections (ID 50122).
+/// </summary>
 table 50122 "CSD Seminar Report Selections"
 {
     Caption = 'Seminar Report Selections';

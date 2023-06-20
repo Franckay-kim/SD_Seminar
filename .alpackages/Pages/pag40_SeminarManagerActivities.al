@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Manager Activities (ID 50140).
+/// </summary>
 page 50140 "CSD Seminar Manager Activities"
 {
     PageType = CardPart;

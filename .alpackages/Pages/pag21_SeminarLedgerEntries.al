@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Ledger Entries (ID 50121).
+/// </summary>
 page 50121 "CSD Seminar Ledger Entries"
 // CSD1.00 - 2023-06-09 - D. E. Veloper
 // Chapter 7 - Lab 2-9

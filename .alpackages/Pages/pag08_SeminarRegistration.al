@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Registration (ID 50110).
+/// </summary>
 page 50110 "CSD Seminar Registration"
 // CSD1.00 - 2023-06-12 - D. E. Veloper
 // Chapter 7 - Lab 4-8

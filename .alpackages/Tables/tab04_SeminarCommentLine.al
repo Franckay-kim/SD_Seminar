@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Comment Line (ID 50104).
+/// </summary>
 table 50104 "CSD Seminar Comment Line"
 //CSD1.00 - 2023-06-09 - D. E. Veloper
 // Chapter 5 - Lab 2-1
@@ -55,6 +58,9 @@ table 50104 "CSD Seminar Comment Line"
         }
     }
 
+    /// <summary>
+    /// SetupNewLine.
+    /// </summary>
     procedure SetupNewLine()
     //new procedure
     var

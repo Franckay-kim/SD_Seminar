@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Registration Line (ID 50111).
+/// </summary>
 table 50111 "CSD Seminar Registration Line"
 // CSD1.00 - 2023-06-06 - D. E. Veloper
 //chapter 6 - Lab 1

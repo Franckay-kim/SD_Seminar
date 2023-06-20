@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit CSD EventSubscriptions (ID 50139).
+/// </summary>
 codeunit 50139 "CSD EventSubscriptions"
 // CSD1.00 - 2023-06-12 - D. E. Veloper
 // Chapter 7 - Lab 4-4

@@ -1,3 +1,6 @@
+/// <summary>
+/// PageExtension CSD ResourceListExt (ID 50101) extends Record Resource List.
+/// </summary>
 pageextension 50101 "CSD ResourceListExt" extends "Resource List"
 //CSD1.00 - 2023-30-05 - D. E. Veloper
 {

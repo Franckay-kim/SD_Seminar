@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit CSD Seminar Reg.-ShowLedger (ID 50134).
+/// </summary>
 codeunit 50134 "CSD Seminar Reg.-ShowLedger"
 // CSD1.00 - 2023-06-09 - D. E. Veloper
 // Chapter 7 - Lab 2-10

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Journal Line (ID 50131).
+/// </summary>
 table 50131 "CSD Seminar Journal Line"
 {
     DataClassification = ToBeClassified;
@@ -152,6 +155,10 @@ table 50131 "CSD Seminar Journal Line"
 
     end;
 
+    /// <summary>
+    /// EmptyLine.
+    /// </summary>
+    /// <returns>Return value of type Boolean.</returns>
     procedure EmptyLine(): Boolean;
     begin
         exit(("Seminar No." = '') AND (Quantity = 0));

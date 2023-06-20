@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Charge (ID 50112).
+/// </summary>
 table 50112 "CSD Seminar Charge"
 // CSD1.00 - 2023-06-06 - D. E. Veloper
 //chapter 6 - Lab 1

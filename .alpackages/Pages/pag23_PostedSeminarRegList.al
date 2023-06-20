@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Posted Seminar Reg. List (ID 50123).
+/// </summary>
 page 50123 "CSD Posted Seminar Reg. List"
 // CSD1.00 - 2023-06-09 - D. E. Veloper
 // Chapter 8 - Lab 2-3

@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Setup (ID 50100).
+/// </summary>
 page 50100 "CSD Seminar Setup"
 //CSD1.00 - 2023-30-05 - D. E. Veloper
 //seminar setup card page

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Register (ID 50133).
+/// </summary>
 table 50133 "CSD Seminar Register"
 {
     DataClassification = ToBeClassified;

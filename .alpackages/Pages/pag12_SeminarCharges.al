@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Charge (ID 50124).
+/// </summary>
 page 50124 "CSD Seminar Charge"
 {
     PageType = List;

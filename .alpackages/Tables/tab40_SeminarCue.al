@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Cue (ID 50140).
+/// </summary>
 table 50140 "CSD Seminar Cue"
 // CSD1.00 - 2023-06-14 - D. E. Veloper
 // Chapter 10 - Lab 1 - 1

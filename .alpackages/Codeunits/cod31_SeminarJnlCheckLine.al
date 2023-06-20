@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit CSD Seminar Jnl.-Check Line (ID 50131).
+/// </summary>
 codeunit 50131 "CSD Seminar Jnl.-Check Line"
 //CSD1.00 - 2023-06-09 - D. E. Veloper
 // Chapter 7 - Lab 2-1
@@ -18,6 +21,10 @@ codeunit 50131 "CSD Seminar Jnl.-Check Line"
         ClosingDateTxt: Label 'cannot be a closing date.';
         PostingDateTxt: label 'is not within your range of allowed posting dates.';
 
+    /// <summary>
+    /// RunCheck.
+    /// </summary>
+    /// <param name="SemJnLine">VAR Record "CSD Seminar Journal Line".</param>
     procedure RunCheck(var SemJnLine: Record "CSD Seminar Journal Line");
     var
         myInt: Integer;

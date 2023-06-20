@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Ledger Entry (ID 50132).
+/// </summary>
 table 50132 "CSD Seminar Ledger Entry"
 {
     Caption = 'Seminar Ledger Entry';

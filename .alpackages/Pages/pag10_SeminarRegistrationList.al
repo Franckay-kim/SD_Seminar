@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Registration List (ID 50113).
+/// </summary>
 page 50113 "CSD Seminar Registration List"
 {
     PageType = List;

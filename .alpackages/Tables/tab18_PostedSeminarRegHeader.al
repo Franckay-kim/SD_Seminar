@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Posted Seminar Reg. Header (ID 50118).
+/// </summary>
 table 50118 "CSD Posted Seminar Reg. Header"
 // CSD1.00 - 2023-06-09 - D. E. Veloper
 // Chapter 7 - Lab 3-1

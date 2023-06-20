@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD My Seminars (ID 50141).
+/// </summary>
 page 50141 "CSD My Seminars"
 // CSD1.00 - 2018-01-01 - D. E. Veloper
 // Chapter 10 - Lab 1 - 4
