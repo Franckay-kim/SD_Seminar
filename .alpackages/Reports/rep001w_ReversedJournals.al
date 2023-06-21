@@ -1,12 +1,12 @@
 /// <summary>
-/// Report Reversed Journals (ID 50102).
+/// Report Reversed Journals (ID 50103).
 /// </summary>
-report 50103 "CSD Reversed Journals"
+report 50103 "Reversed Journals"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     caption = 'Reversed Journals';
-    RDLCLayout = './Layouts/CRBList.rdl';
+    RDLCLayout = './Layouts/ReversedJournals.rdl';
 
     dataset
     {
