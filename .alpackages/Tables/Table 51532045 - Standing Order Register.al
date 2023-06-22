@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Standing Order Register (ID 51532045).
+/// </summary>
 table 51532045 "Standing Order Register"
 {
     //DrillDownPageID = "Standing Order Register List";

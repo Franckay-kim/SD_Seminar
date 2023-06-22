@@ -1,3 +1,6 @@
+/// <summary>
+/// Table File Mvmt Lines (ID 51532096).
+/// </summary>
 table 51532096 "File Mvmt Lines"
 {
     Caption = 'File Mvmt Lines';
@@ -68,6 +71,9 @@ table 51532096 "File Mvmt Lines"
         }
     }
 
+    /// <summary>
+    /// OnApproval.
+    /// </summary>
     procedure OnApproval()
     begin
         If Status = Status::Approved then begin

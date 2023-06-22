@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Contact Unit (ID 51532002).
+/// </summary>
 table 51532002 "Contact Unit"
 {
     Caption = 'Contact Unit';

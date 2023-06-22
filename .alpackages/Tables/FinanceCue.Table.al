@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Finance Cue Table (ID 51532010).
+/// </summary>
 table 51532010 "Finance Cue Table"
 {
     Caption = 'Finance Cue';

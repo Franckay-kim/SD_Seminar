@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegate Regions (ID 51533402).
+/// </summary>
 table 51533402 "Delegate Regions"
 {
     Caption = 'Delegate Regions';

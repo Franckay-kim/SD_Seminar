@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Misc. Info (ID 51533388).
+/// </summary>
 table 51533388 "Misc. Info"
 
 {

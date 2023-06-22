@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Online Recruit Profiles (ID 51533461).
+/// </summary>
 table 51533461 "HR Online Recruit Profiles"
 {
     Caption = 'HR Online Recruit Profiles';

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Application Documents (ID 51532052).
+/// </summary>
 table 51532052 "Application Documents"
 {
     //LookupPageID = "Application Documents";

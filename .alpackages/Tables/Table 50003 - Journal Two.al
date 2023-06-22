@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Journal Two (ID 51533467).
+/// </summary>
 table 51533467 "Journal Two"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Required Documents (ID 51532054).
+/// </summary>
 table 51532054 "Loan Required Documents"
 {
 

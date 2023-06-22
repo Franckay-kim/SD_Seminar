@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Recovery Lines (ID 51532013).
+/// </summary>
 table 51532013 "Loan Recovery Lines"
 {
 

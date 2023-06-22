@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Potential Members (ID 51532004).
+/// </summary>
 table 51532004 "Potential Members"
 {
     Caption = 'Potential Members';

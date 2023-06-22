@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Member Employment History (ID 51532005).
+/// </summary>
 table 51532005 "Member Employment History"
 {
     Caption = 'Member Employment History';
@@ -47,6 +50,12 @@ table 51532005 "Member Employment History"
         }
     }
 
+    /// <summary>
+    /// InitEntry.
+    /// </summary>
+    /// <param name="MemberNo">Code[30].</param>
+    /// <param name="EmpCode">Code[50].</param>
+    /// <param name="ChangeDocNo">Code[50].</param>
     procedure InitEntry(MemberNo: Code[30]; EmpCode: Code[50]; ChangeDocNo: Code[50])
     begin
         Init();

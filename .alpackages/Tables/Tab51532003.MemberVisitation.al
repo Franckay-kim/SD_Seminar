@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Member Visitation (ID 51532003).
+/// </summary>
 table 51532003 "Member Visitation"
 {
     Caption = 'Member Visitation';

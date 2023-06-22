@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Standing Order Header (ID 51532043).
+/// </summary>
 table 51532043 "Standing Order Header"
 {
 
@@ -393,6 +396,9 @@ table 51532043 "Standing Order Header"
         UserSetup: Record "User Setup";
         AmountError: Label 'Allocated amount and amount are not the same.';
 
+    /// <summary>
+    /// ValidateApproval.
+    /// </summary>
     procedure ValidateApproval()
     var
         StandingOrderLines: Record "Standing Order Lines";

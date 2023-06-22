@@ -1,97 +1,107 @@
+/// <summary>
+/// Table Dividend Posting Buffer (ID 51532040).
+/// </summary>
 table 51532040 "Dividend Posting Buffer"
 {
 
     fields
     {
-        field(1;"Entry No.";Integer)
+        field(1; "Entry No."; Integer)
         {
             Caption = 'Line No.';
         }
-        field(2;"Posting Date";Date)
+        field(2; "Posting Date"; Date)
         {
             Caption = 'Posting Date';
             ClosingDates = true;
         }
-        field(3;"Document No.";Code[20])
+        field(3; "Document No."; Code[20])
         {
             Caption = 'Document No.';
         }
-        field(4;"Account Type";Option)
+        field(4; "Account Type"; Option)
         {
             Caption = 'Account Type';
             OptionCaption = 'G/L Account,Customer,Vendor,Bank Account,Fixed Asset,IC Partner,Employee,Savings,Credit';
             OptionMembers = "G/L Account",Customer,Vendor,"Bank Account","Fixed Asset","IC Partner",Employee,Savings,Credit;
         }
-        field(5;"Account No.";Code[20])
+        field(5; "Account No."; Code[20])
         {
             Caption = 'Account No.';
-            TableRelation = IF ("Account Type"=CONST("G/L Account")) "G/L Account" WHERE ("Account Type"=CONST(Posting),
-                                                                                          Blocked=CONST(false))
-                                                                                          ELSE IF ("Account Type"=CONST(Customer)) Customer
-                                                                                          ELSE IF ("Account Type"=CONST(Vendor)) Vendor
-                                                                                          ELSE IF ("Account Type"=CONST("Bank Account")) "Bank Account"
-                                                                                          ELSE IF ("Account Type"=CONST("Fixed Asset")) "Fixed Asset"
-                                                                                          ELSE IF ("Account Type"=CONST("IC Partner")) "IC Partner"
-                                                                                          ELSE IF ("Account Type"=CONST(Savings)) "Savings Accounts"
-                                                                                          ELSE IF ("Account Type"=CONST(Credit)) "Credit Accounts";
+            TableRelation = IF ("Account Type" = CONST("G/L Account")) "G/L Account" WHERE("Account Type" = CONST(Posting),
+                                                                                          Blocked = CONST(false))
+            ELSE
+            IF ("Account Type" = CONST(Customer)) Customer
+            ELSE
+            IF ("Account Type" = CONST(Vendor)) Vendor
+            ELSE
+            IF ("Account Type" = CONST("Bank Account")) "Bank Account"
+            ELSE
+            IF ("Account Type" = CONST("Fixed Asset")) "Fixed Asset"
+            ELSE
+            IF ("Account Type" = CONST("IC Partner")) "IC Partner"
+            ELSE
+            IF ("Account Type" = CONST(Savings)) "Savings Accounts"
+            ELSE
+            IF ("Account Type" = CONST(Credit)) "Credit Accounts";
         }
-        field(6;Description;Text[50])
+        field(6; Description; Text[50])
         {
             Caption = 'Description';
         }
-        field(7;"Member No.";Code[50])
+        field(7; "Member No."; Code[50])
         {
             Caption = 'Customer CID';
         }
-        field(8;Amount;Decimal)
+        field(8; Amount; Decimal)
         {
             AutoFormatType = 1;
             Caption = 'Amount';
         }
-        field(9;"Debit Amount";Decimal)
+        field(9; "Debit Amount"; Decimal)
         {
             AutoFormatType = 1;
             BlankZero = true;
             Caption = 'Debit Amount';
         }
-        field(10;"Credit Amount";Decimal)
+        field(10; "Credit Amount"; Decimal)
         {
             AutoFormatType = 1;
             BlankZero = true;
             Caption = 'Credit Amount';
         }
-        field(11;"Transaction Type";Option)
+        field(11; "Transaction Type"; Option)
         {
             OptionCaption = ' ,Loan,Repayment,Interest Due,Interest Paid,Bills,Appraisal Due,Ledger Fee,Appraisal Paid,Pre-Earned Interest,Penalty Due,Penalty Paid';
             OptionMembers = " ",Loan,Repayment,"Interest Due","Interest Paid",Bills,"Appraisal Due","Ledger Fee","Appraisal Paid","Pre-Earned Interest","Penalty Due","Penalty Paid";
 
             trigger OnValidate()
             begin
-                 /*IF "Transaction Type"="Transaction Type"::"Registration Fee" THEN
-                   Description:='Registration Fee';
-                 IF "Transaction Type"="Transaction Type"::Loan THEN
-                   Description:='Loan';
-                 IF "Transaction Type"="Transaction Type"::Repayment THEN
-                   Description:='Loan Repayment';
-                 IF "Transaction Type"="Transaction Type"::Withdrawal THEN
-                   Description:='Withdrawal';
-                 IF "Transaction Type"="Transaction Type"::"Interest Due" THEN
-                   Description:='Interest Due';
-                 IF "Transaction Type"="Transaction Type"::"Interest Paid" THEN
-                   Description:='Interest Paid';
-                 IF "Transaction Type"="Transaction Type"::"Benevolent Fund" THEN
-                   Description:='ABF Fund';
-                 IF "Transaction Type"="Transaction Type"::"Deposit Contribution" THEN
-                   Description:='Shares Contribution';
-                 IF "Transaction Type"="Transaction Type"::"Appraisal Fee" THEN
-                   Description:='Appraisal Fee';
-                 IF "Transaction Type"="Transaction Type"::"Application` Fee" THEN
-                   Description:='Application Fee';
-                 IF "Transaction Type"="Transaction Type"::"Unallocated Funds" THEN
-                   Description:='Unallocated Funds';
-                          */
-                
-                
+                /*IF "Transaction Type"="Transaction Type"::"Registration Fee" THEN
+                  Description:='Registration Fee';
+                IF "Transaction Type"="Transaction Type"::Loan THEN
+                  Description:='Loan';
+                IF "Transaction Type"="Transaction Type"::Repayment THEN
+                  Description:='Loan Repayment';
+                IF "Transaction Type"="Transaction Type"::Withdrawal THEN
+                  Description:='Withdrawal';
+                IF "Transaction Type"="Transaction Type"::"Interest Due" THEN
+                  Description:='Interest Due';
+                IF "Transaction Type"="Transaction Type"::"Interest Paid" THEN
+                  Description:='Interest Paid';
+                IF "Transaction Type"="Transaction Type"::"Benevolent Fund" THEN
+                  Description:='ABF Fund';
+                IF "Transaction Type"="Transaction Type"::"Deposit Contribution" THEN
+                  Description:='Shares Contribution';
+                IF "Transaction Type"="Transaction Type"::"Appraisal Fee" THEN
+                  Description:='Appraisal Fee';
+                IF "Transaction Type"="Transaction Type"::"Application` Fee" THEN
+                  Description:='Application Fee';
+                IF "Transaction Type"="Transaction Type"::"Unallocated Funds" THEN
+                  Description:='Unallocated Funds';
+                         */
+
+
                 //GenSet.GET;
                 /*
                 IF "Account Type"="Account Type"::Member THEN BEGIN
@@ -123,14 +133,14 @@ table 51532040 "Dividend Posting Buffer"
 
             end;
         }
-        field(12;"Loan No";Code[20])
+        field(12; "Loan No"; Code[20])
         {
-            TableRelation = Loans."Loan No." WHERE ("Loan Account"=FIELD("Account No."));
+            TableRelation = Loans."Loan No." WHERE("Loan Account" = FIELD("Account No."));
 
             trigger OnValidate()
             begin
                 //PKK
-                
+
                 /*IF Loans.GET("Loan No") THEN BEGIN
                   Loans.CALCFIELDS(Loans."Outstanding Balance");
                   IF Loans."Outstanding Balance"+Amount<=0 THEN BEGIN
@@ -239,66 +249,73 @@ table 51532040 "Dividend Posting Buffer"
                 
                 VALIDATE(Amount);
                 */
-                
-                
+
+
                 //PKK
 
             end;
         }
-        field(13;"Product Type Name";Code[20])
+        field(13; "Product Type Name"; Code[20])
         {
         }
-        field(14;"Shortcut Dimension 1 Code";Code[20])
+        field(14; "Shortcut Dimension 1 Code"; Code[20])
         {
             CaptionClass = '1,2,1';
             Caption = 'Shortcut Dimension 1 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(1));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
         }
-        field(15;"Shortcut Dimension 2 Code";Code[20])
+        field(15; "Shortcut Dimension 2 Code"; Code[20])
         {
             CaptionClass = '1,2,2';
             Caption = 'Shortcut Dimension 2 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(2));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
         }
-        field(16;"External Document No.";Code[20])
+        field(16; "External Document No."; Code[20])
         {
         }
-        field(17;"Product Type";Code[50])
+        field(17; "Product Type"; Code[50])
         {
         }
-        field(18;"Bal. Account Type";Option)
+        field(18; "Bal. Account Type"; Option)
         {
             Caption = 'Account Type';
             OptionCaption = 'G/L Account,Customer,Vendor,Bank Account,Fixed Asset,IC Partner,Employee,Savings,Credit';
             OptionMembers = "G/L Account",Customer,Vendor,"Bank Account","Fixed Asset","IC Partner",Employee,Savings,Credit;
         }
-        field(19;"Bal. Account No.";Code[20])
+        field(19; "Bal. Account No."; Code[20])
         {
             Caption = 'Account No.';
-            TableRelation = IF ("Bal. Account Type"=CONST("G/L Account")) "G/L Account" WHERE ("Account Type"=CONST(Posting),
-                                                                                               Blocked=CONST(false))
-                                                                                               ELSE IF ("Bal. Account Type"=CONST(Customer)) Customer
-                                                                                               ELSE IF ("Bal. Account Type"=CONST(Vendor)) Vendor
-                                                                                               ELSE IF ("Bal. Account Type"=CONST("Bank Account")) "Bank Account"
-                                                                                               ELSE IF ("Bal. Account Type"=CONST("Fixed Asset")) "Fixed Asset"
-                                                                                               ELSE IF ("Bal. Account Type"=CONST("IC Partner")) "IC Partner"
-                                                                                               ELSE IF ("Bal. Account Type"=CONST(Savings)) "Savings Accounts"
-                                                                                               ELSE IF ("Bal. Account Type"=CONST(Credit)) "Credit Accounts";
+            TableRelation = IF ("Bal. Account Type" = CONST("G/L Account")) "G/L Account" WHERE("Account Type" = CONST(Posting),
+                                                                                               Blocked = CONST(false))
+            ELSE
+            IF ("Bal. Account Type" = CONST(Customer)) Customer
+            ELSE
+            IF ("Bal. Account Type" = CONST(Vendor)) Vendor
+            ELSE
+            IF ("Bal. Account Type" = CONST("Bank Account")) "Bank Account"
+            ELSE
+            IF ("Bal. Account Type" = CONST("Fixed Asset")) "Fixed Asset"
+            ELSE
+            IF ("Bal. Account Type" = CONST("IC Partner")) "IC Partner"
+            ELSE
+            IF ("Bal. Account Type" = CONST(Savings)) "Savings Accounts"
+            ELSE
+            IF ("Bal. Account Type" = CONST(Credit)) "Credit Accounts";
         }
-        field(20;Blocked;Option)
+        field(20; Blocked; Option)
         {
             OptionCaption = ' ,Credit,Debit,All';
             OptionMembers = " ",Credit,Debit,All;
         }
-        field(21;Posted;Boolean)
+        field(21; Posted; Boolean)
         {
         }
-        field(22;"Loan Product";Code[20])
+        field(22; "Loan Product"; Code[20])
         {
-            CalcFormula = Lookup(Loans."Loan Product Type" WHERE ("Loan No."=FIELD("Loan No")));
+            CalcFormula = Lookup(Loans."Loan Product Type" WHERE("Loan No." = FIELD("Loan No")));
             FieldClass = FlowField;
         }
-        field(23;Transaction;Option)
+        field(23; Transaction; Option)
         {
             OptionCaption = ' ,Gross,Tax,Processing Fee,Duty on Processing Fee,Loan,SMS';
             OptionMembers = " ",Gross,Tax,"Processing Fee","Duty on Processing Fee",Loan,SMS;
@@ -307,7 +324,7 @@ table 51532040 "Dividend Posting Buffer"
 
     keys
     {
-        key(Key1;"Entry No.")
+        key(Key1; "Entry No.")
         {
         }
     }

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Credit Accounts (ID 51532057).
+/// </summary>
 table 51532057 "Credit Accounts"
 {
     Caption = 'Credit Account';
@@ -561,6 +564,11 @@ table 51532057 "Credit Accounts"
         Account: Record "Savings Accounts";
         Text016: Label 'You cannot Modify %1 %2 because there is at least one transaction %3 for this Member.';
 
+    /// <summary>
+    /// TestNoEntriesExist.
+    /// </summary>
+    /// <param name="CurrentFieldName">Text[100].</param>
+    /// <param name="GLNO">Code[20].</param>
     procedure TestNoEntriesExist(CurrentFieldName: Text[100]; GLNO: Code[20])
     var
         MemberLedgEntry: Record "Credit Ledger Entry";
@@ -611,6 +619,10 @@ table 51532057 "Credit Accounts"
         PAGE.Run(PAGE::"Contact List", Cont);
     end;
 
+    /// <summary>
+    /// SetInsertFromContact.
+    /// </summary>
+    /// <param name="FromContact">Boolean.</param>
     procedure SetInsertFromContact(FromContact: Boolean)
     begin
         InsertFromContact := FromContact;
@@ -641,6 +653,11 @@ table 51532057 "Credit Accounts"
         end;
     end;
 
+    /// <summary>
+    /// CustBlockedErrorMessage.
+    /// </summary>
+    /// <param name="Cust2">Record "Credit Accounts".</param>
+    /// <param name="Transaction">Boolean.</param>
     procedure CustBlockedErrorMessage(Cust2: Record "Credit Accounts"; Transaction: Boolean)
     var
         "Action": Text[30];
@@ -717,6 +734,10 @@ table 51532057 "Credit Accounts"
         exit(CalcAvailableCreditCommon(false));
     end;
 
+    /// <summary>
+    /// CalcAvailableCreditUI.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure CalcAvailableCreditUI(): Decimal
     begin
         exit(CalcAvailableCreditCommon(true));
@@ -745,6 +766,10 @@ table 51532057 "Credit Accounts"
             OverDueBalance := CustLedgEntryRemainAmtQuery.Sum_Remaining_Amt_LCY;
     end;
 
+    /// <summary>
+    /// GetLegalEntityType.
+    /// </summary>
+    /// <returns>Return value of type Text.</returns>
     procedure GetLegalEntityType(): Text
     begin
         //EXIT(FORMAT("Partner Type"));
@@ -755,6 +780,10 @@ table 51532057 "Credit Accounts"
         //EXIT(FIELDCAPTION("Partner Type"));
     end;
 
+    /// <summary>
+    /// SetStyle.
+    /// </summary>
+    /// <returns>Return value of type Text.</returns>
     procedure SetStyle(): Text
     begin
         if CalcAvailableCredit < 0 then
@@ -762,6 +791,11 @@ table 51532057 "Credit Accounts"
         exit('');
     end;
 
+    /// <summary>
+    /// HasValidDDMandate.
+    /// </summary>
+    /// <param name="Date">Date.</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure HasValidDDMandate(Date: Date): Boolean
     var
         SEPADirectDebitMandate: Record "SEPA Direct Debit Mandate";
@@ -769,6 +803,10 @@ table 51532057 "Credit Accounts"
         exit(SEPADirectDebitMandate.GetDefaultMandate("No.", Date) <> '');
     end;
 
+    /// <summary>
+    /// GetInvoicedPrepmtAmountLCY.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetInvoicedPrepmtAmountLCY(): Decimal
     var
         SalesLine: Record "Sales Line";

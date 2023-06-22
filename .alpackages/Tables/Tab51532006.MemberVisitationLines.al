@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Member Visitation Lines (ID 51532006).
+/// </summary>
 table 51532006 "Member Visitation Lines"
 {
     Caption = 'Member Visitation Lines';

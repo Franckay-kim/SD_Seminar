@@ -1,3 +1,6 @@
+/// <summary>
+/// Table BoardRoom Attendees (ID 51532131).
+/// </summary>
 table 51532131 "BoardRoom Attendees"
 {
     Caption = 'BoardRoom Attendees';

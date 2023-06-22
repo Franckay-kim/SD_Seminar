@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Standing Order Control (ID 51532048).
+/// </summary>
 table 51532048 "Standing Order Control"
 {
 

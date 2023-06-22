@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Member Waiting Bay (ID 51532082).
+/// </summary>
 table 51532082 "Member Waiting Bay"
 {
     Caption = 'Member Waiting Bay';

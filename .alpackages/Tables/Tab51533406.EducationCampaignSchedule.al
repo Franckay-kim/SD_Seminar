@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Education Campaign Schedule (ID 51533406).
+/// </summary>
 table 51533406 "Education Campaign Schedule"
 {
     Caption = 'Education Campaign Schedule';

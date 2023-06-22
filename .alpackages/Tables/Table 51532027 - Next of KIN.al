@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Next of KIN (ID 51532027).
+/// </summary>
 table 51532027 "Next of KIN"
 {
 
@@ -182,6 +185,12 @@ table 51532027 "Next of KIN"
         BEntitlement: Record "BBF Entitlement";
         PostCode: Record "Post Code";
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text; FldLength: Integer): Text
     var
         FieldLengthError: Label 'Field cannot be more than %1 Characters.';

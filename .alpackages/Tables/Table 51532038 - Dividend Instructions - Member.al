@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Dividend Instructions - Member (ID 51532038).
+/// </summary>
 table 51532038 "Dividend Instructions - Member"
 {
 

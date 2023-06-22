@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Employer Salary/Checkoff Buffe (ID 51532024).
+/// </summary>
 table 51532024 "Employer Salary/Checkoff Buffe"
 {
     Caption = 'Employer Salary/Checkoff Buffe';

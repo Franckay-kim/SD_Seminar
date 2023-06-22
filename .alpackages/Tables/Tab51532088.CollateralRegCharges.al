@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Collateral Reg Charges (ID 51532088).
+/// </summary>
 table 51532088 "Collateral Reg Charges"
 {
     Caption = 'Collateral Reg Charges';

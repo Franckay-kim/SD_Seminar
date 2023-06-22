@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Savings Account Registration (ID 51532021).
+/// </summary>
 table 51532021 "Savings Account Registration"
 {
 

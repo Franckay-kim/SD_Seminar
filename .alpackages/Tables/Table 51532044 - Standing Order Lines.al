@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Standing Order Lines (ID 51532044).
+/// </summary>
 table 51532044 "Standing Order Lines"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Field Officer Form (ID 51533400).
+/// </summary>
 table 51533400 "Field Officer Form"
 {
     Caption = 'Field Officer Form';

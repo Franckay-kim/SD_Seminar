@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Daily Savings Interest Buffer (ID 51533463).
+/// </summary>
 table 51533463 "Daily Savings Interest Buffer"
 {
     Caption = 'Daily Savings Interest Buffer';
@@ -64,6 +67,16 @@ table 51533463 "Daily Savings Interest Buffer"
         }
     }
 
+    /// <summary>
+    /// InitEntry.
+    /// </summary>
+    /// <param name="AccNo">Code[20].</param>
+    /// <param name="IntDate">Date.</param>
+    /// <param name="GenDate">Date.</param>
+    /// <param name="Amt">Decimal.</param>
+    /// <param name="AccBal">Decimal.</param>
+    /// <param name="IRate">Decimal.</param>
+    /// <param name="FDR">Code[20].</param>
     procedure InitEntry(AccNo: Code[20]; IntDate: Date; GenDate: Date; Amt: Decimal; AccBal: Decimal; IRate: Decimal; FDR: Code[20])
     begin
         "Entry No." := 0;
@@ -89,6 +102,10 @@ table 51533463 "Daily Savings Interest Buffer"
         exit(FindFirst())
     end;
 
+    /// <summary>
+    /// GenerateDailyInterest.
+    /// </summary>
+    /// <param name="AsAt">Date.</param>
     procedure GenerateDailyInterest(AsAt: Date)
     var
         SavingsAcc: Record "Savings Accounts";
@@ -129,6 +146,11 @@ table 51533463 "Daily Savings Interest Buffer"
 
     end;
 
+    /// <summary>
+    /// PostEarnedInterest.
+    /// </summary>
+    /// <param name="AccNo">code[20].</param>
+    /// <param name="FdNo">Code[20].</param>
     procedure PostEarnedInterest(AccNo: code[20]; FdNo: Code[20])
     var
         //JournalPosting: Codeunit "Journal Posting";

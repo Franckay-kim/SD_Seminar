@@ -1,3 +1,6 @@
+/// <summary>
+/// Table EFT Transfer Header (ID 51532041).
+/// </summary>
 table 51532041 "EFT Transfer Header"
 {
     //LookupPageID = 39004283;
@@ -226,6 +229,9 @@ table 51532041 "EFT Transfer Header"
         TCharge: Decimal;
         UserSetup: Record "User Setup";
 
+    /// <summary>
+    /// getCharges.
+    /// </summary>
     procedure getCharges()
     var
         Text001: Label 'Account %1 has insufficient funds to enable successful transaction.';

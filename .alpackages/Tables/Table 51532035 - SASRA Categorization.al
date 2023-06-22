@@ -1,3 +1,6 @@
+/// <summary>
+/// Table SASRA Categorization (ID 51532035).
+/// </summary>
 table 51532035 "SASRA Categorization"
 {
 
@@ -58,6 +61,10 @@ table 51532035 "SASRA Categorization"
         LoanBal: Decimal;
         CreditLedgerEntry1: Record "Credit Ledger Entry";
 
+    /// <summary>
+    /// GetLoanBalances.
+    /// </summary>
+    /// <param name="LoanNo">Code[20].</param>
     procedure GetLoanBalances(LoanNo: Code[20])
     begin
         "Outstanding Balance" := 0;

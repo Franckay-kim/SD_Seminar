@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Signatory Application (ID 51532023).
+/// </summary>
 table 51532023 "Signatory Application"
 {
 

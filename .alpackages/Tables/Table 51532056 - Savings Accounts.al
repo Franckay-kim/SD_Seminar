@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Savings Accounts (ID 51532056).
+/// </summary>
 table 51532056 "Savings Accounts"
 {
     Caption = 'Savings Accounts';
@@ -1082,6 +1085,11 @@ table 51532056 "Savings Accounts"
                */
     end;
 
+    /// <summary>
+    /// AssistEdit.
+    /// </summary>
+    /// <param name="OldCust">Record "Savings Accounts".</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure AssistEdit(OldCust: Record "Savings Accounts"): Boolean
     var
         Cust: Record "Savings Accounts";
@@ -1096,6 +1104,9 @@ table 51532056 "Savings Accounts"
         Modify;
     end;
 
+    /// <summary>
+    /// ShowContact.
+    /// </summary>
     procedure ShowContact()
     var
         ContBusRel: Record "Contact Business Relation";
@@ -1116,6 +1127,10 @@ table 51532056 "Savings Accounts"
         PAGE.Run(PAGE::"Contact List", Cont);
     end;
 
+    /// <summary>
+    /// SetInsertFromContact.
+    /// </summary>
+    /// <param name="FromContact">Boolean.</param>
     procedure SetInsertFromContact(FromContact: Boolean)
     begin
         InsertFromContact := FromContact;
@@ -1148,6 +1163,11 @@ table 51532056 "Savings Accounts"
             end;*/
     end;
 
+    /// <summary>
+    /// CustBlockedErrorMessage.
+    /// </summary>
+    /// <param name="Cust2">Record "Savings Accounts".</param>
+    /// <param name="Transaction">Boolean.</param>
     procedure CustBlockedErrorMessage(Cust2: Record "Savings Accounts";
     Transaction: Boolean)
     var
@@ -1387,6 +1407,10 @@ table 51532056 "Savings Accounts"
               */
     end;
 
+    /// <summary>
+    /// GetSMSFormat.
+    /// </summary>
+    /// <returns>Return variable StringCode of type Text[130].</returns>
     procedure GetSMSFormat() StringCode: Text[130]
     var //SMSSetup: Record "SMS Charges";
         //SMSSeries: Record "SMS Series";

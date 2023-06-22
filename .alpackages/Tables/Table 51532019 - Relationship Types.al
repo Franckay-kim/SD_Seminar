@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Relationship Types (ID 51532019).
+/// </summary>
 table 51532019 "Relationship Types"
 {
     // LookupPageID = "Relationship Types";

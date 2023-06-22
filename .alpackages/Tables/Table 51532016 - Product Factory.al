@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Product Factory (ID 51532016).
+/// </summary>
 table 51532016 "Product Factory"
 {
     fields
@@ -953,6 +956,12 @@ table 51532016 "Product Factory"
         StatusChangePermissions: Record "Status Change Permissions";
         ErrPenaltyAmount: Label 'The Maximum Penalty Amount for Penalty Type (Percentage) is 100%';
 
+    /// <summary>
+    /// GetReceivablesAccount.
+    /// </summary>
+    /// <param name="ProductCode">Code[20].</param>
+    /// <param name="TransactionType">Option " ",Loan,Repayment,"Interest Due","Interest Paid",Bills,"Appraisal Due","Loan Registration Fee","Appraisal Paid","Pre-Earned Interest","Penalty Due","Penalty Paid","Partial Disbursement","Suspended Interest Due","Suspended Interest Paid".</param>
+    /// <returns>Return value of type Code[20].</returns>
     procedure GetReceivablesAccount(ProductCode: Code[20];
     TransactionType: Option " ",Loan,Repayment,"Interest Due","Interest Paid",Bills,"Appraisal Due","Loan Registration Fee","Appraisal Paid","Pre-Earned Interest","Penalty Due","Penalty Paid","Partial Disbursement","Suspended Interest Due","Suspended Interest Paid"): Code[20]
     var
@@ -996,6 +1005,11 @@ table 51532016 "Product Factory"
                                         end;
     end;
 
+    /// <summary>
+    /// ValidateTopup.
+    /// </summary>
+    /// <param name="TheLoan">Record Loans.</param>
+    /// <param name="TopUpDate">Date.</param>
     procedure ValidateTopup(TheLoan: Record Loans;
     TopUpDate: Date)
     var

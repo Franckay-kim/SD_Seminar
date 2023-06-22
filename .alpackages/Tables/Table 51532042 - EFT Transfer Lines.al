@@ -1,3 +1,6 @@
+/// <summary>
+/// Table EFT Transfer Lines (ID 51532042).
+/// </summary>
 table 51532042 "EFT Transfer Lines"
 {
 
@@ -384,6 +387,9 @@ table 51532042 "EFT Transfer Lines"
         CashierTransactions: Record "Cashier Transactions";
         GeneralSetUp: Record "General Set-Up";
 
+    /// <summary>
+    /// getCharges.
+    /// </summary>
     procedure getCharges()
     var
         Text001: Label 'Account %1 has insufficient funds to enable successful transaction.';

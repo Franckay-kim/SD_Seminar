@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Product Applicable Categories (ID 51532008).
+/// </summary>
 table 51532008 "Product Applicable Categories"
 {
     Caption = 'Product Applicable Categories';
@@ -39,6 +42,12 @@ table 51532008 "Product Applicable Categories"
         }
     }
 
+    /// <summary>
+    /// GetMinimumContribution.
+    /// </summary>
+    /// <param name="Account Category">Option Single,Group,Business,Cell,Joint.</param>
+    /// <param name="Product Code">Code[20].</param>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetMinimumContribution("Account Category": Option Single,Group,Business,Cell,Joint; "Product Code": Code[20]): Decimal
     var
         ProdApp: Record "Product Applicable Categories";

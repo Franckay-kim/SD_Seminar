@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Account Signatories (ID 51532029).
+/// </summary>
 table 51532029 "Account Signatories"
 {
 

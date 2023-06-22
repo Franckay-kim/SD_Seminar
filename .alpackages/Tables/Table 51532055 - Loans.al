@@ -1,3 +1,9 @@
+/// <summary>
+/// Table Loans (ID 51532055).
+/// </summary>
+/// <summary>
+/// Table Loans (ID 51532055).
+/// </summary>
 table 51532055 Loans
 {
 
@@ -2944,6 +2950,12 @@ table 51532055 Loans
 
 
 
+    /// <summary>
+    /// UpdatePeriodicIncome.
+    /// </summary>
+    /// <summary>
+    /// UpdatePeriodicIncome.
+    /// </summary>
     procedure UpdatePeriodicIncome()
     var
         PIncome: Record "Periodic Income Entries";
@@ -3716,6 +3728,12 @@ table 51532055 Loans
 
     end;
 
+    /// <summary>
+    /// UpdateIncomeAnalysis.
+    /// </summary>
+    /// <summary>
+    /// UpdateIncomeAnalysis.
+    /// </summary>
     procedure UpdateIncomeAnalysis()
     var
         PIncome: Record "Periodic Income Entries";
@@ -3996,6 +4014,11 @@ table 51532055 Loans
         end;
     end;
 
+    /// <summary>
+    /// GetAppraisalFee.
+    /// </summary>
+    /// <param name="ApprovedAmount">Decimal.</param>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetAppraisalFee(ApprovedAmount: Decimal): Decimal
     var
         PCharges: Record "Loan Product Charges";
@@ -4058,6 +4081,9 @@ table 51532055 Loans
         exit(AppraisalFee);
     end;
 
+    /// <summary>
+    /// ClearLoanDetails.
+    /// </summary>
     procedure ClearLoanDetails()
     var
     // LoanGuara: Record "Loan Guarantors and Security"
@@ -4100,6 +4126,9 @@ table 51532055 Loans
 
             //xxx
 
+            /// <summary>
+            /// UpdatePeriodicIncomeTEST.
+            /// </summary>
         end;
     end;
 
@@ -4798,6 +4827,14 @@ table 51532055 Loans
         end;
     end;
 
+    /// <summary>
+    /// CreateLoanAccount.
+    /// </summary>
+    /// <returns>Return variable LoanAccount of type Code[20].</returns>
+    /// <summary>
+    /// CreateLoanAccount.
+    /// </summary>
+    /// <returns>Return variable LoanAccount of type Code[20].</returns>
     procedure CreateLoanAccount() LoanAccount: Code[20]
     begin
         LoanAccount := '';
@@ -4808,6 +4845,12 @@ table 51532055 Loans
             LoanAccount := LoansProcess."CreateLoan Account"("Member No.", "Loan Product Type"); */
     end;
 
+    /// <summary>
+    /// SetMonthlyContributions.
+    /// </summary>
+    /// <summary>
+    /// SetMonthlyContributions.
+    /// </summary>
     procedure SetMonthlyContributions()
     var
         Cust: Record Customer;

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Procurement Committees (ID 51532001).
+/// </summary>
 table 51532001 "Procurement Committees"
 {
     Caption = 'Procurement Committees';

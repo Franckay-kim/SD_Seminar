@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Member Application (ID 51532017).
+/// </summary>
 table 51532017 "Member Application"
 {
 
@@ -1803,6 +1806,18 @@ table 51532017 "Member Application"
         ApplicationDocumentSetup: Record "Application Document Setup";
         Segment: Record "Segment/County/Dividend/Signat";
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text; FldLength: Integer): Text
     var
         FieldLengthError: Label 'Field cannot be more than %1 Characters.';
@@ -1862,6 +1877,9 @@ table 51532017 "Member Application"
 
     end;
 
+    /// <summary>
+    /// ValidateApproval.
+    /// </summary>
     procedure ValidateApproval()
     var
         DefaultSavAccReg: Record "Savings Account Registration";

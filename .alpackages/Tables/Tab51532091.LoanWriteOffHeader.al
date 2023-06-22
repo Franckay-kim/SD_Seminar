@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Write Off Header (ID 51532091).
+/// </summary>
 table 51532091 "Loan Write Off Header"
 {
     Caption = 'Loan Write Off Header';
@@ -116,6 +119,9 @@ table 51532091 "Loan Write Off Header"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         GenSetup: Record "General Set-Up";
 
+    /// <summary>
+    /// PostWriteOff.
+    /// </summary>
     procedure PostWriteOff()
     var
         Temp: Record "Banking User Template";

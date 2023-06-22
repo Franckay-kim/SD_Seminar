@@ -1,3 +1,6 @@
+/// <summary>
+/// Table File Mvmt Header (ID 51532093).
+/// </summary>
 table 51532093 "File Mvmt Header"
 {
     Caption = 'File Mvmt Header';
@@ -76,6 +79,11 @@ table 51532093 "File Mvmt Header"
         SeriesSetup: Record "Credit Nos. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
 
+    /// <summary>
+    /// InitFileLines.
+    /// </summary>
+    /// <param name="TableID">Integer.</param>
+    /// <param name="DocNo">Code[30].</param>
     /*procedure InitFileLines(TableID: Integer; DocNo: Code[30])
     FileMvmtLines: Record "File Mvmt Lines";
     begin
@@ -101,6 +109,10 @@ table 51532093 "File Mvmt Header"
         FileMvmtLines.Insert(true);
     end; */
 
+    /// <summary>
+    /// SendFile.
+    /// </summary>
+    /// <param name="ToWho">Code[30].</param>
     /* procedure SendFile(ToWho: Code[30])
     var
         FileMvmtLines: Record "File Mvmt Lines";

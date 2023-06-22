@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Employer Salary/Checkoff Lines (ID 51532012).
+/// </summary>
 table 51532012 "Employer Salary/Checkoff Lines"
 {
     Caption = 'Employer Salary/Checkoff Lines';

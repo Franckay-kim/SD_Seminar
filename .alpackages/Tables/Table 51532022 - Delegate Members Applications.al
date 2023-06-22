@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegate Members Applications (ID 51532022).
+/// </summary>
 table 51532022 "Delegate Members Applications"
 {
 

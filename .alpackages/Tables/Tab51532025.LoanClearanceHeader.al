@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Clearance Header (ID 51532025).
+/// </summary>
 table 51532025 "Loan Clearance Header"
 {
     Caption = 'Loan Clearance Header';
@@ -236,6 +239,11 @@ table 51532025 "Loan Clearance Header"
         SeriesSetup: Record "Credit Nos. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
 
+    /// <summary>
+    /// GetAccountBalance.
+    /// </summary>
+    /// <param name="AcctNo">Code[20].</param>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetAccountBalance(AcctNo: Code[20]): Decimal
     var
         SavingsAccounts: Record "Savings Accounts";
@@ -257,6 +265,9 @@ table 51532025 "Loan Clearance Header"
         exit(Bal);
     end;
 
+    /// <summary>
+    /// RecoverFromLoanee.
+    /// </summary>
     /*  procedure RecoverFromLoanee()
 
       var
@@ -366,6 +377,9 @@ table 51532025 "Loan Clearance Header"
 
       end; */
 
+    /// <summary>
+    /// RecoverFromGuarantors.
+    /// </summary>
     /*procedure RecoverFromGuarantors()
     var
 
@@ -545,6 +559,13 @@ table 51532025 "Loan Clearance Header"
     end; */
 
 
+    /// <summary>
+    /// CreateDefaulterLoan.
+    /// </summary>
+    /// <param name="MemNo">Code[20].</param>
+    /// <param name="Loans">Record Loans.</param>
+    /// <param name="Rec">Record "Loan Clearance Header".</param>
+    /// <param name="LoanAllocation">Decimal.</param>
     procedure CreateDefaulterLoan(MemNo: Code[20]; Loans: Record Loans; Rec: Record "Loan Clearance Header"; LoanAllocation: Decimal)
     var
         ProductFactory: Record "Product Factory";
@@ -673,6 +694,9 @@ table 51532025 "Loan Clearance Header"
 
     end;
 
+    /// <summary>
+    /// SetClearanceLines.
+    /// </summary>
     procedure SetClearanceLines()
     var
         LoanBalance: Decimal;
@@ -818,6 +842,9 @@ table 51532025 "Loan Clearance Header"
         end;
     end;
 
+    /// <summary>
+    /// EmailClearanceCert.
+    /// </summary>
     procedure EmailClearanceCert()
     var
         //LoansProcess: Codeunit "Loans Process";
@@ -833,6 +860,9 @@ table 51532025 "Loan Clearance Header"
 
     end;
 
+    /// <summary>
+    /// SendClearanceSMS.
+    /// </summary>
     procedure SendClearanceSMS()
     var
         //SendSMS: Codeunit SendSms;
@@ -854,6 +884,9 @@ table 51532025 "Loan Clearance Header"
         end;
     end;
 
+    /// <summary>
+    /// SendClearanceSMSGua.
+    /// </summary>
     procedure SendClearanceSMSGua()
     var
         // SendSMS: Codeunit SendSms;

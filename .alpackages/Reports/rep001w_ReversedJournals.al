@@ -7,6 +7,7 @@ report 50103 "Reversed Journals"
     ApplicationArea = All;
     caption = 'Reversed Journals';
     RDLCLayout = './Layouts/ReversedJournals.rdl';
+    DefaultLayout = RDLC;
 
     dataset
     {

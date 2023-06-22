@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Employer Salary/Checkoff Head (ID 51532009).
+/// </summary>
 table 51532009 "Employer Salary/Checkoff Head"
 {
     Caption = 'Employer Salary/Checkoff Head';
@@ -151,6 +154,9 @@ table 51532009 "Employer Salary/Checkoff Head"
         SeriesSetup: Record "Credit Nos. Series";
         NoSeriesMgt: Codeunit NoSeriesManagement;
 
+    /// <summary>
+    /// ValidateBuffer.
+    /// </summary>
     procedure ValidateBuffer()
     var
         EmployerBuff: Record "Employer Salary/Checkoff Buffe";
@@ -253,6 +259,10 @@ table 51532009 "Employer Salary/Checkoff Head"
 
     end;
 
+    /// <summary>
+    /// CreateNetPayoffLines.
+    /// </summary>
+    /// <returns>Return value of type Code[20].</returns>
     procedure CreateNetPayoffLines(): Code[20]
     var
         SalaryH: Record "Salary Header";
@@ -303,6 +313,10 @@ table 51532009 "Employer Salary/Checkoff Head"
         exit(SalaryH.No);
     end;
 
+    /// <summary>
+    /// CreateCheckoffLines.
+    /// </summary>
+    /// <returns>Return value of type Code[20].</returns>
     procedure CreateCheckoffLines(): Code[20]
     var
         CheckOffHead: Record "Checkoff Header";

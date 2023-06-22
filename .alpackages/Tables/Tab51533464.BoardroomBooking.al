@@ -1,3 +1,6 @@
+/// <summary>
+/// Table BoardroomBooking (ID 51533464).
+/// </summary>
 table 51533464 BoardroomBooking
 {
     Caption = 'Boardroom Booking';
@@ -130,6 +133,11 @@ table 51533464 BoardroomBooking
         end;
     end;
 
+    /// <summary>
+    /// CheckExistingDate.
+    /// </summary>
+    /// <param name="existingDate">VAR Boolean.</param>
+    /// <param name="dateToCheck">Date.</param>
     procedure CheckExistingDate(var existingDate: Boolean; dateToCheck: Date)
     begin
         existingDate := false;
@@ -139,6 +147,11 @@ table 51533464 BoardroomBooking
         existingDate := boardrooms.FINDSET;
     end;
 
+    /// <summary>
+    /// CheckStartingTime.
+    /// </summary>
+    /// <param name="existingStartingTime">VAR Boolean.</param>
+    /// <param name="timeToCheck">Time.</param>
     procedure CheckStartingTime(var existingStartingTime: Boolean; timeToCheck: Time)
     var
         Value1: Time;
@@ -181,6 +194,12 @@ table 51533464 BoardroomBooking
 
     end;
 
+    /// <summary>
+    /// CheckEndingTime.
+    /// </summary>
+    /// <param name="existingEndingTime">VAR Boolean.</param>
+    /// <param name="timeToCheck">Time.</param>
+    /// <returns>Return variable returnEndingTime of type Time.</returns>
     procedure CheckEndingTime(var existingEndingTime: Boolean; timeToCheck: Time) returnEndingTime: Time
     var
         Value1: Time;
@@ -199,6 +218,9 @@ table 51533464 BoardroomBooking
         Message('Existing ending time ' + Format(Value1) + ' New ending time' + Format(timeToCheck));
     end;
 
+    /// <summary>
+    /// notifyOnApproval.
+    /// </summary>
     procedure notifyOnApproval()
     begin
 
@@ -206,6 +228,9 @@ table 51533464 BoardroomBooking
         EmailAttendees();
     end;
 
+    /// <summary>
+    /// EmailAttendees.
+    /// </summary>
     procedure EmailAttendees()
     var
         //EmailMessage: Codeunit "Email Message";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Savings Account Application (ID 51532030).
+/// </summary>
 table 51532030 "Savings Account Application"
 {
 
@@ -1192,6 +1195,9 @@ table 51532030 "Savings Account Application"
         Sav: Record "Savings Accounts";
         Members: Record Members;
 
+    /// <summary>
+    /// MultipleAccountCreation.
+    /// </summary>
     procedure MultipleAccountCreation()
     var
         AllowMultipleAcntError: Label 'Applicant already has %1, Kindly ensure this product allows multiple account creations to proceed.';
@@ -1208,6 +1214,12 @@ table 51532030 "Savings Account Application"
         end;
     end;
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text; FldLength: Integer): Text
     var
         FieldLengthError: Label 'Field cannot be more than %1 Characters.';
@@ -1216,6 +1228,9 @@ table 51532030 "Savings Account Application"
             Error(FieldLengthError, FldLength);
     end;
 
+    /// <summary>
+    /// ValidateApproval.
+    /// </summary>
     procedure ValidateApproval()
     var
         ProductApplicationDocuments: Record "Product Documents";

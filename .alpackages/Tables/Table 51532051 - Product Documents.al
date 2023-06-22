@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Product Documents (ID 51532051).
+/// </summary>
 table 51532051 "Product Documents"
 {
     //DrillDownPageID = "Product Document";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Member Rejoining Header (ID 51532047).
+/// </summary>
 table 51532047 "Member Rejoining Header"
 {
     Caption = 'Member Rejoining Header';

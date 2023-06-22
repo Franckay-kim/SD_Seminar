@@ -1,3 +1,9 @@
+/// <summary>
+/// Table Members (ID 51532026).
+/// </summary>
+/// <summary>
+/// Table Members (ID 51532026).
+/// </summary>
 table 51532026 Members
 {
     //DrillDownPageID = "Member List";
@@ -2179,6 +2185,11 @@ table 51532026 Members
         //SMTPMail: Codeunit "SMTP Mail";
         Emp: Record Customer;
 
+    /// <summary>
+    /// TestNoEntriesExist.
+    /// </summary>
+    /// <param name="CurrentFieldName">Text[100].</param>
+    /// <param name="GLNO">Code[20].</param>
     procedure TestNoEntriesExist(CurrentFieldName: Text[100];
     GLNO: Code[20])
     var
@@ -2191,6 +2202,12 @@ table 51532026 Members
         if MemberLedgEntry.Find('-') then Error(Text000, CurrentFieldName);
     end;
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text;
     FldLength: Integer): Text
     var
@@ -2201,6 +2218,9 @@ table 51532026 Members
               */
     end;
 
+    /// <summary>
+    /// SendRecords.
+    /// </summary>
     procedure SendRecords()
     var
         DocumentSendingProfile: Record "Document Sending Profile";
@@ -2224,6 +2244,14 @@ table 51532026 Members
             */
     end;
 
+    /// <summary>
+    /// PrintRecords.
+    /// </summary>
+    /// <param name="ShowRequestForm">Boolean.</param>
+    /// <summary>
+    /// PrintRecords.
+    /// </summary>
+    /// <param name="ShowRequestForm">Boolean.</param>
     procedure PrintRecords(ShowRequestForm: Boolean)
     var
         TempDocumentSendingProfile: Record "Document Sending Profile" temporary;
@@ -2243,6 +2271,14 @@ table 51532026 Members
             */
     end;
 
+    /// <summary>
+    /// EmailRecords.
+    /// </summary>
+    /// <param name="ShowRequestForm">Boolean.</param>
+    /// <summary>
+    /// EmailRecords.
+    /// </summary>
+    /// <param name="ShowRequestForm">Boolean.</param>
     procedure EmailRecords(ShowRequestForm: Boolean)
     var
         TempDocumentSendingProfile: Record "Document Sending Profile" temporary;
@@ -2287,6 +2323,12 @@ table 51532026 Members
         if (Count > 1) and (TempDocumentSendingProfile."Electronic Document" <> TempDocumentSendingProfile."Electronic Document"::No) then Error(CannotSendMultipleStatementsElectronicallyErr);
     end;
 
+    /// <summary>
+    /// HasPermission.
+    /// </summary>
+    /// <summary>
+    /// HasPermission.
+    /// </summary>
     procedure HasPermission()
     var
         SChange: Record "Status Change Permissions";
@@ -2302,6 +2344,16 @@ table 51532026 Members
         end;
     end;
 
+    /// <summary>
+    /// GetSavingsBalance.
+    /// </summary>
+    /// <param name="ProdFilter">Code[50].</param>
+    /// <returns>Return value of type Decimal.</returns>
+    /// <summary>
+    /// GetSavingsBalance.
+    /// </summary>
+    /// <param name="ProdFilter">Code[50].</param>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetSavingsBalance(ProdFilter: Code[50]): Decimal
     var
         SavAcc: Record "Savings Accounts";
@@ -2322,6 +2374,11 @@ table 51532026 Members
         exit(Bal);
     end;
 
+    /// <summary>
+    /// GetLoansBalance.
+    /// </summary>
+    /// <param name="ProdFilter">Code[50].</param>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetLoansBalance(ProdFilter: Code[50]): Decimal
     var
         SavAcc: Record "Savings Accounts";
