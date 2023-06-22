@@ -10,6 +10,8 @@ report 50102 "CSD Create Seminar Invoices"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     ProcessingOnly = true;
+    DefaultLayout = RDLC;
+    RDLCLayout = './Layouts/Invoices.rdl';
 
 
     dataset

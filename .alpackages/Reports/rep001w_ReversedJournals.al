@@ -79,4 +79,9 @@ report 50103 "Reversed Journals"
         }
     }
 
+    labels
+    {
+        ReversedJournalsHeaderCap = 'Reversed Journals';
+    }
+
 }
