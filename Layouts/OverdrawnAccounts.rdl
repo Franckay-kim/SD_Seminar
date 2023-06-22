@@ -849,7 +849,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Filters>
               <Filter>
-                <FilterExpression>= =Len(Fields!NoValue)&gt;0</FilterExpression>
+                <FilterExpression>=Fields!Balance.Value&lt;0</FilterExpression>
                 <Operator>Equal</Operator>
                 <FilterValues>
                   <FilterValue DataType="Boolean">true</FilterValue>
