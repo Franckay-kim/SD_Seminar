@@ -13,39 +13,59 @@ report 50103 "Reversed Journals"
     {
         dataitem("G/L Entry"; "G/L Entry")
         {
+
+            DataItemTableView = sorting("Entry No.");
+            RequestFilterFields = "Entry No.", "G/L Account No.";
+
             column(Entry_No_; "Entry No.")
             {
-
+                IncludeCaption = true;
             }
             column(GL_Account_No; "G/L Account No.")
             {
-
+                IncludeCaption = true;
             }
             column(G_L_Account_Name; "G/L Account Name")
             {
-
+                IncludeCaption = true;
             }
             column(Document_No_; "Document No.")
             {
-
+                IncludeCaption = true;
             }
             column(Amount; Amount)
             {
-
+                IncludeCaption = true;
             }
             column(Posting_Date; "Posting Date")
             {
-
+                IncludeCaption = true;
             }
             column(Transaction_No_; "Transaction No.")
             {
-
+                IncludeCaption = true;
             }
             column(Reversed_Entry_No_; "Reversed Entry No.")
             {
-
+                IncludeCaption = true;
             }
 
+            trigger OnPreDataItem()
+            begin
+                if Reversed = true then
+                    GLEntry.Get("Entry No.");
+
+
+
+            end;
+
+        }
+
+        dataitem("Company Information"; "Company Information")
+        {
+            column(Company_Name; Name)
+            {
+            }
         }
     }
 
@@ -84,4 +104,6 @@ report 50103 "Reversed Journals"
         ReversedJournalsHeaderCap = 'Reversed Journals';
     }
 
+    var
+        GLEntry: Record "G/L Entry";
 }
