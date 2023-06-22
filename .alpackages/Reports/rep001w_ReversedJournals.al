@@ -9,13 +9,15 @@ report 50103 "Reversed Journals"
     RDLCLayout = './Layouts/ReversedJournals.rdl';
     DefaultLayout = RDLC;
 
+
+
     dataset
     {
         dataitem("G/L Entry"; "G/L Entry")
         {
-
-            DataItemTableView = sorting("Entry No.");
+            // DataItemTableView = sorting("Entry No.") where(Reversed = const(true));
             RequestFilterFields = "Entry No.", "G/L Account No.";
+
 
             column(Entry_No_; "Entry No.")
             {
@@ -29,19 +31,7 @@ report 50103 "Reversed Journals"
             {
                 IncludeCaption = true;
             }
-            column(Document_No_; "Document No.")
-            {
-                IncludeCaption = true;
-            }
             column(Amount; Amount)
-            {
-                IncludeCaption = true;
-            }
-            column(Posting_Date; "Posting Date")
-            {
-                IncludeCaption = true;
-            }
-            column(Transaction_No_; "Transaction No.")
             {
                 IncludeCaption = true;
             }
@@ -49,6 +39,27 @@ report 50103 "Reversed Journals"
             {
                 IncludeCaption = true;
             }
+            column(Transaction_No_; "Transaction No.")
+            {
+                IncludeCaption = true;
+            }
+            column(Posting_Date; "Posting Date")
+            {
+                IncludeCaption = true;
+            }
+            column(Document_Type; "Document Type")
+            {
+                IncludeCaption = true;
+            }
+            column(Document_No_; "Document No.")
+            {
+                IncludeCaption = true;
+            }
+            column(User_ID; "User ID")
+            {
+                IncludeCaption = true;
+            }
+
 
             trigger OnAfterGetRecord()
             begin
@@ -61,12 +72,12 @@ report 50103 "Reversed Journals"
 
         }
 
-        dataitem("Company Information"; "Company Information")
+        /*dataitem("Company Information"; "Company Information")
         {
             column(Company_Name; Name)
             {
             }
-        }
+        } */
     }
 
     requestpage
@@ -101,7 +112,7 @@ report 50103 "Reversed Journals"
 
     labels
     {
-        ReversedJournalsHeaderCap = 'Reversed Journals';
+        ReversedJournalsCap = 'Reversed Journals';
     }
 
     var
