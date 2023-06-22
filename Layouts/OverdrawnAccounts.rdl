@@ -847,6 +847,15 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
+            <Filters>
+              <Filter>
+                <FilterExpression>= =Len(Fields!NoValue)&gt;0</FilterExpression>
+                <Operator>Equal</Operator>
+                <FilterValues>
+                  <FilterValue DataType="Boolean">true</FilterValue>
+                </FilterValues>
+              </Filter>
+            </Filters>
             <Top>0.13417in</Top>
             <Left>0.2175in</Left>
             <Height>1.01042in</Height>

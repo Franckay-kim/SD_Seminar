@@ -14,7 +14,7 @@ report 50104 "Overdrawn Accounts"
         dataitem("Savings Accounts"; "Savings Accounts")
         {
 
-            //DataItemTableView = sorting("No.") where(Balance <"0" field());
+            DataItemTableView = sorting("No.");
             RequestFilterFields = "No.", "Savings Account No.";
 
             column(No; "No.")
