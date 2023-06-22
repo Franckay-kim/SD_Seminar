@@ -15,7 +15,7 @@ report 50103 "Reversed Journals"
     {
         dataitem("G/L Entry"; "G/L Entry")
         {
-            // DataItemTableView = sorting("Entry No.") where(Reversed = const(true));
+            //DataItemTableView = sorting("Entry No.") where(Reversed = const(true));
             RequestFilterFields = "Entry No.", "G/L Account No.";
 
 
