@@ -50,7 +50,7 @@ report 50103 "Reversed Journals"
                 IncludeCaption = true;
             }
 
-            trigger OnPreDataItem()
+            trigger OnAfterGetRecord()
             begin
                 if Reversed = true then
                     GLEntry.Get("Entry No.");
