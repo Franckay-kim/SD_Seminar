@@ -80,6 +80,8 @@ table 51532058 "Savings Ledger Entry"
             //This property is currently not supported
             //TestTableRelation = false;
 
+
+
             trigger OnLookup()
             var
                 UserMgt: Codeunit "User Management";
