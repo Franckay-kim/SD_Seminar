@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Savings Interest Buffer (ID 51532172).
+/// </summary>
 table 51532172 "Savings Interest Buffer"
 {
 

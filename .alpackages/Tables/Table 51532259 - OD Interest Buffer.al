@@ -1,3 +1,6 @@
+/// <summary>
+/// Table OD Interest Buffer (ID 51532259).
+/// </summary>
 table 51532259 "OD Interest Buffer"
 {
 

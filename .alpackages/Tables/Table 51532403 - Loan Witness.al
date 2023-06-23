@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Witness (ID 51532403).
+/// </summary>
 table 51532403 "Loan Witness"
 {
 

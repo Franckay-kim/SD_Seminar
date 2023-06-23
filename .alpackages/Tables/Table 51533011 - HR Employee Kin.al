@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Employee Kin (ID 51533011).
+/// </summary>
 table 51533011 "HR Employee Kin"
 {
     Caption = 'Employee Relative';

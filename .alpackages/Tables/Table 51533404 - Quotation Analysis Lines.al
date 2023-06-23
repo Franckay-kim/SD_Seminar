@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Quotation Analysis Lines (ID 51533404).
+/// </summary>
 table 51533404 "Quotation Analysis Lines"
 {
     // version proc

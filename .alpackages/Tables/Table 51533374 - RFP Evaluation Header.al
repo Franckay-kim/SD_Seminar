@@ -1,3 +1,6 @@
+/// <summary>
+/// Table RFP Evaluation Header (ID 51533374).
+/// </summary>
 table 51533374 "RFP Evaluation Header"
 {
     // version RFP

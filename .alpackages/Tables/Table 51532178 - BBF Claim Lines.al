@@ -1,3 +1,6 @@
+/// <summary>
+/// Table BBF Claim Lines (ID 51532178).
+/// </summary>
 table 51532178 "BBF Claim Lines"
 {
 
@@ -232,6 +235,12 @@ table 51532178 "BBF Claim Lines"
         ErrorOnDelMod: Label 'You cannot DELETE or MODIFY a Document whose status is %1';
         Err0001: Label 'Amount Paid cannot be more than claimed';
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text; FldLength: Integer): Text
     var
         FieldLengthError: Label 'Field cannot be more than %1 Characters.';

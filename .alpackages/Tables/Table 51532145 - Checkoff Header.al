@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Checkoff Header (ID 51532145).
+/// </summary>
 table 51532145 "Checkoff Header"
 {
 
@@ -199,6 +202,9 @@ table 51532145 "Checkoff Header"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Customer: Record Customer;
 
+    /// <summary>
+    /// GenerateLines.
+    /// </summary>
     procedure GenerateLines()
     var
         Emp: Record Customer;
@@ -226,6 +232,9 @@ table 51532145 "Checkoff Header"
         end;*/
     end;
 
+    /// <summary>
+    /// ValidateApproval.
+    /// </summary>
     procedure ValidateApproval()
     var
         DocMustbeOpen: Label 'This application request must be open';

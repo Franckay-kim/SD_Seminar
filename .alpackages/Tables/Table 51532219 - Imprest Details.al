@@ -1,9 +1,12 @@
+/// <summary>
+/// Table Imprest Details (ID 51532219).
+/// </summary>
 table 51532219 "Imprest Details"
 {
 
     fields
     {
-        field(1;"Source Line No.";Code[20])
+        field(1; "Source Line No."; Code[20])
         {
             Editable = false;
             NotBlank = true;
@@ -14,17 +17,17 @@ table 51532219 "Imprest Details"
                 // "Imprest Holder":=Pay."Account No.";
             end;
         }
-        field(2;"Account No:";Code[20])
+        field(2; "Account No:"; Code[20])
         {
             NotBlank = true;
-            TableRelation = "G/L Account"."No." WHERE ("Direct Posting"=CONST(true));
+            TableRelation = "G/L Account"."No." WHERE("Direct Posting" = CONST(true));
 
             trigger OnValidate()
             begin
-                
+
                 if GLAcc.Get("Account No:") then
-                 "Account Name":=GLAcc.Name;
-                 GLAcc.TestField("Direct Posting",true);
+                    "Account Name" := GLAcc.Name;
+                GLAcc.TestField("Direct Posting", true);
                 /*IF Pay.GET(No) THEN BEGIN
                  IF Pay."Account No."<>'' THEN
                 "Imprest Holder":=Pay."Account No."
@@ -33,64 +36,64 @@ table 51532219 "Imprest Details"
 
             end;
         }
-        field(3;"Account Name";Text[30])
+        field(3; "Account Name"; Text[30])
         {
             Editable = false;
         }
-        field(4;Amount;Decimal)
+        field(4; Amount; Decimal)
         {
         }
-        field(5;"Due Date";Date)
+        field(5; "Due Date"; Date)
         {
         }
-        field(6;"Imprest Holder";Code[20])
+        field(6; "Imprest Holder"; Code[20])
         {
             Editable = false;
             NotBlank = false;
             TableRelation = Customer."No.";
         }
-        field(7;"Global Dimension 1 Code";Code[20])
+        field(7; "Global Dimension 1 Code"; Code[20])
         {
             CaptionClass = '1,1,1';
             Caption = 'Global Dimension 1 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(1));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(1,"Global Dimension 1 Code");
+                ValidateShortcutDimCode(1, "Global Dimension 1 Code");
             end;
         }
-        field(8;"Shortcut Dimension 2 Code";Code[20])
+        field(8; "Shortcut Dimension 2 Code"; Code[20])
         {
             CaptionClass = '1,2,2';
             Caption = 'Shortcut Dimension 2 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(2));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
 
             trigger OnValidate()
             begin
-                ValidateShortcutDimCode(2,"Shortcut Dimension 2 Code");
+                ValidateShortcutDimCode(2, "Shortcut Dimension 2 Code");
             end;
         }
-        field(9;"Line No.";Integer)
+        field(9; "Line No."; Integer)
         {
             AutoIncrement = true;
         }
-        field(10;"Imprest Line Source";Option)
+        field(10; "Imprest Line Source"; Option)
         {
             Editable = false;
             OptionMembers = " ","Cash Voucher","Payment Voucher";
         }
-        field(11;Commited;Boolean)
+        field(11; Commited; Boolean)
         {
             Editable = false;
         }
-        field(12;"Transaction Date";Date)
+        field(12; "Transaction Date"; Date)
         {
         }
-        field(13;"Cash Line No";Integer)
+        field(13; "Cash Line No"; Integer)
         {
         }
-        field(480;"Dimension Set ID";Integer)
+        field(480; "Dimension Set ID"; Integer)
         {
             Caption = 'Dimension Set ID';
             Editable = false;
@@ -105,11 +108,11 @@ table 51532219 "Imprest Details"
 
     keys
     {
-        key(Key1;"Line No.","Source Line No.","Cash Line No")
+        key(Key1; "Line No.", "Source Line No.", "Cash Line No")
         {
             SumIndexFields = Amount;
         }
-        key(Key2;"Cash Line No")
+        key(Key2; "Cash Line No")
         {
             SumIndexFields = Amount;
         }
@@ -123,28 +126,45 @@ table 51532219 "Imprest Details"
         GLAcc: Record "G/L Account";
         DimMgt: Codeunit DimensionManagement;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     begin
         "Dimension Set ID" :=
-          DimMgt.EditDimensionSet("Dimension Set ID",StrSubstNo('%1 %2','Imprest Details',"Line No."));
+          DimMgt.EditDimensionSet("Dimension Set ID", StrSubstNo('%1 %2', 'Imprest Details', "Line No."));
         //VerifyItemLineDim;
-        DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID","Global Dimension 1 Code","Shortcut Dimension 2 Code");
+        DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Global Dimension 1 Code", "Shortcut Dimension 2 Code");
     end;
 
-    procedure ValidateShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
+    procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
-        DimMgt.ValidateShortcutDimValues(FieldNumber,ShortcutDimCode,"Dimension Set ID");
+        DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
-    procedure LookupShortcutDimCode(FieldNumber: Integer;var ShortcutDimCode: Code[20])
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
+    procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
-        DimMgt.LookupDimValueCode(FieldNumber,ShortcutDimCode);
-        ValidateShortcutDimCode(FieldNumber,ShortcutDimCode);
+        DimMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
+        ValidateShortcutDimCode(FieldNumber, ShortcutDimCode);
     end;
 
-    procedure ShowShortcutDimCode(var ShortcutDimCode: array [8] of Code[20])
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array [8] of Code[20].</param>
+    procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20])
     begin
-        DimMgt.GetShortcutDimensions("Dimension Set ID",ShortcutDimCode);
+        DimMgt.GetShortcutDimensions("Dimension Set ID", ShortcutDimCode);
     end;
 }
 

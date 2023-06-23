@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Repayment Schedule-Calc (ID 51532362).
+/// </summary>
 table 51532362 "Loan Repayment Schedule-Calc"
 {
 

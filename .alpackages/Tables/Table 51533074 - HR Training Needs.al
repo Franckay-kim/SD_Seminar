@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Training Needs (ID 51533074).
+/// </summary>
 table 51533074 "HR Training Needs"
 {
     DataCaptionFields = "Code", Description;

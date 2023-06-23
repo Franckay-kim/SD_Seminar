@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Calculator (ID 51532361).
+/// </summary>
 table 51532361 "Loan Calculator"
 {
 

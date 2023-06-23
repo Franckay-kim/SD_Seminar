@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Appraisal Header (ID 51533095).
+/// </summary>
 table 51533095 "HR Appraisal Header"
 {
 

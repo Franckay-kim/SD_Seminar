@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Checkoff Advice Line (ID 51532144).
+/// </summary>
 table 51532144 "Checkoff Advice Line"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Account Transfer Destination (ID 51532125).
+/// </summary>
 table 51532125 "Account Transfer Destination"
 {
 

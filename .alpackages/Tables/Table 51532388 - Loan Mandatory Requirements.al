@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Mandatory Requirements (ID 51532388).
+/// </summary>
 table 51532388 "Loan Mandatory Requirements"
 {
 

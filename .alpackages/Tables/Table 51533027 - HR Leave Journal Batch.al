@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Leave Journal Batch (ID 51533027).
+/// </summary>
 table 51533027 "HR Leave Journal Batch"
 {
     DataCaptionFields = Name, Description;
@@ -131,6 +134,9 @@ table 51533027 "HR Leave Journal Batch"
         InsuranceJnlTempl: Record "HR Leave Journal Template";
         InsuranceJnlLine: Record "HR Leave Journal Line";
 
+    /// <summary>
+    /// SetupNewBatch.
+    /// </summary>
     procedure SetupNewBatch()
     begin
         InsuranceJnlTempl.Get("Journal Template Name");

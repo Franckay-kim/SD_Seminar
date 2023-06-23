@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Payments Header Board (ID 51532223).
+/// </summary>
 table 51532223 "Payments Header Board"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Checkoff Lines (ID 51532146).
+/// </summary>
 table 51532146 "Checkoff Lines"
 {
 

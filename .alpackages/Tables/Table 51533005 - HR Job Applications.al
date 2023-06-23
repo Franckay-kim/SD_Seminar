@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Job Applications (ID 51533005).
+/// </summary>
 table 51533005 "HR Job Applications"
 {
     Caption = 'HR Job Applications';
@@ -444,6 +447,10 @@ table 51533005 "HR Job Applications"
             Smtp: Codeunit "SMTP Mail";
     #pragma warning restore AL0432 */
 
+    /// <summary>
+    /// FullName.
+    /// </summary>
+    /// <returns>Return value of type Text[100].</returns>
     procedure FullName(): Text[100]
     begin
         if "Middle Name" = '' then

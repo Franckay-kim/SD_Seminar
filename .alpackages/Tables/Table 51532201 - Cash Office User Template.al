@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cash Office User Template (ID 51532201).
+/// </summary>
 table 51532201 "Cash Office User Template"
 {
     DataCaptionFields = UserID;

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Job Interview (ID 51533180).
+/// </summary>
 table 51533180 "HR Job Interview"
 {
 

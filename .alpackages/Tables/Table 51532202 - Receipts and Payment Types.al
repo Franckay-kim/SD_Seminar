@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Receipts and Payment Types (ID 51532202).
+/// </summary>
 table 51532202 "Receipts and Payment Types"
 {
     //DrillDownPageID = "Receipt and Payment Types List";

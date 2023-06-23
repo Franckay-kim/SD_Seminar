@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Workplan (ID 51532312).
+/// </summary>
 table 51532312 Workplan
 {
     //LookupPageId = "Workplan List";

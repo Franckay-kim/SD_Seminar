@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Technical Evaluation Header (ID 51533379).
+/// </summary>
 table 51533379 "Technical Evaluation Header"
 {
     // version RFP

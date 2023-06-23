@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cell Group Members (ID 51532280).
+/// </summary>
 table 51532280 "Cell Group Members"
 {
 

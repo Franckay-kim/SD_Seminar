@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Store Requistion Header (ID 51532196).
+/// </summary>
 table 51532196 "Store Requistion Header"
 {
 
@@ -360,6 +363,11 @@ table 51532196 "Store Requistion Header"
         DimMgt: Codeunit DimensionManagement;
         UserSetup: Record "User Setup";
 
+    /// <summary>
+    /// GetNoSeriesRelCode.
+    /// </summary>
+    /// <param name="NoSeriesCode">Code[20].</param>
+    /// <returns>Return value of type Code[10].</returns>
     procedure GetNoSeriesRelCode(NoSeriesCode: Code[20]): Code[10]
     var
         GenLedgerSetup: Record "General Ledger Setup";
@@ -440,6 +448,9 @@ table 51532196 "Store Requistion Header"
 
     end;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     begin
         "Dimension Set ID" :=
@@ -448,17 +459,31 @@ table 51532196 "Store Requistion Header"
         DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Global Dimension 1 Code", "Shortcut Dimension 2 Code");
     end;
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
         ValidateShortcutDimCode(FieldNumber, ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array[8] of Code[20].</param>
     procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20])
     begin
         DimMgt.GetShortcutDimensions("Dimension Set ID", ShortcutDimCode);

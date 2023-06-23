@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Salary Lines (ID 51532110).
+/// </summary>
 table 51532110 "Salary Lines"
 {
     fields

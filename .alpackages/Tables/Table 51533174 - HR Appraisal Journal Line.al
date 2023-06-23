@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Appraisal Journal Line (ID 51533174).
+/// </summary>
 table 51533174 "HR Appraisal Journal Line"
 {
 
@@ -234,6 +237,9 @@ table 51533174 "HR Appraisal Journal Line"
         DimMgt: Codeunit DimensionManagement;
         Text001: Label 'You can not post more than maximum days allowed for this leave type %1';
 
+    /// <summary>
+    /// SetUpNewLine.
+    /// </summary>
     procedure SetUpNewLine()
     begin
         /*InsuranceJnlTempl.GET("Journal Template Name");
@@ -257,6 +263,11 @@ table 51533174 "HR Appraisal Journal Line"
 
     end;
 
+    /// <summary>
+    /// CreateDim.
+    /// </summary>
+    /// <param name="Type1">Integer.</param>
+    /// <param name="No1">Code[20].</param>
     procedure CreateDim(Type1: Integer; No1: Code[20])
     var
         TableID: array[10] of Integer;
@@ -278,6 +289,11 @@ table 51533174 "HR Appraisal Journal Line"
 
     end;
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         /*DimMgt.ValidateDimValueCode(FieldNumber,ShortcutDimCode);
@@ -292,6 +308,11 @@ table 51533174 "HR Appraisal Journal Line"
 
     end;
 
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         /*DimMgt.LookupDimValueCode(FieldNumber,ShortcutDimCode);
@@ -306,6 +327,10 @@ table 51533174 "HR Appraisal Journal Line"
 
     end;
 
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array[8] of Code[20].</param>
     procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20])
     begin
         /*IF "Line No." <> 0 THEN
@@ -318,6 +343,9 @@ table 51533174 "HR Appraisal Journal Line"
 
     end;
 
+    /// <summary>
+    /// ValidateOpenPeriod.
+    /// </summary>
     procedure ValidateOpenPeriod()
     begin
         /*WITH LeavePeriod DO

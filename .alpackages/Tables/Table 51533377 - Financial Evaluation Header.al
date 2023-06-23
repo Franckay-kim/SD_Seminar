@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Financial Evaluation Header (ID 51533377).
+/// </summary>
 table 51533377 "Financial Evaluation Header"
 {
     // version RFP

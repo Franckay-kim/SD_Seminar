@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Interest Header (ID 51532185).
+/// </summary>
 table 51532185 "Interest Header"
 {
     // DrillDownPageID = "Interest Header List";

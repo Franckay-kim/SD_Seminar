@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cash Payments Header (ID 51532203).
+/// </summary>
 table 51532203 "Cash Payments Header"
 {
 

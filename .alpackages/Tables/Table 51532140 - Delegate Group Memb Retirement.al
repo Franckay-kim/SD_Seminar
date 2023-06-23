@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegate Group Memb Retirement (ID 51532140).
+/// </summary>
 table 51532140 "Delegate Group Memb Retirement"
 
 {

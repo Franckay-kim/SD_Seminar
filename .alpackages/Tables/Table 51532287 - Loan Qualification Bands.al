@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Qualification Bands (ID 51532287).
+/// </summary>
 table 51532287 "Loan Qualification Bands"
 {
 

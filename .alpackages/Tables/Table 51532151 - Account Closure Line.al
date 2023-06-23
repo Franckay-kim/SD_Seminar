@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Account Closure Line (ID 51532151).
+/// </summary>
 table 51532151 "Account Closure Line"
 {
 

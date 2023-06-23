@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Employee Exit Interviews (ID 51533014).
+/// </summary>
 table 51533014 "HR Employee Exit Interviews"
 {
     //DrillDownPageID = "HR Exit Interview list";

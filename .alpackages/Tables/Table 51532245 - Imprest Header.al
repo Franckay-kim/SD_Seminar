@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Imprest Header (ID 51532245).
+/// </summary>
 table 51532245 "Imprest Header"
 {
     //DrillDownPageID = "Imprest Vouchers List";
@@ -708,6 +711,9 @@ table 51532245 "Imprest Header"
         DImMgt: Codeunit DimensionManagement;
     // Savings: Record "Savings Accounts";
 
+    /// <summary>
+    /// UpdateHeaderToLine.
+    /// </summary>
     procedure UpdateHeaderToLine()
     var
         PayLine: Record "Imprest Lines";
@@ -739,6 +745,10 @@ table 51532245 "Imprest Header"
             "Currency Factor" := 0;
     end;
 
+    /// <summary>
+    /// ImpLinesExist.
+    /// </summary>
+    /// <returns>Return value of type Boolean.</returns>
     procedure ImpLinesExist(): Boolean
     begin
         ImpLines.Reset;
@@ -746,6 +756,9 @@ table 51532245 "Imprest Header"
         exit(ImpLines.FindFirst);
     end;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     begin
         "Dimension Set ID" :=
@@ -754,17 +767,31 @@ table 51532245 "Imprest Header"
         DImMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Global Dimension 1 Code", "Shortcut Dimension 2 Code");
     end;
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DImMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DImMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
         ValidateShortcutDimCode(FieldNumber, ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array[8] of Code[20].</param>
     procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20])
     begin
         DImMgt.GetShortcutDimensions("Dimension Set ID", ShortcutDimCode);

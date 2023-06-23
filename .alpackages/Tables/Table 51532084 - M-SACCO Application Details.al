@@ -1,3 +1,6 @@
+/// <summary>
+/// Table M-SACCO Application Details (ID 51532084).
+/// </summary>
 table 51532084 "M-SACCO Application Details"
 {
 

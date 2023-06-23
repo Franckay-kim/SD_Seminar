@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Portal News (ID 51533450).
+/// </summary>
 table 51533450 "Portal News"
 {
 

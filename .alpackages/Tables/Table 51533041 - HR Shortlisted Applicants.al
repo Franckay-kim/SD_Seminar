@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Shortlisted Applicants (ID 51533041).
+/// </summary>
 table 51533041 "HR Shortlisted Applicants"
 {
 

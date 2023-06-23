@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Partial Disbursement Schedule (ID 51532077).
+/// </summary>
 table 51532077 "Partial Disbursement Schedule"
 {
 

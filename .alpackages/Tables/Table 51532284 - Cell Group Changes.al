@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cell Group Changes (ID 51532284).
+/// </summary>
 table 51532284 "Cell Group Changes"
 {
 
@@ -194,6 +197,9 @@ table 51532284 "Cell Group Changes"
         DocMustbeApproved: Label 'Document must be approved before posting';
         Error1: Label 'This document is already posted';
 
+    /// <summary>
+    /// GenerateCellMembers.
+    /// </summary>
     procedure GenerateCellMembers()
     var
         CellChangesLines: Record "Cell Group Changes Lines";
@@ -241,6 +247,9 @@ table 51532284 "Cell Group Changes"
         end;
     end;
 
+    /// <summary>
+    /// UpdateCellChanges.
+    /// </summary>
     procedure UpdateCellChanges()
     var
         CellChangeLines: Record "Cell Group Changes Lines";

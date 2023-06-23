@@ -1,3 +1,6 @@
+/// <summary>
+/// Table File Movement Tracker (ID 51533254).
+/// </summary>
 table 51533254 "File Movement Tracker"
 {
 
@@ -80,6 +83,19 @@ table 51533254 "File Movement Tracker"
     {
     }
 
+    /// <summary>
+    /// InitFile.
+    /// </summary>
+    /// <param name="MemNo">Code[20].</param>
+    /// <param name="RelatedDoc">Code[20].</param>
+    /// <param name="Doctype">option " ","Collateral".</param>
+    /// <param name="Stage">Code[30].</param>
+    /// <param name="Station">Code[50].</param>
+    /// <param name="Description">Text[50].</param>
+    /// <param name="Current Location">Boolean.</param>
+    /// <param name="Date/Time In">DateTime.</param>
+    /// <param name="Date/Time Out">DateTime.</param>
+    /// <param name="UserC">Code[50].</param>
     procedure InitFile(MemNo: Code[20]; RelatedDoc: Code[20]; Doctype: option " ","Collateral"; Stage: Code[30]; Station: Code[50]; Description: Text[50]; "Current Location": Boolean; "Date/Time In": DateTime; "Date/Time Out": DateTime; UserC: Code[50])
     begin
         Init();

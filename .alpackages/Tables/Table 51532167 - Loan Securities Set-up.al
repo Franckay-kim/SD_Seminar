@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Securities Set-up (ID 51532167).
+/// </summary>
 table 51532167 "Loan Securities Set-up"
 {
     // DrillDownPageID = "Loan Securities Set-Up";

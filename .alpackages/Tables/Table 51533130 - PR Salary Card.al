@@ -1,3 +1,6 @@
+/// <summary>
+/// Table PR Salary Card (ID 51533130).
+/// </summary>
 table 51533130 "PR Salary Card"
 {
 
@@ -300,6 +303,9 @@ table 51533130 "PR Salary Card"
     var
         HREmp: Record "HR Employees";
 
+    /// <summary>
+    /// fnIsEmployeePaidDaily.
+    /// </summary>
     procedure fnIsEmployeePaidDaily()
     var
         PaidDaily: Boolean;

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Customer Care Logs (ID 51533810).
+/// </summary>
 table 51533810 "Customer Care Logs"
 {
 

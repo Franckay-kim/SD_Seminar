@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Receipt Line (ID 51532205).
+/// </summary>
 table 51532205 "Receipt Line"
 {
     //DrillDownPageID = "Receipts Line";
@@ -905,6 +908,11 @@ table 51532205 "Receipt Line"
     begin
     end;
 
+    /// <summary>
+    /// GetShowCurrencyCode.
+    /// </summary>
+    /// <param name="CurrencyCode">Code[10].</param>
+    /// <returns>Return value of type Code[10].</returns>
     procedure GetShowCurrencyCode(CurrencyCode: Code[10]): Code[10]
     begin
         if CurrencyCode <> '' then
@@ -913,6 +921,9 @@ table 51532205 "Receipt Line"
             exit(Text002);
     end;
 
+    /// <summary>
+    /// CheckSlipDetails.
+    /// </summary>
     procedure CheckSlipDetails()
     var
         IsExistent: Boolean;
@@ -953,6 +964,11 @@ table 51532205 "Receipt Line"
         end;
     end;
 
+    /// <summary>
+    /// SetAmountToApply.
+    /// </summary>
+    /// <param name="AppliesToDocNo">Code[20].</param>
+    /// <param name="CustomerNo">Code[20].</param>
     procedure SetAmountToApply(AppliesToDocNo: Code[20]; CustomerNo: Code[20])
     var
         CustLedgEntry: Record "Cust. Ledger Entry";
@@ -973,6 +989,9 @@ table 51532205 "Receipt Line"
         end;
     end;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     begin
         "Dimension Set ID" :=
@@ -981,22 +1000,41 @@ table 51532205 "Receipt Line"
         DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Global Dimension 1 Code", "Shortcut Dimension 2 Code");
     end;
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
         ValidateShortcutDimCode(FieldNumber, ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array[8] of Code[20].</param>
     procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20])
     begin
         DimMgt.GetShortcutDimensions("Dimension Set ID", ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// CreateDim.
+    /// </summary>
+    /// <param name="Type1">Integer.</param>
+    /// <param name="No1">Code[20].</param>
     procedure CreateDim(Type1: Integer; No1: Code[20])
     var
         SourceCodeSetup: Record "Source Code Setup";

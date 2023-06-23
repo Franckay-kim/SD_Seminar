@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Payment Line (ID 51532206).
+/// </summary>
 table 51532206 "Payment Line"
 {
     // DrillDownPageID = "Payment Lines";
@@ -1484,6 +1487,11 @@ table 51532206 "Payment Line"
         HRMedicalClaims: Record "HR Medical Claims";**/
         PayLine: Record "Payment Line";
 
+    /// <summary>
+    /// SetAmountToApply.
+    /// </summary>
+    /// <param name="AppliesToDocNo">Code[20].</param>
+    /// <param name="VendorNo">Code[20].</param>
     procedure SetAmountToApply(AppliesToDocNo: Code[20]; VendorNo: Code[20])
     var
         VendLedgEntry: Record "Vendor Ledger Entry";
@@ -1504,6 +1512,9 @@ table 51532206 "Payment Line"
         end;
     end;
 
+    /// <summary>
+    /// CalculateTax.
+    /// </summary>
     procedure CalculateTax()
     var
         CalculationType: Option VAT,"W/Tax",Retention,"W/VAT";
@@ -1551,6 +1562,10 @@ table 51532206 "Payment Line"
         Validate("Net Amount");
     end;
 
+    /// <summary>
+    /// PayLinesExist.
+    /// </summary>
+    /// <returns>Return value of type Boolean.</returns>
     procedure PayLinesExist(): Boolean
     var
         PayLine: Record "Payment Line";
@@ -1560,6 +1575,9 @@ table 51532206 "Payment Line"
         exit(PayLine.FindFirst);
     end;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     begin
         "Dimension Set ID" :=
@@ -1568,22 +1586,39 @@ table 51532206 "Payment Line"
         DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Global Dimension 1 Code", "Shortcut Dimension 2 Code");
     end;
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
         ValidateShortcutDimCode(FieldNumber, ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array[8] of Code[20].</param>
     procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20])
     begin
         DimMgt.GetShortcutDimensions("Dimension Set ID", ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// CheckWipAccount.
+    /// </summary>
     procedure CheckWipAccount()
     var
         FAWIPJob: Record Job;
@@ -1596,6 +1631,9 @@ table 51532206 "Payment Line"
             Error('Insert the right WIP Account %1', FAWIPJobPostingGrp."WIP Costs Account");
     end;
 
+    /// <summary>
+    /// CalculateBudgetaryPaneMgt.
+    /// </summary>
     procedure CalculateBudgetaryPaneMgt()
     var
         // BudgetaryControl: Codeunit "Budgetary Control";
@@ -1611,6 +1649,12 @@ table 51532206 "Payment Line"
         end
     end;
 
+    /// <summary>
+    /// Token.
+    /// </summary>
+    /// <param name="Text">VAR Text.</param>
+    /// <param name="Separator">Text.</param>
+    /// <returns>Return variable Token of type Text[250].</returns>
     procedure Token(var Text: Text; Separator: Text) Token: Text[250]
     var
         Pos: Integer;

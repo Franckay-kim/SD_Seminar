@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Quotation Analysis Header (ID 51533405).
+/// </summary>
 table 51533405 "Quotation Analysis Header"
 {
     // version proc

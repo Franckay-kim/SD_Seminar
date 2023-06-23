@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Rescheduling (ID 51532149).
+/// </summary>
 table 51532149 "Loan Rescheduling"
 {
 

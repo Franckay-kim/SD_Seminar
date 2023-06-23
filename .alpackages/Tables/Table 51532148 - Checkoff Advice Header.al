@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Checkoff Advice Header (ID 51532148).
+/// </summary>
 table 51532148 "Checkoff Advice Header"
 {
 

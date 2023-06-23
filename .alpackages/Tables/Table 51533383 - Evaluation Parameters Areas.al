@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Evaluation Parameters Areas (ID 51533383).
+/// </summary>
 table 51533383 "Evaluation Parameters Areas"
 {
 

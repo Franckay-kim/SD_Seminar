@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Purchase Quote Header (ID 51532261).
+/// </summary>
 table 51532261 "Purchase Quote Header"
 {
     Caption = 'Purchase Header';
@@ -894,6 +897,9 @@ table 51532261 "Purchase Quote Header"
         UserSetup: Record "User Setup";
         Text051: Label 'User %1 does not exist in the User Setup';
 
+    /// <summary>
+    /// AutoPopPurchLine.
+    /// </summary>
     procedure AutoPopPurchLine()
     var
         reqLine: Record "Purchase Line";

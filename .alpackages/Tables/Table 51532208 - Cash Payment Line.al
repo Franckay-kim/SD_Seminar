@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cash Payment Line (ID 51532208).
+/// </summary>
 table 51532208 "Cash Payment Line"
 {
 

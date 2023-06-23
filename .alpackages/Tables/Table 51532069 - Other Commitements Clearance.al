@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Other Commitements Clearance (ID 51532069).
+/// </summary>
 table 51532069 "Other Commitements Clearance"
 {
     //DrillDownPageID = "Other Commitments Clearance";

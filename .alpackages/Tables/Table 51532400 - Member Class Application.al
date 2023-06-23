@@ -1,12 +1,15 @@
+/// <summary>
+/// Table Member Class Application (ID 51532400).
+/// </summary>
 table 51532400 "Member Class Application"
 {
 
     fields
     {
-        field(1;"Application No";Code[20])
+        field(1; "Application No"; Code[20])
         {
         }
-        field(2;"Member Class";Code[20])
+        field(2; "Member Class"; Code[20])
         {
             TableRelation = "Member Category"."No.";
 
@@ -19,22 +22,22 @@ table 51532400 "Member Class Application"
                 // "Product ID":=Cat."Product ID";
             end;
         }
-        field(3;"Product ID";Code[20])
+        field(3; "Product ID"; Code[20])
         {
             Editable = false;
         }
-        field(4;"Create Benevolent";Boolean)
+        field(4; "Create Benevolent"; Boolean)
         {
 
             trigger OnValidate()
             begin
 
                 ClassApp.Reset;
-                ClassApp.SetRange("Application No","Application No");
-                ClassApp.SetRange("Create Benevolent",true);
-                ClassApp.SetFilter("Member Class",'<>%1',"Member Class");
+                ClassApp.SetRange("Application No", "Application No");
+                ClassApp.SetRange("Create Benevolent", true);
+                ClassApp.SetFilter("Member Class", '<>%1', "Member Class");
                 if ClassApp.Find('-') then begin
-                    ClassApp.ModifyAll("Create Benevolent",false);
+                    ClassApp.ModifyAll("Create Benevolent", false);
                 end;
             end;
         }
@@ -42,7 +45,7 @@ table 51532400 "Member Class Application"
 
     keys
     {
-        key(Key1;"Application No","Member Class")
+        key(Key1; "Application No", "Member Class")
         {
         }
     }

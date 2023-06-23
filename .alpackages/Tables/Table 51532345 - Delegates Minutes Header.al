@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegates Minutes Header (ID 51532345).
+/// </summary>
 table 51532345 "Delegates Minutes Header"
 {
     //LookupPageId = "Delegates Meeting List";

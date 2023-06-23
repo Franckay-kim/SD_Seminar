@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegate Memberss (ID 51532352).
+/// </summary>
 table 51532352 "Delegate Memberss"
 {
     //DrillDownPageID = "Delegate Memberss";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table E-Tender Company Document (ID 51533369).
+/// </summary>
 table 51533369 "E-Tender Company Document"
 {
     // version EProcurement

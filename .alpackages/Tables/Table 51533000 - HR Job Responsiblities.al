@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Job Responsiblities (ID 51533000).
+/// </summary>
 table 51533000 "HR Job Responsiblities"
 {
 

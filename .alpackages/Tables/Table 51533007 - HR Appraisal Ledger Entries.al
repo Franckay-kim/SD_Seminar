@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Appraisal Ledger Entries (ID 51533007).
+/// </summary>
 table 51533007 "HR Appraisal Ledger Entries"
 {
 

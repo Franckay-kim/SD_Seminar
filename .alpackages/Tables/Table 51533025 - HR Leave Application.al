@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Leave Application (ID 51533025).
+/// </summary>
 table 51533025 "HR Leave Application"
 {
     //DrillDownPageID = "HR Leave Applications List";
@@ -552,6 +555,12 @@ table 51533025 "HR Leave Application"
     // PRAllowances: Record "PR Employee Allowances";
     //SalaryGrades: Record "Salary Grades";
 
+    /// <summary>
+    /// DetermineLeaveReturnDate.
+    /// </summary>
+    /// <param name="fBeginDate">VAR Date.</param>
+    /// <param name="fDays">VAR Decimal.</param>
+    /// <returns>Return variable fReturnDate of type Date.</returns>
     procedure DetermineLeaveReturnDate(var fBeginDate: Date; var fDays: Decimal) fReturnDate: Date
     begin
         varDaysApplied := fDays;
@@ -573,6 +582,11 @@ table 51533025 "HR Leave Application"
         exit(fReturnDate);
     end;
 
+    /// <summary>
+    /// DetermineIfIncludesNonWorking.
+    /// </summary>
+    /// <param name="fLeaveCode">VAR Code[35].</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure DetermineIfIncludesNonWorking(var fLeaveCode: Code[35]): Boolean
     begin
         if HRLeaveTypes.Get(fLeaveCode) then begin
@@ -581,6 +595,11 @@ table 51533025 "HR Leave Application"
         end;
     end;
 
+    /// <summary>
+    /// DetermineIfIsNonWorking.
+    /// </summary>
+    /// <param name="bcDate">VAR Date.</param>
+    /// <returns>Return variable Isnonworking of type Boolean.</returns>
     procedure DetermineIfIsNonWorking(var bcDate: Date) Isnonworking: Boolean
     begin
 
@@ -594,6 +613,11 @@ table 51533025 "HR Leave Application"
         end;
     end;
 
+    /// <summary>
+    /// DeterminethisLeaveEndDate.
+    /// </summary>
+    /// <param name="fDate">VAR Date.</param>
+    /// <returns>Return variable fEndDate of type Date.</returns>
     procedure DeterminethisLeaveEndDate(var fDate: Date) fEndDate: Date
     begin
         ReturnDateLoop := true;
@@ -610,6 +634,10 @@ table 51533025 "HR Leave Application"
         exit(fEndDate);
     end;
 
+    /// <summary>
+    /// CreateLeaveLedgerEntries.
+    /// </summary>
+    /// <param name="AppNo">Code[20].</param>
     procedure CreateLeaveLedgerEntries(AppNo: Code[20])
     begin
 
@@ -650,6 +678,9 @@ table 51533025 "HR Leave Application"
         Modify;
     end;
 
+    /// <summary>
+    /// postLeave.
+    /// </summary>
     procedure postLeave()
     var
         intEntryNo: Integer;
@@ -688,6 +719,9 @@ table 51533025 "HR Leave Application"
 
     end;
 
+    /// <summary>
+    /// NotifyApplicant.
+    /// </summary>
     procedure NotifyApplicant()
     begin
 
@@ -755,6 +789,9 @@ table 51533025 "HR Leave Application"
         end;
     end;
 
+    /// <summary>
+    /// NotifyReliever.
+    /// </summary>
     procedure NotifyReliever()
     begin
         HREmp.Get(Reliever);
@@ -773,6 +810,9 @@ table 51533025 "HR Leave Application"
         end;
     end;
 
+    /// <summary>
+    /// AddLeaveAllowance.
+    /// </summary>
     procedure AddLeaveAllowance()
     begin
 
@@ -872,6 +912,13 @@ table 51533025 "HR Leave Application"
             end;*/
     end;
 
+    /// <summary>
+    /// DetermineLeaveReturnDate_Portal.
+    /// </summary>
+    /// <param name="fBeginDate">VAR Date.</param>
+    /// <param name="fDays">VAR Decimal.</param>
+    /// <param name="LeaveType">VAR Code[30].</param>
+    /// <returns>Return variable fReturnDate of type Date.</returns>
     procedure DetermineLeaveReturnDate_Portal(var fBeginDate: Date; var fDays: Decimal; var LeaveType: Code[30]) fReturnDate: Date
     begin
         varDaysApplied := fDays;

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Next Of Kin (ID 51532290).
+/// </summary>
 table 51532290 "Loan Next Of Kin"
 {
     //DrillDownPageID = "Loan Next Of Kin";
@@ -223,6 +226,12 @@ table 51532290 "Loan Next Of Kin"
         PostCode: Record "Post Code";
         Loans: Record Loans;
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text; FldLength: Integer): Text
     var
         FieldLengthError: Label 'Field cannot be more than %1 Characters.';

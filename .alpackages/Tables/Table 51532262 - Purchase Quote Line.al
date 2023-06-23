@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Purchase Quote Line (ID 51532262).
+/// </summary>
 table 51532262 "Purchase Quote Line"
 {
     Caption = 'Purchase Quote Line';

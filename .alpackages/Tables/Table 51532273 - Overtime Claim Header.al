@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Overtime Claim Header (ID 51532273).
+/// </summary>
 table 51532273 "Overtime Claim Header"
 {
 

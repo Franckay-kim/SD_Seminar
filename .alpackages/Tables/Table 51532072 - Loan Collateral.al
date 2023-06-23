@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Collateral (ID 51532072).
+/// </summary>
 table 51532072 "Loan Collateral"
 {
 

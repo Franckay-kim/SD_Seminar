@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Individual Targets Header (ID 51533079).
+/// </summary>
 table 51533079 "HR Individual Targets Header"
 {
 
@@ -336,6 +339,9 @@ table 51533079 "HR Individual Targets Header"
         SupervisorUserID: code[50];
         SupervisorName: Text;
 
+    /// <summary>
+    /// CreateLedgerEntries.
+    /// </summary>
     procedure CreateLedgerEntries()
     begin
         if (Status = Status::Approved) and ("Appraisal Type" = "Appraisal Type"::"Quarter 1") then Error('Appraisal has already been posted');
@@ -402,6 +408,10 @@ table 51533079 "HR Individual Targets Header"
         end;
     end;
 
+    /// <summary>
+    /// fnAppraisalDate.
+    /// </summary>
+    /// <returns>Return variable dtBSCdate of type Date.</returns>
     procedure fnAppraisalDate() dtBSCdate: Date
     begin
         /*
@@ -419,6 +429,10 @@ table 51533079 "HR Individual Targets Header"
 
     end;
 
+    /// <summary>
+    /// CurrentEmployee.
+    /// </summary>
+    /// <returns>Return variable EmployeeCD of type Code[50].</returns>
     procedure CurrentEmployee() EmployeeCD: Code[50]
     begin
         HREmp.Reset;
@@ -441,6 +455,9 @@ table 51533079 "HR Individual Targets Header"
         end;
     end;
 
+    /// <summary>
+    /// loadtheyearsTarget.
+    /// </summary>
     procedure loadtheyearsTarget()
     begin
         i := 0;
@@ -478,6 +495,10 @@ table 51533079 "HR Individual Targets Header"
         end
     end;
 
+    /// <summary>
+    /// fnAppraisalType.
+    /// </summary>
+    /// <returns>Return variable AppraisalType of type Integer.</returns>
     procedure fnAppraisalType() AppraisalType: Integer
     begin
         /*

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Leave Journal Template (ID 51533026).
+/// </summary>
 table 51533026 "HR Leave Journal Template"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table M-SACCO Account Setup (ID 51532098).
+/// </summary>
 table 51532098 "M-SACCO Account Setup"
 {
 

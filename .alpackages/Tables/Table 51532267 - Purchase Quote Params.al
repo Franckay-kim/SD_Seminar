@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Purchase Quote Params (ID 51532267).
+/// </summary>
 table 51532267 "Purchase Quote Params"
 {
 

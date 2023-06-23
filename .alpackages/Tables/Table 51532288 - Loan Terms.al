@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Terms (ID 51532288).
+/// </summary>
 table 51532288 "Loan Terms"
 {
 

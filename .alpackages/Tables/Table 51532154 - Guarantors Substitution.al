@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Guarantors Substitution (ID 51532154).
+/// </summary>
 table 51532154 "Guarantors Substitution"
 {
 
@@ -231,6 +234,9 @@ table 51532154 "Guarantors Substitution"
         ProdFact: Record "Product Factory";
         Members: Record Members;
 
+    /// <summary>
+    /// GenerateGuarantors.
+    /// </summary>
     procedure GenerateGuarantors()
 
 

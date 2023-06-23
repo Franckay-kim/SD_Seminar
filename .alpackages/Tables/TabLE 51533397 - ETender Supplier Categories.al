@@ -1,3 +1,6 @@
+/// <summary>
+/// Table ETender Supplier Categories (ID 51533397).
+/// </summary>
 table 51533397 "ETender Supplier Categories"
 {
     Caption = 'ETender Supplier Categories';

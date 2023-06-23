@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Online Loan Application (ID 51533451).
+/// </summary>
 table 51533451 "Online Loan Application"
 {
     Caption = 'Online Loan Application';
@@ -140,6 +143,10 @@ table 51533451 "Online Loan Application"
         Loans: Record Loans;
 
 
+    /// <summary>
+    /// CopySalaryDetails.
+    /// </summary>
+    /// <param name="LoanNo">Code[20].</param>
     procedure CopySalaryDetails(LoanNo: Code[20])
     var
         AppraisalSalaryDetails: Record "Appraisal Salary Details";
@@ -169,6 +176,10 @@ table 51533451 "Online Loan Application"
         AppraisalSalaryDetails.INSERT;
     end;
 
+    /// <summary>
+    /// CopyDocuments.
+    /// </summary>
+    /// <param name="LoanNo">Code[20].</param>
     procedure CopyDocuments(LoanNo: Code[20])
     var
         OnlineLoans: Record "Online Loan Application";
@@ -179,6 +190,10 @@ table 51533451 "Online Loan Application"
         IF OnlineLoans.HASLINKS THEN Loans.COPYLINKS(OnlineLoans);
     end;
 
+    /// <summary>
+    /// CopyTopup.
+    /// </summary>
+    /// <param name="LoanNo">Code[20].</param>
     procedure CopyTopup(LoanNo: Code[20])
     var
         LoansTopup: Record "Loans Top up";
@@ -190,6 +205,10 @@ table 51533451 "Online Loan Application"
         LoansTopup.INSERT(TRUE);
     end;
 
+    /// <summary>
+    /// CopyGuarantors.
+    /// </summary>
+    /// <param name="LoanNo">Code[20].</param>
     procedure CopyGuarantors(LoanNo: Code[20])
     var
         OnlineGuarantors: Record "Online Loan Guarantors";

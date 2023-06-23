@@ -4132,6 +4132,9 @@ table 51532055 Loans
         end;
     end;
 
+    /// <summary>
+    /// UpdatePeriodicIncomeTEST.
+    /// </summary>
     procedure UpdatePeriodicIncomeTEST()
     var
         PIncome: Record "Periodic Income Entries";
@@ -4979,6 +4982,12 @@ table 51532055 Loans
 
     end;
 
+    /// <summary>
+    /// GetLastContribution.
+    /// </summary>
+    /// <param name="DepProduct">Record "Product Factory".</param>
+    /// <param name="MNo">Code[20].</param>
+    /// <returns>Return variable Cont of type Decimal.</returns>
     /*procedure GetLastContribution(DepProduct: Record "Product Factory"; MNo: Code[20]) Cont: Decimal
     var
         Emp: Record Customer;
@@ -5047,6 +5056,11 @@ table 51532055 Loans
         end;
     end;
 
+    /// <summary>
+    /// ShareCapitalQualified.
+    /// </summary>
+    /// <param name="MNo">Code[20].</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure ShareCapitalQualified(MNo: Code[20]): Boolean
     var
         Members: Record Members;
@@ -5066,6 +5080,10 @@ table 51532055 Loans
         exit(false);
     end;
 
+    /// <summary>
+    /// UpdateRepayments.
+    /// </summary>
+    /// <param name="Amt">Decimal.</param>
     procedure UpdateRepayments(Amt: Decimal)
     var
         //PAct: Codeunit "Periodic Activities";
@@ -5163,6 +5181,9 @@ table 51532055 Loans
             end;
     end;
 
+    /// <summary>
+    /// GetCPV.
+    /// </summary>
     procedure GetCPV()
     begin
         "Cumulative Present Value" := 0;
@@ -5173,6 +5194,9 @@ table 51532055 Loans
                     "Cumulative Present Value" := Round((1 - (Power((1 + (Interest / 100)), (Installments / 12) * -1))) / (Interest / 100), 0.001, '=');
     end;
 
+    /// <summary>
+    /// UpdateAppraisal.
+    /// </summary>
     procedure UpdateAppraisal()
     begin
 
@@ -5186,6 +5210,9 @@ table 51532055 Loans
                  LoanProcess.SetLoanAppraisal("Loan No."); */
     end;
 
+    /// <summary>
+    /// RejectLoan.
+    /// </summary>
     procedure RejectLoan()
     var
         MemberEmail: Text;

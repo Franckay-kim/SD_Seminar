@@ -1,3 +1,6 @@
+/// <summary>
+/// Table ATM Transactions (ID 51532081).
+/// </summary>
 table 51532081 "ATM Transactions"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Etendering Partners (ID 51533398).
+/// </summary>
 table 51533398 "Etendering Partners"
 {
     Caption = 'Etendering Partners';

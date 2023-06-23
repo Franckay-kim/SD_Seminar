@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Joint Member Application (ID 51532283).
+/// </summary>
 table 51532283 "Joint Member Application"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Bulk Loan Rescheduling (ID 51532426).
+/// </summary>
 table 51532426 "Bulk Loan Rescheduling"
 {
     // DrillDownPageID = 39004382;

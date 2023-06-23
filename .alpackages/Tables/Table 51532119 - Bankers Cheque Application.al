@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Bankers Cheque Application (ID 51532119).
+/// </summary>
 table 51532119 "Bankers Cheque Application"
 {
 

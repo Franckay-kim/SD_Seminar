@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Employee Qualifications (ID 51533013).
+/// </summary>
 table 51533013 "HR Employee Qualifications"
 {
     DataCaptionFields = "Employee No.";

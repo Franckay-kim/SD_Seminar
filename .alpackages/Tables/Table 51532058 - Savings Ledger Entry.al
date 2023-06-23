@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Savings Ledger Entry (ID 51532058).
+/// </summary>
 table 51532058 "Savings Ledger Entry"
 {
     //DrillDownPageID = "Savings Ledger Entries";
@@ -285,12 +288,19 @@ table 51532058 "Savings Ledger Entry"
         DimMgt: Codeunit DimensionManagement;
 
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     begin
         DimMgt.ShowDimensionSet("Dimension Set ID", StrSubstNo('%1 %2', TableCaption, "Entry No."));
     end;
 
 
+    /// <summary>
+    /// CopyFromGenJnlLine.
+    /// </summary>
+    /// <param name="GenJnlLine">Record "Gen. Journal Line".</param>
     procedure CopyFromGenJnlLine(GenJnlLine: Record "Gen. Journal Line")
     begin
         "Customer No." := GenJnlLine."Account No.";
@@ -326,6 +336,11 @@ table 51532058 "Savings Ledger Entry"
 
     [IntegrationEvent(false, false)]
 
+    /// <summary>
+    /// OnAfterCopyFromGenJnlLine.
+    /// </summary>
+    /// <param name="SavingsLedgerEntry">VAR Record "Savings Ledger Entry".</param>
+    /// <param name="GenJournalLine">Record "Gen. Journal Line".</param>
     procedure OnAfterCopyFromGenJnlLine(var SavingsLedgerEntry: Record "Savings Ledger Entry"; GenJournalLine: Record "Gen. Journal Line")
     begin
     end;

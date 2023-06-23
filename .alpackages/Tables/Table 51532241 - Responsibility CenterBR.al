@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Responsibility CenterBR (ID 51532241).
+/// </summary>
 table 51532241 "Responsibility CenterBR"
 {
     Caption = 'Responsibility Center BR';
@@ -166,6 +169,11 @@ table 51532241 "Responsibility CenterBR"
         DimMgt: Codeunit DimensionManagement;
         Text001: Label 'You cannot delete %1 %2 because there is at least one %3 associated to this Responsibity Centre.';
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.ValidateDimValueCode(FieldNumber, ShortcutDimCode);
@@ -173,6 +181,10 @@ table 51532241 "Responsibility CenterBR"
         Modify;
     end;
 
+    /// <summary>
+    /// TestNoEntriesExist.
+    /// </summary>
+    /// <param name="CurrentFieldName">Text[100].</param>
     procedure TestNoEntriesExist(CurrentFieldName: Text[100])
     var
         ItemLedgEntry: Record "Payments Header";

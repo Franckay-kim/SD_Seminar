@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Applicant Qualifications (ID 51533038).
+/// </summary>
 table 51533038 "HR Applicant Qualifications"
 {
     Caption = 'HR Applicant Qualifications';

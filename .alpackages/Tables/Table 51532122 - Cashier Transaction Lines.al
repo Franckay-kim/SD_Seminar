@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cashier Transaction Lines (ID 51532122).
+/// </summary>
 table 51532122 "Cashier Transaction Lines"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Professional body Header (ID 51533087).
+/// </summary>
 table 51533087 "HR Professional body Header"
 {
     //DrillDownPageID = "HR Professional Bodies List";

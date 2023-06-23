@@ -1069,6 +1069,11 @@ table 51532056 "Savings Accounts"
         FDCalcRules: Record "FD Interest Calculation Rules";
         Members: Record Members;
     //MContChanges: Record "Monthly Contributions Changes";
+    /// <summary>
+    /// TestNoEntriesExist.
+    /// </summary>
+    /// <param name="CurrentFieldName">Text[100].</param>
+    /// <param name="GLNO">Code[20].</param>
     procedure TestNoEntriesExist(CurrentFieldName: Text[100];
     GLNO: Code[20])
     var
@@ -1136,6 +1141,13 @@ table 51532056 "Savings Accounts"
         InsertFromContact := FromContact;
     end;
 
+    /// <summary>
+    /// CheckBlockedCustOnDocs.
+    /// </summary>
+    /// <param name="Cust2">Record "Savings Accounts".</param>
+    /// <param name="DocType">Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order".</param>
+    /// <param name="Shipment">Boolean.</param>
+    /// <param name="Transaction">Boolean.</param>
     procedure CheckBlockedCustOnDocs(Cust2: Record "Savings Accounts";
     DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order";
     Shipment: Boolean;
@@ -1152,6 +1164,12 @@ table 51532056 "Savings Accounts"
             END;*/
     end;
 
+    /// <summary>
+    /// CheckBlockedCustOnJnls.
+    /// </summary>
+    /// <param name="Cust2">Record "Savings Accounts".</param>
+    /// <param name="DocType">Enum "Gen. Journal Document Type".</param>
+    /// <param name="Transaction">Boolean.</param>
     procedure CheckBlockedCustOnJnls(Cust2: Record "Savings Accounts";
     DocType: Enum "Gen. Journal Document Type";
     Transaction: Boolean)
@@ -1175,6 +1193,9 @@ table 51532056 "Savings Accounts"
     begin
     end;
 
+    /// <summary>
+    /// DisplayMap.
+    /// </summary>
     procedure DisplayMap()
     var
         MapPoint: Record "Online Map Setup";
@@ -1186,6 +1207,10 @@ table 51532056 "Savings Accounts"
             Message(Text014);
     end;
 
+    /// <summary>
+    /// GetTotalAmountLCY.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetTotalAmountLCY(): Decimal
     begin
         ///CALCFIELDS("Balance (LCY)","Outstanding Orders (LCY)","Shipped Not Invoiced (LCY)","Outstanding Invoices (LCY)", 
@@ -1193,6 +1218,10 @@ table 51532056 "Savings Accounts"
         //EXIT(GetTotalAmountLCYCommon);
     end;
 
+    /// <summary>
+    /// GetTotalAmountLCYUI.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetTotalAmountLCYUI(): Decimal
     begin
         //SETAUTOCALCFIELDS("Balance (LCY)","Outstanding Orders (LCY)","Shipped Not Invoiced (LCY)","Outstanding Invoices (LCY)",
@@ -1216,6 +1245,10 @@ table 51532056 "Savings Accounts"
         // SalesOutstandingAmountFromShipment - ServOutstandingAmountFromShipment - InvoicedPrepmtAmountLCY);
     end;
 
+    /// <summary>
+    /// GetSalesLCY.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetSalesLCY(): Decimal
     var
         CustomerSalesYTD: Record Customer;
@@ -1232,11 +1265,19 @@ table 51532056 "Savings Accounts"
         //EXIT(CustomerSalesYTD."Sales (LCY)");
     end;
 
+    /// <summary>
+    /// CalcAvailableCredit.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure CalcAvailableCredit(): Decimal
     begin
         exit(CalcAvailableCreditCommon(false));
     end;
 
+    /// <summary>
+    /// CalcAvailableCreditUI.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure CalcAvailableCreditUI(): Decimal
     begin
         exit(CalcAvailableCreditCommon(true));
@@ -1251,6 +1292,10 @@ table 51532056 "Savings Accounts"
         //EXIT("Credit Limit (LCY)" - GetTotalAmountLCY);
     end;
 
+    /// <summary>
+    /// CalcOverdueBalance.
+    /// </summary>
+    /// <returns>Return variable OverDueBalance of type Decimal.</returns>
     procedure CalcOverdueBalance() OverDueBalance: Decimal
     var
         [SecurityFiltering(SecurityFilter::Filtered)]
@@ -1263,22 +1308,39 @@ table 51532056 "Savings Accounts"
         if CustLedgEntryRemainAmtQuery.Read then OverDueBalance := CustLedgEntryRemainAmtQuery.Sum_Remaining_Amt_LCY;
     end;
 
+    /// <summary>
+    /// GetLegalEntityType.
+    /// </summary>
+    /// <returns>Return value of type Text.</returns>
     procedure GetLegalEntityType(): Text
     begin
         //EXIT(FORMAT("Partner Type"));
     end;
 
+    /// <summary>
+    /// GetLegalEntityTypeLbl.
+    /// </summary>
+    /// <returns>Return value of type Text.</returns>
     procedure GetLegalEntityTypeLbl(): Text
     begin
         //EXIT(FIELDCAPTION("Partner Type"));
     end;
 
+    /// <summary>
+    /// SetStyle.
+    /// </summary>
+    /// <returns>Return value of type Text.</returns>
     procedure SetStyle(): Text
     begin
         if CalcAvailableCredit < 0 then exit('Unfavorable');
         exit('');
     end;
 
+    /// <summary>
+    /// HasValidDDMandate.
+    /// </summary>
+    /// <param name="Date">Date.</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure HasValidDDMandate(Date: Date): Boolean
     var
         SEPADirectDebitMandate: Record "SEPA Direct Debit Mandate";
@@ -1286,6 +1348,10 @@ table 51532056 "Savings Accounts"
         exit(SEPADirectDebitMandate.GetDefaultMandate("No.", Date) <> '');
     end;
 
+    /// <summary>
+    /// GetInvoicedPrepmtAmountLCY.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetInvoicedPrepmtAmountLCY(): Decimal
     var
         SalesLine: Record "Sales Line";
@@ -1297,6 +1363,10 @@ table 51532056 "Savings Accounts"
         exit(SalesLine."Prepmt. Amount Inv. (LCY)" + SalesLine."Prepmt. VAT Amount Inv. (LCY)");
     end;
 
+    /// <summary>
+    /// CalcCreditLimitLCYExpendedPct.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure CalcCreditLimitLCYExpendedPct(): Decimal
     begin
         //IF "Credit Limit (LCY)" = 0 THEN
@@ -1308,6 +1378,9 @@ table 51532056 "Savings Accounts"
         //EXIT(ROUND("Balance (LCY)" / "Credit Limit (LCY)" * 10000,1));
     end;
 
+    /// <summary>
+    /// CreateAndShowNewInvoice.
+    /// </summary>
     procedure CreateAndShowNewInvoice()
     var
         SalesHeader: Record "Sales Header";
@@ -1321,6 +1394,9 @@ table 51532056 "Savings Accounts"
             */
     end;
 
+    /// <summary>
+    /// CreateAndShowNewCreditMemo.
+    /// </summary>
     procedure CreateAndShowNewCreditMemo()
     var
         SalesHeader: Record "Sales Header";
@@ -1334,6 +1410,9 @@ table 51532056 "Savings Accounts"
             */
     end;
 
+    /// <summary>
+    /// CreateAndShowNewQuote.
+    /// </summary>
     procedure CreateAndShowNewQuote()
     var
         SalesHeader: Record "Sales Header";
@@ -1362,6 +1441,10 @@ table 51532056 "Savings Accounts"
         //END;
     end;
 
+    /// <summary>
+    /// GetBillToCustomerNo.
+    /// </summary>
+    /// <returns>Return value of type Code[20].</returns>
     procedure GetBillToCustomerNo(): Code[20]
     begin
         //IF "Bill-to Customer No." <> '' THEN
@@ -1369,6 +1452,11 @@ table 51532056 "Savings Accounts"
         //EXIT("No.");
     end;
 
+    /// <summary>
+    /// GetSMSFieldName.
+    /// </summary>
+    /// <param name="SavingsAccounts">Record "Savings Accounts".</param>
+    /// <returns>Return variable RetunField of type Text[20].</returns>
     procedure GetSMSFieldName(SavingsAccounts: Record "Savings Accounts") RetunField: Text[20]
     var //SMSCodes: Record "SMS Rejection Line";
         TableName: Text;
@@ -1389,6 +1477,12 @@ table 51532056 "Savings Accounts"
               end;*/
     end;
 
+    /// <summary>
+    /// GetSMSCode.
+    /// </summary>
+    /// <param name="SavingsAccounts">Record "Savings Accounts".</param>
+    /// <param name="FieldName">Text.</param>
+    /// <returns>Return variable code of type Text[20].</returns>
     procedure GetSMSCode(SavingsAccounts: Record "Savings Accounts";
     FieldName: Text) "code": Text[20]
     var
@@ -1432,6 +1526,10 @@ table 51532056 "Savings Accounts"
               */
     end;
 
+    /// <summary>
+    /// GetAcualSMSFormat.
+    /// </summary>
+    /// <returns>Return variable TextBody of type Text[130].</returns>
     procedure GetAcualSMSFormat() TextBody: Text[130]
     var //SMSSetup: Record "SMS Charges";
         //SMSSeries: Record "SMS Series";
@@ -1452,6 +1550,9 @@ table 51532056 "Savings Accounts"
               */
     end;
 
+    /// <summary>
+    /// CalculateFixedMaturity.
+    /// </summary>
     procedure CalculateFixedMaturity()
     var
         InitDateFormula: DateFormula;
@@ -1470,6 +1571,10 @@ table 51532056 "Savings Accounts"
         end;
     end;
 
+    /// <summary>
+    /// EmailRecords.
+    /// </summary>
+    /// <param name="ShowRequestForm">Boolean.</param>
     procedure EmailRecords(ShowRequestForm: Boolean)
     var
         TempDocumentSendingProfile: Record "Document Sending Profile" temporary;
@@ -1491,6 +1596,10 @@ table 51532056 "Savings Accounts"
             */
     end;
 
+    /// <summary>
+    /// GetDepositArreas.
+    /// </summary>
+    /// <returns>Return variable Arrears of type Decimal.</returns>
     procedure GetDepositArreas() Arrears: Decimal
     var //Savings: Record "Savings Accounts";
         PFact: Record "Product Factory";

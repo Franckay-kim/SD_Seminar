@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Savings Interest Header (ID 51532171).
+/// </summary>
 table 51532171 "Savings Interest Header"
 {
 

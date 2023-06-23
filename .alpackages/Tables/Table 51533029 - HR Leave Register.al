@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Leave Register (ID 51533029).
+/// </summary>
 table 51533029 "HR Leave Register"
 {
     Caption = 'Leave Register';

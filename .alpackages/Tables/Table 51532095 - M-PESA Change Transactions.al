@@ -1,3 +1,6 @@
+/// <summary>
+/// Table M-PESA Change Transactions (ID 51532095).
+/// </summary>
 table 51532095 "M-PESA Change Transactions"
 {
     // DrillDownPageID = "MPesa Changes List";

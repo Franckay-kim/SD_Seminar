@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Interest Due Period (ID 51532186).
+/// </summary>
 table 51532186 "Interest Due Period"
 {
 
@@ -149,6 +152,10 @@ table 51532186 "Interest Due Period"
         InvtSetup: Record "Inventory Setup";
         Text000: Label '<Month Text>';
 
+    /// <summary>
+    /// UpdateAvgItems.
+    /// </summary>
+    /// <param name="UpdateType">Option.</param>
     procedure UpdateAvgItems(UpdateType: Option)
     var
         ChangeAvgCostSetting: Codeunit "Change Average Cost Setting";

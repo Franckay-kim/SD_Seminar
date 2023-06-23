@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Fixed Deposit Lines (ID 51532279).
+/// </summary>
 table 51532279 "Fixed Deposit Lines"
 {
 

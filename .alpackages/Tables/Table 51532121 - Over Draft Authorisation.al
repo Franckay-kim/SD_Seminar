@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Over Draft Authorisation (ID 51532121).
+/// </summary>
 table 51532121 "Over Draft Authorisation"
 {
 

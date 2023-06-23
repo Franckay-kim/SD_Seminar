@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Tiered Charges Lines (ID 51532103).
+/// </summary>
 table 51532103 "Tiered Charges Lines"
 {
 

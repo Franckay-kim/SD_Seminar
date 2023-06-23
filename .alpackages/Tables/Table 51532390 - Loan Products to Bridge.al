@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Products to Bridge (ID 51532390).
+/// </summary>
 table 51532390 "Loan Products to Bridge"
 {
 

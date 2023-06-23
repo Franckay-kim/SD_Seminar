@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Guarantors and Security (ID 51532065).
+/// </summary>
 table 51532065 "Loan Guarantors and Security"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table BBF Requisation Lines (ID 51532420).
+/// </summary>
 table 51532420 "BBF Requisation Lines"
 {
 
@@ -275,6 +278,12 @@ table 51532420 "BBF Requisation Lines"
         ClaimHeader: Record "BBF Requisation Header";
         BBFEntitlement: Record "BBF Entitlement";
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text; FldLength: Integer): Text
     var
         FieldLengthError: Label 'Field cannot be more than %1 Characters.';

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Online Loan Guarantors (ID 51533452).
+/// </summary>
 table 51533452 "Online Loan Guarantors"
 {
 
@@ -175,6 +178,10 @@ table 51533452 "Online Loan Guarantors"
         ProductFactory: Record "Product Factory";
         SavingsProduct: Text;
 
+    /// <summary>
+    /// ApproveReject.
+    /// </summary>
+    /// <param name="Action">Option Approve,Reject.</param>
     procedure ApproveReject("Action": Option Approve,Reject)
     begin
         if not OnlineLoansApplication.Get("Loan Application No") then Error(ErrDocNotFound);

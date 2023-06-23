@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Destination Rate Entry (ID 51532200).
+/// </summary>
 table 51532200 "Destination Rate Entry"
 {
     //DrillDownPageID = "Destination Rate List";

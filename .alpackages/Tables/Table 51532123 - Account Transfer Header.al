@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Account Transfer Header (ID 51532123).
+/// </summary>
 table 51532123 "Account Transfer Header"
 {
     //DrillDownPageID = "Account Transfer List";

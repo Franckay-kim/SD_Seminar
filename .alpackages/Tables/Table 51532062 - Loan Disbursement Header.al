@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Disbursement Header (ID 51532062).
+/// </summary>
 table 51532062 "Loan Disbursement Header"
 {
     //DrillDownPageID = "Loan Disbursement List";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Journal Line Dimension (ID 51533185).
+/// </summary>
 table 51533185 "Journal Line Dimension"
 {
     Caption = 'Journal Line Dimension';
@@ -162,6 +165,17 @@ table 51533185 "Journal Line Dimension"
         DimMgt: Codeunit DimensionManagement;
         Text001: Label 'At least one dimension value code must have a value. Enter a value or delete the %1. ';
 
+    /// <summary>
+    /// UpdateGlobalDimCode.
+    /// </summary>
+    /// <param name="GlobalDimCodeNo">Integer.</param>
+    /// <param name="Table ID">Integer.</param>
+    /// <param name="Journal Template Name">Code[10].</param>
+    /// <param name="Journal Batch Name">Code[10].</param>
+    /// <param name="Journal Line No.">Integer.</param>
+    /// <param name="Allocation Line No.">Integer.</param>
+    /// <param name="NewDimValue">Code[20].</param>
+    /// <param name="NewNewDimValue">Code[20].</param>
     procedure UpdateGlobalDimCode(GlobalDimCodeNo: Integer; "Table ID": Integer; "Journal Template Name": Code[10]; "Journal Batch Name": Code[10]; "Journal Line No.": Integer; "Allocation Line No.": Integer; NewDimValue: Code[20]; NewNewDimValue: Code[20])
     var
         GenJnlLine: Record "Gen. Journal Line";

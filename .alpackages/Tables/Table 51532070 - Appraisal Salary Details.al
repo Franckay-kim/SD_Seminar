@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Appraisal Salary Details (ID 51532070).
+/// </summary>
 table 51532070 "Appraisal Salary Details"
 {
 

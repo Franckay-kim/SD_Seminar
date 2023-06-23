@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Job Training Needs (ID 51533006).
+/// </summary>
 table 51533006 "HR Job Training Needs"
 {
 

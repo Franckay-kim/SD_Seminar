@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Document Exemptions Auth. (ID 51532182).
+/// </summary>
 table 51532182 "Document Exemptions Auth."
 {
 

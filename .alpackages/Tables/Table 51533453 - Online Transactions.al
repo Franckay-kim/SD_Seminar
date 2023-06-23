@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Online Transactions (ID 51533453).
+/// </summary>
 table 51533453 "Online Transactions"
 {
 
@@ -159,6 +162,9 @@ table 51533453 "Online Transactions"
         TransferFrom: Text;
         ErrZero: Label 'Amount must be greater than zero.';
 
+    /// <summary>
+    /// PostFundTransfer.
+    /// </summary>
     procedure PostFundTransfer()
     var
         SourceAccName: Text;
@@ -215,6 +221,9 @@ table 51533453 "Online Transactions"
         //SendSmsToMember.SendSms(OptionSMS::"InterAccount Transfer", SavingsAccount."Mobile Phone No", TextMsg, DocumentNo, "Source Account No.", false, false);
     end;
 
+    /// <summary>
+    /// PostLoanRepayment.
+    /// </summary>
     procedure PostLoanRepayment()
     var
         LoanAccount: Code[50];

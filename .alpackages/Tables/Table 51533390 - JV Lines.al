@@ -1,3 +1,6 @@
+/// <summary>
+/// Table JV Lines (ID 51533390).
+/// </summary>
 table 51533390 "JV Lines"
 {
     // version FundsV1.1
@@ -321,6 +324,10 @@ table 51533390 "JV Lines"
         CurrencyCode: Code[10];
         Text002: Label 'cannot be specified without %1';
 
+    /// <summary>
+    /// GetAccountDescription.
+    /// </summary>
+    /// <returns>Return value of type Text[50].</returns>
     procedure GetAccountDescription(): Text[50];
     var
         GlAcc: Record "G/L Account";
@@ -347,17 +354,31 @@ table 51533390 "JV Lines"
                                         EXIT('Description');
     end;
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20]);
     begin
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20]);
     begin
         DimMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
         ValidateShortcutDimCode(FieldNumber, ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array[8] of Code[20].</param>
     procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20]);
     begin
         DimMgt.GetShortcutDimensions("Dimension Set ID", ShortcutDimCode);

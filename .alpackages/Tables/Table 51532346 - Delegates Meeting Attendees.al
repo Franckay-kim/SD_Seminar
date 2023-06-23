@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegates Meeting Attendees (ID 51532346).
+/// </summary>
 table 51532346 "Delegates Meeting Attendees"
 {
 

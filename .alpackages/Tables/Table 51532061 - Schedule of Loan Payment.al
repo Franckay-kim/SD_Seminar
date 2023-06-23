@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Schedule of Loan Payment (ID 51532061).
+/// </summary>
 table 51532061 "Schedule of Loan Payment"
 {
 

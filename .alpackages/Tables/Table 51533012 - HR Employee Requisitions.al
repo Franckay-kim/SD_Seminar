@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Employee Requisitions (ID 51533012).
+/// </summary>
 table 51533012 "HR Employee Requisitions"
 {
     //DrillDownPageID = "HR Employee Requisitions List";

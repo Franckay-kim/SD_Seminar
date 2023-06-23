@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Teller Translines (ID 51532138).
+/// </summary>
 table 51532138 "Teller Translines"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CRM Application (ID 51532180).
+/// </summary>
 table 51532180 "CRM Application"
 {
 

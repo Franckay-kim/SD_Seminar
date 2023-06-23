@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegate Members (ID 51532128).
+/// </summary>
 table 51532128 "Delegate Members"
 {
 

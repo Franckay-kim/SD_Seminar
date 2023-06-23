@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Micro_Fin_Transactions (ID 51532395).
+/// </summary>
 table 51532395 Micro_Fin_Transactions
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Appraisal Journal Template (ID 51533178).
+/// </summary>
 table 51533178 "HR Appraisal Journal Template"
 {
 

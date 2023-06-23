@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Appraisal Lines (ID 51533096).
+/// </summary>
 table 51533096 "HR Appraisal Lines"
 {
     //               HRAppraisalGoalSettingH.GET("Appraisal No");
@@ -170,6 +173,10 @@ table 51533096 "HR Appraisal Lines"
         Vendor: Record Vendor;
         Customer: Record Customer;
 
+    /// <summary>
+    /// maxRating.
+    /// </summary>
+    /// <returns>Return variable maxRating of type Decimal.</returns>
     procedure maxRating() maxRating: Decimal
     begin
         maxRating := 0;

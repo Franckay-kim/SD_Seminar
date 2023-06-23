@@ -1,3 +1,6 @@
+/// <summary>
+/// Table ATM Applications (ID 51532175).
+/// </summary>
 table 51532175 "ATM Applications"
 {
     //DrillDownPageID = "Approved ATM Application List";
@@ -451,6 +454,9 @@ table 51532175 "ATM Applications"
         Limit := GeneralSetUp."Maximum ATM Limit";
     end;
 
+    /// <summary>
+    /// ValidateApproval.
+    /// </summary>
     procedure ValidateApproval()
     var
         myInt: Integer;

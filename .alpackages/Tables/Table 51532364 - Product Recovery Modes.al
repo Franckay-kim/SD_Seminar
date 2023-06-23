@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Product Recovery Modes (ID 51532364).
+/// </summary>
 table 51532364 "Product Recovery Modes"
 {
     //DrillDownPageID = 52018563;

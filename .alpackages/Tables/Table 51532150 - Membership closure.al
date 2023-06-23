@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Membership closure (ID 51532150).
+/// </summary>
 table 51532150 "Membership closure"
 {
 
@@ -526,6 +529,9 @@ table 51532150 "Membership closure"
         TrAcc: Code[20];
         Membershipclosure: Record "Membership closure";
 
+    /// <summary>
+    /// ValidateAmounts.
+    /// </summary>
     procedure ValidateAmounts()
     var
         LType: Record "Product Factory";
@@ -614,6 +620,10 @@ table 51532150 "Membership closure"
         end;
     end;
 
+    /// <summary>
+    /// GetWithdrawalFee.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetWithdrawalFee(): Decimal
     var
         ChargeAmount: Decimal;
@@ -672,6 +682,10 @@ table 51532150 "Membership closure"
 
 
 
+    /// <summary>
+    /// GetCharges.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetCharges(): Decimal
     var
         DepPresent: Boolean;

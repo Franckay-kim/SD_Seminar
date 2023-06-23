@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Tariff Code s (ID 51532204).
+/// </summary>
 table 51532204 "Tariff Code s"
 {
 

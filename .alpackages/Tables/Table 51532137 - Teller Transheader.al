@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Teller Transheader (ID 51532137).
+/// </summary>
 table 51532137 "Teller Transheader"
 {
     //DrillDownPageID = 39004257;

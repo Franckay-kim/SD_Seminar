@@ -1,3 +1,6 @@
+/// <summary>
+/// Table PR Transaction Codes (ID 51533107).
+/// </summary>
 table 51533107 "PR Transaction Codes"
 {
     //DrillDownPageID = "PR Transaction Codes List";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Overtime Claim Lines (ID 51532274).
+/// </summary>
 table 51532274 "Overtime Claim Lines"
 {
 

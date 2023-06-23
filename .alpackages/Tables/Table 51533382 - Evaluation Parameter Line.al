@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Evaluation Parameter Line (ID 51533382).
+/// </summary>
 table 51533382 "Evaluation Parameter Line"
 {
 

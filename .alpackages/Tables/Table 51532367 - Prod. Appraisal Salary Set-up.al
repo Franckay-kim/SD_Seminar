@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Prod. Appraisal Salary Set-up (ID 51532367).
+/// </summary>
 table 51532367 "Prod. Appraisal Salary Set-up"
 {
     //DrillDownPageID = "Appraisal Salary Set-up";

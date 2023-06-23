@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Overtime Header (ID 51533203).
+/// </summary>
 table 51533203 "HR Overtime Header"
 {
 
@@ -163,10 +166,16 @@ table 51533203 "HR Overtime Header"
         "Hours Earned": Decimal;
         "Amount Earned": Decimal;
 
+    /// <summary>
+    /// Convert Overtime.
+    /// </summary>
     procedure "Convert Overtime"()
     begin
     end;
 
+    /// <summary>
+    /// Convert Payroll.
+    /// </summary>
     procedure "Convert Payroll"()
     begin
     end;

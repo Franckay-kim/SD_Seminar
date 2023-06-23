@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Workplan Entry (ID 51532313).
+/// </summary>
 table 51532313 "Workplan Entry"
 {
     Caption = 'Workplan Entry';
@@ -413,6 +416,9 @@ table 51532313 "Workplan Entry"
         GLSetupRetrieved: Boolean;
         WorkPlanAct: Record "Workplan Activities";
 
+    /// <summary>
+    /// CheckIfBlocked.
+    /// </summary>
     procedure CheckIfBlocked()
     begin
         if "Workplan Code" = GLBudgetName."Workplan Code" then
@@ -434,6 +440,9 @@ table 51532313 "Workplan Entry"
         DimValueCode := DimValue.Code;
     end;
 
+    /// <summary>
+    /// GetGLSetup.
+    /// </summary>
     procedure GetGLSetup()
     begin
         if not GLSetupRetrieved then begin
@@ -442,6 +451,12 @@ table 51532313 "Workplan Entry"
         end;
     end;
 
+    /// <summary>
+    /// OnLookupDimCode.
+    /// </summary>
+    /// <param name="DimOption">Option "Global Dimension 1","Global Dimension 2","Budget Dimension 1","Budget Dimension 2","Budget Dimension 3","Budget Dimension 4".</param>
+    /// <param name="DefaultValue">Code[20].</param>
+    /// <returns>Return value of type Code[20].</returns>
     procedure OnLookupDimCode(DimOption: Option "Global Dimension 1","Global Dimension 2","Budget Dimension 1","Budget Dimension 2","Budget Dimension 3","Budget Dimension 4"; DefaultValue: Code[20]): Code[20]
     var
         DimValue: Record "Dimension Value";
@@ -478,6 +493,11 @@ table 51532313 "Workplan Entry"
             exit(DefaultValue);
     end;
 
+    /// <summary>
+    /// UpdateDim.
+    /// </summary>
+    /// <param name="DimCode">Code[20].</param>
+    /// <param name="DimValueCode">Code[20].</param>
     procedure UpdateDim(DimCode: Code[20]; DimValueCode: Code[20])
     var
         GLBudgetDim: Record "Workplan Dimension";
@@ -512,6 +532,11 @@ table 51532313 "Workplan Entry"
             exit(1);
     end;
 
+    /// <summary>
+    /// GetCaptionClass.
+    /// </summary>
+    /// <param name="BudgetDimType">Integer.</param>
+    /// <returns>Return value of type Text[250].</returns>
     procedure GetCaptionClass(BudgetDimType: Integer): Text[250]
     begin
         if GLBudgetName."Workplan Code" <> "Workplan Code" then
@@ -549,6 +574,11 @@ table 51532313 "Workplan Entry"
         end;
     end;
 
+    /// <summary>
+    /// GetGLAccount.
+    /// </summary>
+    /// <param name="GLCode">Code[20].</param>
+    /// <returns>Return variable AllowPosting of type Boolean.</returns>
     procedure GetGLAccount(GLCode: Code[20]) AllowPosting: Boolean
     var
         GLAccount: Record "Workplan Activities";
@@ -562,6 +592,9 @@ table 51532313 "Workplan Entry"
         end;
     end;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     var
         DimSetEntry: Record "Dimension Set Entry";

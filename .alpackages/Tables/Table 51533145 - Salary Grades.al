@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Salary Grades (ID 51533145).
+/// </summary>
 table 51533145 "Salary Grades"
 {
     //DrillDownPageID = "Salary Grades List";

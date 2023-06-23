@@ -1,14 +1,17 @@
+/// <summary>
+/// Table Deposit Collateral Ratio (ID 51532289).
+/// </summary>
 table 51532289 "Deposit Collateral Ratio"
 {
 
     fields
     {
-        field(1;"Line No";Integer)
+        field(1; "Line No"; Integer)
         {
             AutoIncrement = true;
             DataClassification = ToBeClassified;
         }
-        field(2;"Loan Product";Code[20])
+        field(2; "Loan Product"; Code[20])
         {
             DataClassification = ToBeClassified;
             TableRelation = "Product Factory";
@@ -19,17 +22,17 @@ table 51532289 "Deposit Collateral Ratio"
             begin
             end;
         }
-        field(3;"Deposit Ratio";Decimal)
+        field(3; "Deposit Ratio"; Decimal)
         {
             Caption = 'Deposit Ratio';
             DataClassification = ToBeClassified;
         }
-        field(4;"Collateral Ratio";Decimal)
+        field(4; "Collateral Ratio"; Decimal)
         {
             Caption = 'Collateral Ratio';
             DataClassification = ToBeClassified;
         }
-        field(5;Type;Option)
+        field(5; Type; Option)
         {
             DataClassification = ToBeClassified;
             OptionMembers = New,Old,Land;
@@ -38,7 +41,7 @@ table 51532289 "Deposit Collateral Ratio"
 
     keys
     {
-        key(Key1;"Loan Product","Line No")
+        key(Key1; "Loan Product", "Line No")
         {
         }
     }

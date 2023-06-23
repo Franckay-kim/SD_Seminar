@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Lookup Values (ID 51533045).
+/// </summary>
 table 51533045 "HR Lookup Values"
 {
     //DrillDownPageID = "HR Lookup Values List";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table prPayroll Variations (ID 51533151).
+/// </summary>
 table 51533151 "prPayroll Variations"
 {
 

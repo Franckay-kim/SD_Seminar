@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Application Credit Score (ID 51532073).
+/// </summary>
 table 51532073 "Loan Application Credit Score"
 {
 

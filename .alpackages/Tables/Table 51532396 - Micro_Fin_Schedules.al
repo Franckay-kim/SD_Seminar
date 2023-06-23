@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Micro_Fin_Schedules (ID 51532396).
+/// </summary>
 table 51532396 Micro_Fin_Schedules
 {
 
@@ -547,6 +550,9 @@ table 51532396 Micro_Fin_Schedules
         memb: Record Members;
         Rep: Decimal;
 
+    /// <summary>
+    /// CalcAmount.
+    /// </summary>
     procedure CalcAmount()
     begin
         Amount := "Shares Capital" + "Deposit Savings" + "Expected Penalty" + "Expected Interest" + "Registration Fee" + "Micro Savings";

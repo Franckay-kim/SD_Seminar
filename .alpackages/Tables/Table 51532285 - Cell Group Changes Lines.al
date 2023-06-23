@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cell Group Changes Lines (ID 51532285).
+/// </summary>
 table 51532285 "Cell Group Changes Lines"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegate Groups Applicationss (ID 51532353).
+/// </summary>
 table 51532353 "Delegate Groups Applicationss"
 {
     //DrillDownPageID = "Delegate Group App Lists";

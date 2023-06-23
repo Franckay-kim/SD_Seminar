@@ -581,6 +581,11 @@ table 51532057 "Credit Accounts"
              CurrentFieldName, "No.", Name);
     end;
 
+    /// <summary>
+    /// AssistEdit.
+    /// </summary>
+    /// <param name="OldCust">Record "Credit Accounts".</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure AssistEdit(OldCust: Record "Credit Accounts"): Boolean
     var
         Cust: Record "Credit Accounts";
@@ -595,6 +600,9 @@ table 51532057 "Credit Accounts"
         Modify;
     end;
 
+    /// <summary>
+    /// ShowContact.
+    /// </summary>
     procedure ShowContact()
     var
         ContBusRel: Record "Contact Business Relation";
@@ -628,6 +636,13 @@ table 51532057 "Credit Accounts"
         InsertFromContact := FromContact;
     end;
 
+    /// <summary>
+    /// CheckBlockedCustOnDocs.
+    /// </summary>
+    /// <param name="Cust2">Record "Credit Accounts".</param>
+    /// <param name="DocType">Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order".</param>
+    /// <param name="Shipment">Boolean.</param>
+    /// <param name="Transaction">Boolean.</param>
     procedure CheckBlockedCustOnDocs(Cust2: Record "Credit Accounts"; DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order"; Shipment: Boolean; Transaction: Boolean)
     begin
         //WITH Cust2 DO BEGIN
@@ -642,6 +657,12 @@ table 51532057 "Credit Accounts"
         //END;
     end;
 
+    /// <summary>
+    /// CheckBlockedCustOnJnls.
+    /// </summary>
+    /// <param name="Cust2">Record "Credit Accounts".</param>
+    /// <param name="DocType">Enum "Gen. Journal Document Type".</param>
+    /// <param name="Transaction">Boolean.</param>
     procedure CheckBlockedCustOnJnls(Cust2: Record "Credit Accounts"; DocType: Enum "Gen. Journal Document Type"; Transaction: Boolean)
     begin
 
@@ -669,6 +690,9 @@ table 51532057 "Credit Accounts"
         Error(Text006, Action, Cust2."No.", Cust2.Blocked);
     end;
 
+    /// <summary>
+    /// DisplayMap.
+    /// </summary>
     procedure DisplayMap()
     var
         MapPoint: Record "Online Map Setup";
@@ -680,6 +704,10 @@ table 51532057 "Credit Accounts"
             Message(Text014);
     end;
 
+    /// <summary>
+    /// GetTotalAmountLCY.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetTotalAmountLCY(): Decimal
     begin
         ///CALCFIELDS("Balance (LCY)","Outstanding Orders (LCY)","Shipped Not Invoiced (LCY)","Outstanding Invoices (LCY)",
@@ -688,6 +716,10 @@ table 51532057 "Credit Accounts"
         //EXIT(GetTotalAmountLCYCommon);
     end;
 
+    /// <summary>
+    /// GetTotalAmountLCYUI.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetTotalAmountLCYUI(): Decimal
     begin
         //SETAUTOCALCFIELDS("Balance (LCY)","Outstanding Orders (LCY)","Shipped Not Invoiced (LCY)","Outstanding Invoices (LCY)",
@@ -713,6 +745,10 @@ table 51532057 "Credit Accounts"
         // SalesOutstandingAmountFromShipment - ServOutstandingAmountFromShipment - InvoicedPrepmtAmountLCY);
     end;
 
+    /// <summary>
+    /// GetSalesLCY.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetSalesLCY(): Decimal
     var
         CustomerSalesYTD: Record Customer;
@@ -729,6 +765,10 @@ table 51532057 "Credit Accounts"
         //EXIT(CustomerSalesYTD."Sales (LCY)");
     end;
 
+    /// <summary>
+    /// CalcAvailableCredit.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure CalcAvailableCredit(): Decimal
     begin
         exit(CalcAvailableCreditCommon(false));
@@ -752,6 +792,10 @@ table 51532057 "Credit Accounts"
         //EXIT("Credit Limit (LCY)" - GetTotalAmountLCY);
     end;
 
+    /// <summary>
+    /// CalcOverdueBalance.
+    /// </summary>
+    /// <returns>Return variable OverDueBalance of type Decimal.</returns>
     procedure CalcOverdueBalance() OverDueBalance: Decimal
     var
         [SecurityFiltering(SecurityFilter::Filtered)]
@@ -775,6 +819,10 @@ table 51532057 "Credit Accounts"
         //EXIT(FORMAT("Partner Type"));
     end;
 
+    /// <summary>
+    /// GetLegalEntityTypeLbl.
+    /// </summary>
+    /// <returns>Return value of type Text.</returns>
     procedure GetLegalEntityTypeLbl(): Text
     begin
         //EXIT(FIELDCAPTION("Partner Type"));
@@ -818,6 +866,10 @@ table 51532057 "Credit Accounts"
         exit(SalesLine."Prepmt. Amount Inv. (LCY)" + SalesLine."Prepmt. VAT Amount Inv. (LCY)");
     end;
 
+    /// <summary>
+    /// CalcCreditLimitLCYExpendedPct.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure CalcCreditLimitLCYExpendedPct(): Decimal
     begin
         //IF "Credit Limit (LCY)" = 0 THEN
@@ -832,6 +884,9 @@ table 51532057 "Credit Accounts"
         //EXIT(ROUND("Balance (LCY)" / "Credit Limit (LCY)" * 10000,1));
     end;
 
+    /// <summary>
+    /// CreateAndShowNewInvoice.
+    /// </summary>
     procedure CreateAndShowNewInvoice()
     var
         SalesHeader: Record "Sales Header";
@@ -846,6 +901,9 @@ table 51532057 "Credit Accounts"
 
     end;
 
+    /// <summary>
+    /// CreateAndShowNewCreditMemo.
+    /// </summary>
     procedure CreateAndShowNewCreditMemo()
     var
         SalesHeader: Record "Sales Header";
@@ -860,6 +918,9 @@ table 51532057 "Credit Accounts"
 
     end;
 
+    /// <summary>
+    /// CreateAndShowNewQuote.
+    /// </summary>
     procedure CreateAndShowNewQuote()
     var
         SalesHeader: Record "Sales Header";
@@ -889,6 +950,10 @@ table 51532057 "Credit Accounts"
         //END;
     end;
 
+    /// <summary>
+    /// GetBillToCustomerNo.
+    /// </summary>
+    /// <returns>Return value of type Code[20].</returns>
     procedure GetBillToCustomerNo(): Code[20]
     begin
         //IF "Bill-to Customer No." <> '' THEN

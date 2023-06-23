@@ -1,3 +1,6 @@
+/// <summary>
+/// Table ATM Linking Applications (ID 51532168).
+/// </summary>
 table 51532168 "ATM Linking Applications"
 {
     fields
@@ -496,6 +499,9 @@ table 51532168 "ATM Linking Applications"
         ATMCount: Integer;
         ATMLinkingApplications: Record "ATM Linking Applications";
 
+    /// <summary>
+    /// ValidateApproval.
+    /// </summary>
     procedure ValidateApproval()
     begin
         Rec.TestField("Account No");

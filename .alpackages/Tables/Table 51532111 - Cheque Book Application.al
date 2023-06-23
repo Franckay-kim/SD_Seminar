@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cheque Book Application (ID 51532111).
+/// </summary>
 table 51532111 "Cheque Book Application"
 {
     //DrillDownPageID = "Cheque Book Application List";

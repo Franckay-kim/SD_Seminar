@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Account Transfer Source (ID 51532124).
+/// </summary>
 table 51532124 "Account Transfer Source"
 {
 

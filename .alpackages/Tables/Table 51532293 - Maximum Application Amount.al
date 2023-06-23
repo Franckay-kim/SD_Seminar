@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Maximum Application Amount (ID 51532293).
+/// </summary>
 table 51532293 "Maximum Application Amount"
 {
 

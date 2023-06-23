@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Workplan Activities (ID 51532232).
+/// </summary>
 table 51532232 "Workplan Activities"
 {
     DataCaptionFields = "Activity Code", "Workplan Code";

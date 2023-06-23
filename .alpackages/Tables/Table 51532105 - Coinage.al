@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Coinage (ID 51532105).
+/// </summary>
 table 51532105 Coinage
 {
 

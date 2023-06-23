@@ -1,3 +1,6 @@
+/// <summary>
+/// Table JV Header (ID 51533389).
+/// </summary>
 table 51533389 "JV Header"
 {
     //DrillDownPageId = "JV List";
@@ -320,6 +323,9 @@ table 51533389 "JV Header"
 
     end;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions();
     begin
         "Dimension Set ID" :=
@@ -328,22 +334,41 @@ table 51533389 "JV Header"
         DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
     end;
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20]);
     begin
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20]);
     begin
         DimMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
         ValidateShortcutDimCode(FieldNumber, ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array[8] of Code[20].</param>
     procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20]);
     begin
         DimMgt.GetShortcutDimensions("Dimension Set ID", ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// GetNoSeriesRelCode.
+    /// </summary>
+    /// <param name="NoSeriesCode">Code[20].</param>
+    /// <returns>Return value of type Code[10].</returns>
     procedure GetNoSeriesRelCode(NoSeriesCode: Code[20]): Code[10];
     var
         GenLedgerSetup: Record "General Ledger Setup";
@@ -386,6 +411,10 @@ table 51533389 "JV Header"
 
     end;
 
+    /// <summary>
+    /// GetAccountDescription.
+    /// </summary>
+    /// <returns>Return value of type Text[50].</returns>
     procedure GetAccountDescription(): Text[50];
     var
         GlAcc: Record "G/L Account";

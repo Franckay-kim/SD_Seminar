@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Disciplinary Cases NCA (ID 51533191).
+/// </summary>
 table 51533191 "HR Disciplinary Cases NCA"
 {
     //DrillDownPageID = "HR Disciplinary Cases List N";

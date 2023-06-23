@@ -1,3 +1,6 @@
+/// <summary>
+/// Table PR Payroll Periods (ID 51533106).
+/// </summary>
 table 51533106 "PR Payroll Periods"
 {
     //LookupPageID = "PR Payroll Periods";

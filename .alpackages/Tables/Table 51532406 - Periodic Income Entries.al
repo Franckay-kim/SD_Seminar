@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Periodic Income Entries (ID 51532406).
+/// </summary>
 table 51532406 "Periodic Income Entries"
 {
 

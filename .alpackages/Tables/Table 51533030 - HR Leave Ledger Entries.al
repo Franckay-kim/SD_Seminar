@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Leave Ledger Entries (ID 51533030).
+/// </summary>
 table 51533030 "HR Leave Ledger Entries"
 {
     Caption = 'Leave Ledger Entry';

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Beneficiary Application (ID 51532291).
+/// </summary>
 table 51532291 "Beneficiary Application"
 {
 
@@ -238,6 +241,12 @@ table 51532291 "Beneficiary Application"
         NewMob: Code[20];
         PostCode: Record "Post Code";
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text; FldLength: Integer): Text
     var
         FieldLengthError: Label 'Field cannot be more than %1 Characters.';

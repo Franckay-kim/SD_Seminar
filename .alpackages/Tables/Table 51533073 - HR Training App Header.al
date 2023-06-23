@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Training App Header (ID 51533073).
+/// </summary>
 table 51533073 "HR Training App Header"
 {
     Caption = 'HR Training Application Header';

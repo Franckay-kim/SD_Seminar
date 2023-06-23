@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Salary Header (ID 51532109).
+/// </summary>
 table 51532109 "Salary Header"
 {
     //DrillDownPageID = "Salary Lists";
@@ -436,6 +439,9 @@ table 51532109 "Salary Header"
         Vend: Record Vendor;
         Savings: Record "Savings Accounts";
 
+    /// <summary>
+    /// ValidateLines.
+    /// </summary>
     procedure ValidateLines()
     var
         SalaryLines: Record "Salary Lines";
@@ -515,6 +521,9 @@ table 51532109 "Salary Header"
         Message('Salary Lines Validated sucessfully');
     end;
 
+    /// <summary>
+    /// ValidateApproval.
+    /// </summary>
     procedure ValidateApproval()
     var
         DocMustbeOpen: Label 'This application request must be open';

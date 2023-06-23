@@ -1,3 +1,6 @@
+/// <summary>
+/// Table PR Period Transactions (ID 51533117).
+/// </summary>
 table 51533117 "PR Period Transactions"
 {
     // DrillDownPageID = "prPeriodTransaction List";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Technical Evaluation Lines (ID 51533380).
+/// </summary>
 table 51533380 "Technical Evaluation Lines"
 {
     // version RFP

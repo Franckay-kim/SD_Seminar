@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Current Loan Charges (ID 51532424).
+/// </summary>
 table 51532424 "Current Loan Charges"
 {
 

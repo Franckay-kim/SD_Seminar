@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Credit Score (ID 51532391).
+/// </summary>
 table 51532391 "Loan Credit Score"
 {
 

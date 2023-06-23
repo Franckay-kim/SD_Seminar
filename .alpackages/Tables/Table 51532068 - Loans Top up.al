@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loans Top up (ID 51532068).
+/// </summary>
 table 51532068 "Loans Top up"
 {
 

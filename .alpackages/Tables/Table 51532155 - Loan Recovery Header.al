@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Recovery Header (ID 51532155).
+/// </summary>
 table 51532155 "Loan Recovery Header"
 {
     // DrillDownPageID = "Loan Defaulter Recovery List";
@@ -652,6 +655,9 @@ table 51532155 "Loan Recovery Header"
         LoanApp: Record Loans;
         LoanRecoveryHeader: Record "Loan Recovery Header";
 
+    /// <summary>
+    /// ValidateAmounts.
+    /// </summary>
     procedure ValidateAmounts()
     var
         LType: Record "Product Factory";
@@ -758,6 +764,10 @@ table 51532155 "Loan Recovery Header"
             "Member Category" := "Member Category"::" ";
     end;
 
+    /// <summary>
+    /// GetCharges.
+    /// </summary>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetCharges(): Decimal
     var
         DepPresent: Boolean;
@@ -993,6 +1003,12 @@ table 51532155 "Loan Recovery Header"
 
     end;
 
+    /// <summary>
+    /// GetWithdrawalFee.
+    /// </summary>
+    /// <param name="GLAcc">VAR Code[20].</param>
+    /// <param name="AcctType">VAR Enum "Gen. Journal Account Type".</param>
+    /// <returns>Return value of type Decimal.</returns>
     procedure GetWithdrawalFee(var GLAcc: Code[20]; var AcctType: Enum "Gen. Journal Account Type"): Decimal
     var
         ChargeAmount: Decimal;

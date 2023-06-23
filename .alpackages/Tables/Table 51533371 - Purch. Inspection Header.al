@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Purch. Inspection Header (ID 51533371).
+/// </summary>
 table 51533371 "Purch. Inspection Header"
 {
 
@@ -627,6 +630,10 @@ table 51533371 "Purch. Inspection Header"
         HREmployees: Record "HR Employees";
         InspectionAnalysisMembers2: Record "Inspection Analysis Members";
 
+    /// <summary>
+    /// PrintRecords.
+    /// </summary>
+    /// <param name="ShowRequestForm">Boolean.</param>
     procedure PrintRecords(ShowRequestForm: Boolean);
     var
         ReportSelection: Record "Report Selections";
@@ -644,6 +651,9 @@ table 51533371 "Purch. Inspection Header"
     END;
     //end;
 
+    /// <summary>
+    /// Navigate.
+    /// </summary>
     procedure Navigate();
     var
         NavigateForm: Page Navigate;
@@ -652,11 +662,17 @@ table 51533371 "Purch. Inspection Header"
         NavigateForm.RUN;
     end;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions();
     begin
         DimMgt.ShowDimensionSet("Dimension Set ID", STRSUBSTNO('%1 %2', TABLECAPTION, "No."));
     end;
 
+    /// <summary>
+    /// SetSecurityFilterOnRespCenter.
+    /// </summary>
     procedure SetSecurityFilterOnRespCenter();
     begin
         IF UserSetupMgt.GetPurchasesFilter <> '' THEN BEGIN

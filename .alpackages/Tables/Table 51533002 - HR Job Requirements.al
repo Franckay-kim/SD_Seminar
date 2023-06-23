@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Job Requirements (ID 51533002).
+/// </summary>
 table 51533002 "HR Job Requirements"
 {
 

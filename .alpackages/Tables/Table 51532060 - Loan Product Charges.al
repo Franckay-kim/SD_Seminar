@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Product Charges (ID 51532060).
+/// </summary>
 table 51532060 "Loan Product Charges"
 {
 

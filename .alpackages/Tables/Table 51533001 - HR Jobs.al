@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Jobs (ID 51533001).
+/// </summary>
 table 51533001 "HR Jobs"
 {
 

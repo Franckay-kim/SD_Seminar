@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Disciplinary Cases (ID 51533061).
+/// </summary>
 table 51533061 "HR Disciplinary Cases"
 {
 

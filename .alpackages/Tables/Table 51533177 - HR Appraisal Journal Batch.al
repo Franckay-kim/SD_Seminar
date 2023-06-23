@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Appraisal Journal Batch (ID 51533177).
+/// </summary>
 table 51533177 "HR Appraisal Journal Batch"
 {
     DataCaptionFields = Name, Description;
@@ -130,6 +133,9 @@ table 51533177 "HR Appraisal Journal Batch"
         InsuranceJnlTempl: Record "HR Appraisal Journal Template";
         InsuranceJnlLine: Record "HR Appraisal Journal Line";
 
+    /// <summary>
+    /// SetupNewBatch.
+    /// </summary>
     procedure SetupNewBatch()
     begin
         InsuranceJnlTempl.Get("Journal Template Name");

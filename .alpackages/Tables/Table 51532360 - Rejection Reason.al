@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Rejection Reason (ID 51532360).
+/// </summary>
 table 51532360 "Rejection Reason"
 {
 

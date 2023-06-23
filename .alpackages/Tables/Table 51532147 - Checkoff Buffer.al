@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Checkoff Buffer (ID 51532147).
+/// </summary>
 table 51532147 "Checkoff Buffer"
 {
 

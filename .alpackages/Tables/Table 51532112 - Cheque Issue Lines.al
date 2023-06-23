@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cheque Issue Lines (ID 51532112).
+/// </summary>
 table 51532112 "Cheque Issue Lines"
 {
 

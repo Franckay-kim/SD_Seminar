@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Company Activities (ID 51533186).
+/// </summary>
 table 51533186 "HR Company Activities"
 {
 

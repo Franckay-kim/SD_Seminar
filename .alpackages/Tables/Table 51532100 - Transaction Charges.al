@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Transaction Charges (ID 51532100).
+/// </summary>
 table 51532100 "Transaction Charges"
 {
 
@@ -175,7 +178,8 @@ table 51532100 "Transaction Charges"
     /// <summary>
     /// Returns excise duty amount
     /// </summary>
-    /// <param name="ChargeAmount"></param>
+    /// <param name="BillableAmount">Decimal.</param>
+    /// <returns>Return value of type Decimal.</returns>
     procedure ExciseDutyAmount(BillableAmount: Decimal): Decimal
     var
         GeneralSetup: Record "General Set-Up";

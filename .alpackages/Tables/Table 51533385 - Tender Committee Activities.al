@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Tender Committee Activities (ID 51533385).
+/// </summary>
 table 51533385 "Tender Committee Activities"
 {
     // version TENDER

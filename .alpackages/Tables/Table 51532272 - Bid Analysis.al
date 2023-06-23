@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Bid Analysis (ID 51532272).
+/// </summary>
 table 51532272 "Bid Analysis"
 {
 

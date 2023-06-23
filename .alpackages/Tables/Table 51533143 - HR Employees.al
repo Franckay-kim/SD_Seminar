@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Employees (ID 51533143).
+/// </summary>
 table 51533143 "HR Employees"
 {
     Caption = 'HR Employees';
@@ -1559,6 +1562,10 @@ table 51533143 "HR Employees"
         LoanG: Record "Loan Guarantors and Security";
         ProductFactory: Record "Product Factory";
 
+    /// <summary>
+    /// AssistEdit.
+    /// </summary>
+    /// <returns>Return value of type Boolean.</returns>
     procedure AssistEdit(): Boolean
     var
         HrSetup: Record "HR Setup";
@@ -1571,6 +1578,10 @@ table 51533143 "HR Employees"
         end;
     end;
 
+    /// <summary>
+    /// FullName.
+    /// </summary>
+    /// <returns>Return value of type Text[100].</returns>
     procedure FullName(): Text[100]
     begin
         if "Middle Name" = '' then
@@ -1579,16 +1590,25 @@ table 51533143 "HR Employees"
             exit("Known As" + ' ' + "Middle Name" + ' ' + "Last Name");
     end;
 
+    /// <summary>
+    /// CurrentPayDetails.
+    /// </summary>
     procedure CurrentPayDetails()
     begin
     end;
 
 
 
+    /// <summary>
+    /// SetEmployeeHistory.
+    /// </summary>
     procedure SetEmployeeHistory()
     begin
     end;
 
+    /// <summary>
+    /// GetPayPeriod.
+    /// </summary>
     procedure GetPayPeriod()
     begin
     end;
@@ -1598,6 +1618,9 @@ table 51533143 "HR Employees"
         "Full Name" := "First Name" + ' ' + "Middle Name" + ' ' + "Last Name";
     end;
 
+    /// <summary>
+    /// GetHRSetup.
+    /// </summary>
     procedure GetHRSetup()
     begin
         if not HasHRSetup then begin

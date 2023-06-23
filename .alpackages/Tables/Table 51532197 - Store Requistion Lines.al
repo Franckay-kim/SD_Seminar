@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Store Requistion Lines (ID 51532197).
+/// </summary>
 table 51532197 "Store Requistion Lines"
 {
 
@@ -367,6 +370,9 @@ table 51532197 "Store Requistion Lines"
         DimMgt: Codeunit DimensionManagement;
         Text007: Label 'Quantity to issue cannot be greater than Quantity requested';
 
+    /// <summary>
+    /// OpenItemTrackingLines.
+    /// </summary>
     procedure OpenItemTrackingLines()
     begin
         TestField(Type, Type::Item);
@@ -379,6 +385,9 @@ table 51532197 "Store Requistion Lines"
         //ReservePurchLine.CallItemTrackingS11(Rec);
     end;
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     begin
         "Dimension Set ID" :=
@@ -387,22 +396,39 @@ table 51532197 "Store Requistion Lines"
         DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
     end;
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
+    /// <summary>
+    /// LookupShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
         ValidateShortcutDimCode(FieldNumber, ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// ShowShortcutDimCode.
+    /// </summary>
+    /// <param name="ShortcutDimCode">VAR array[8] of Code[20].</param>
     procedure ShowShortcutDimCode(var ShortcutDimCode: array[8] of Code[20])
     begin
         DimMgt.GetShortcutDimensions("Dimension Set ID", ShortcutDimCode);
     end;
 
+    /// <summary>
+    /// CalQtyInStore.
+    /// </summary>
     procedure CalQtyInStore()
     var
         ItemLedgerEntry: Record "Item Ledger Entry";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Leave Reimbursement (ID 51533034).
+/// </summary>
 table 51533034 "HR Leave Reimbursement"
 {
     //DrillDownPageID = "HR Leave Reimbursment List";
@@ -229,22 +232,46 @@ table 51533034 "HR Leave Reimbursement"
         "LineNo.": Integer;
         HRLeaveCal: Record "HR Leave Calendar";
 
+    /// <summary>
+    /// DetermineLeaveReturnDate.
+    /// </summary>
+    /// <param name="fBeginDate">VAR Date.</param>
+    /// <param name="fDays">VAR Decimal.</param>
+    /// <returns>Return variable fReturnDate of type Date.</returns>
     procedure DetermineLeaveReturnDate(var fBeginDate: Date; var fDays: Decimal) fReturnDate: Date
     begin
     end;
 
+    /// <summary>
+    /// DetermineIfIncludesNonWorking.
+    /// </summary>
+    /// <param name="fLeaveCode">VAR Code[10].</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure DetermineIfIncludesNonWorking(var fLeaveCode: Code[10]): Boolean
     begin
     end;
 
+    /// <summary>
+    /// DetermineIfIsNonWorking.
+    /// </summary>
+    /// <param name="bcDate">VAR Date.</param>
+    /// <returns>Return variable Isnonworking of type Boolean.</returns>
     procedure DetermineIfIsNonWorking(var bcDate: Date) Isnonworking: Boolean
     begin
     end;
 
+    /// <summary>
+    /// DeterminethisLeaveEndDate.
+    /// </summary>
+    /// <param name="fDate">VAR Date.</param>
+    /// <returns>Return variable fEndDate of type Date.</returns>
     procedure DeterminethisLeaveEndDate(var fDate: Date) fEndDate: Date
     begin
     end;
 
+    /// <summary>
+    /// CreateLeaveLedgerEntries.
+    /// </summary>
     procedure CreateLeaveLedgerEntries()
     begin
 
@@ -308,6 +335,9 @@ table 51533034 "HR Leave Reimbursement"
         end;
     end;
 
+    /// <summary>
+    /// NotifyApplicant.
+    /// </summary>
     procedure NotifyApplicant()
     begin
     end;

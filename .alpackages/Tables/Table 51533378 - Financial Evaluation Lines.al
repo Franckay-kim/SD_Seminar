@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Financial Evaluation Lines (ID 51533378).
+/// </summary>
 table 51533378 "Financial Evaluation Lines"
 {
     // version RFP

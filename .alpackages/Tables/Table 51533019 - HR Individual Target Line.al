@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Individual Target Line (ID 51533019).
+/// </summary>
 table 51533019 "HR Individual Target Line"
 {
 

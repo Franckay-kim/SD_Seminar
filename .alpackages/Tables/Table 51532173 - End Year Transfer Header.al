@@ -1,3 +1,6 @@
+/// <summary>
+/// Table End Year Transfer Header (ID 51532173).
+/// </summary>
 table 51532173 "End Year Transfer Header"
 {
 

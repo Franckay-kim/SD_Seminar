@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Inspection Analysis Members (ID 51533373).
+/// </summary>
 table 51533373 "Inspection Analysis Members"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Repayment Schedule (ID 51532064).
+/// </summary>
 table 51532064 "Loan Repayment Schedule"
 {
 

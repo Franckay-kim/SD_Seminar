@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loan Security Sub (ID 51532153).
+/// </summary>
 table 51532153 "Loan Security Sub"
 {
 

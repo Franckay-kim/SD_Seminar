@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Banking User Template (ID 51532108).
+/// </summary>
 table 51532108 "Banking User Template"
 {
     //DrillDownPageID = "Banking User Setup";

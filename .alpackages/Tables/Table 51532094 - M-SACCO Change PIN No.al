@@ -1,3 +1,6 @@
+/// <summary>
+/// Table M-SACCO Change PIN No (ID 51532094).
+/// </summary>
 table 51532094 "M-SACCO Change PIN No"
 {
     // DrillDownPageID = "Change MPESA PIN List";

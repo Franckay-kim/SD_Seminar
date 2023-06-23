@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Treasury Cashier Transactions (ID 51532104).
+/// </summary>
 table 51532104 "Treasury Cashier Transactions"
 {
     //DrillDownPageID = "Treasury Cashier List";
@@ -712,6 +715,9 @@ table 51532104 "Treasury Cashier Transactions"
         Treasury: Record "Banking User Template";
         UserSetup: Record "User Setup";
 
+    /// <summary>
+    /// CalcTillBalance.
+    /// </summary>
     procedure CalcTillBalance()
     begin
         BankingSetup.Reset();

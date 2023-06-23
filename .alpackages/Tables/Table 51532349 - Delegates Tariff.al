@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegates Tariff (ID 51532349).
+/// </summary>
 table 51532349 "Delegates Tariff"
 {
     //DrillDownPageID = "Delegate Tariffs";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegate Groupss (ID 51532351).
+/// </summary>
 table 51532351 "Delegate Groupss"
 {
     DataCaptionFields = "Code", "Delegate Group Description", "Electoral Zone";

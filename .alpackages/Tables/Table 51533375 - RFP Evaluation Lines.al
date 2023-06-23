@@ -1,3 +1,6 @@
+/// <summary>
+/// Table RFP Evaluation Lines (ID 51533375).
+/// </summary>
 table 51533375 "RFP Evaluation Lines"
 {
     // version RFP

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Tender Committee Members (ID 51533386).
+/// </summary>
 table 51533386 "Tender Committee Members"
 {
     // version TENDER

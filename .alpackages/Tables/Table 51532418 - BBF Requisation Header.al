@@ -1,3 +1,6 @@
+/// <summary>
+/// Table BBF Requisation Header (ID 51532418).
+/// </summary>
 table 51532418 "BBF Requisation Header"
 {
 

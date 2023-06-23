@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Board Members (ID 51532244).
+/// </summary>
 table 51532244 "Board Members"
 {
 

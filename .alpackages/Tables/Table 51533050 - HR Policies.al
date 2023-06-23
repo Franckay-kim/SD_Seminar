@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Policies (ID 51533050).
+/// </summary>
 table 51533050 "HR Policies"
 {
     //DrillDownPageID = "HR Policy List";

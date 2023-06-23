@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Workplan Budget Buffer (ID 51532315).
+/// </summary>
 table 51532315 "Workplan Budget Buffer"
 {
     Caption = 'Workplan Budget Buffer';
@@ -109,6 +112,11 @@ table 51532315 "Workplan Budget Buffer"
         Text003: Label '1,6,,Budget Dimension 4 Filter';
         GLBudgetName: Record Workplan;
 
+    /// <summary>
+    /// GetCaptionClass.
+    /// </summary>
+    /// <param name="BudgetDimType">Integer.</param>
+    /// <returns>Return value of type Text[250].</returns>
     procedure GetCaptionClass(BudgetDimType: Integer): Text[250]
     begin
         if GLBudgetName."Workplan Code" <> GetFilter("Budget Filter") then

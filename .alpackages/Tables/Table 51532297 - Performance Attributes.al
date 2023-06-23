@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Performance Attributes (ID 51532297).
+/// </summary>
 table 51532297 "Performance Attributes"
 {
 

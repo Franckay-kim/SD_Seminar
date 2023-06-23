@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Leave Periods (ID 51533028).
+/// </summary>
 table 51533028 "HR Leave Periods"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table PR Employee Transactions (ID 51533116).
+/// </summary>
 table 51533116 "PR Employee Transactions"
 {
     DataCaptionFields = "Employee Code";

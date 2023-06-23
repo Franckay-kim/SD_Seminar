@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Employee Bank Accounts (ID 51533209).
+/// </summary>
 table 51533209 "HR Employee Bank Accounts"
 {
     // DrillDownPageID = "HR Bank Accounts List";

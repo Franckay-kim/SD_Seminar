@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Training App Lines (ID 51533076).
+/// </summary>
 table 51533076 "HR Training App Lines"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Agent Applications (ID 51532325).
+/// </summary>
 table 51532325 "Agent Applications"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Delegates Payment (ID 51532356).
+/// </summary>
 table 51532356 "Delegates Payment"
 {
 

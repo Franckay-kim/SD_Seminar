@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Payment Line Board (ID 51532222).
+/// </summary>
 table 51532222 "Payment Line Board"
 {
 
@@ -385,11 +388,19 @@ table 51532222 "Payment Line Board"
         PaymentsHeaderBoard: Record "Payments Header Board";
         BoardAllowance: Record "Committee Allowance Lines";
 
+    /// <summary>
+    /// ValidateShortcutDimCode.
+    /// </summary>
+    /// <param name="FieldNumber">Integer.</param>
+    /// <param name="ShortcutDimCode">VAR Code[20].</param>
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "Dimension Set ID");
     end;
 
+    /// <summary>
+    /// getDestinationRateAndAmounts.
+    /// </summary>
     procedure getDestinationRateAndAmounts()
     var
         Members: Record Members;

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Teller Summary Buffer (ID 51532373).
+/// </summary>
 table 51532373 "Teller Summary Buffer"
 {
 

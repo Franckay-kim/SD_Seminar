@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Cashier Transactions (ID 51532102).
+/// </summary>
 table 51532102 "Cashier Transactions"
 {
     //DrillDownPageID = "Cashier Transactions List";
@@ -1066,6 +1069,286 @@ table 51532102 "Cashier Transactions"
         TransLines: Record "Cashier Transaction Lines";
         PrBank: Record "PR Bank Accounts";
 
+    /// <summary>
+    /// CashierCharges.
+    /// </summary>
+    /// <param name="TotalChargeAmount">VAR Decimal.</param>
+    /// <param name="TemplateName">Text.</param>
+    /// <param name="BatchName">Text.</param>
+    /// <param name="LineNumber">VAR Integer.</param>
+    procedure CashierCharges(var TotalChargeAmount: Decimal; TemplateName: Text; BatchName: Text; var LineNumber: Integer)
+    var
+        TransactionTypes: Record "Transaction Types";
+        TransactionCharges: Record "Transaction Charges";
+        TieredChargesLines: Record "Tiered Charges Lines";
+        ChargeAmount: Decimal;
+        Employer: Record Customer;
+        HasIntervalCharge: Boolean;
+        HasNoticeCharge: Boolean;
+        GenJournalLine: Record "Gen. Journal Line";
+        SavingsAccounts: Record "Savings Accounts";
+        ProductFactory: Record "Product Factory";
+
+        ExciseDutyAmount: Decimal;
+
+    begin
+        Clear(HasIntervalCharge);
+        Clear(HasNoticeCharge);
+
+        TransactionTypes.Get("Transaction Type");
+
+        TransactionCharges.Reset;
+        TransactionCharges.SetRange("Transaction Type", "Transaction Type");
+        if TransactionCharges.FindFirst() then
+            repeat
+
+                ChargeAmount := TransactionCharges.GetChargeAmount(Amount, 0);
+                case TransactionCharges."Transaction Charge Category" of
+                    TransactionCharges."Transaction Charge Category"::"Withdrawal Frequency":
+                        if not HasIntervalCharge then
+                            ChargeAmount := 0;
+                    TransactionCharges."Transaction Charge Category"::"Withdrawn Amount":
+                        if not HasNoticeCharge then
+                            ChargeAmount := 0;
+                end;
+
+                If SavingsAccounts.Get("Account No") then begin
+                    if Employer.Get(SavingsAccounts."Employer Code") then begin
+                        // if Employer."Dont Charge Transactions" then ChargeAmount := 0;
+                    end;
+                end;
+
+                if ChargeAmount > 0 then begin
+                    LineNumber := LineNumber + 10000;
+
+                    GenJournalLine.INIT;
+                    GenJournalLine."Journal Template Name" := TemplateName;
+                    GenJournalLine."Journal Batch Name" := BatchName;
+                    GenJournalLine."Document No." := No;
+                    GenJournalLine."Line No." := LineNumber;
+
+                    /* CASE "Account Type" OF
+                         "Account Type"::Account:
+                             GenJournalLine."Account Type" := GenJournalLine."Account Type"::Savings;
+                         "Account Type"::"G/L Account":
+                             GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
+                         else
+                             GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account"
+                     END; */
+
+                    GenJournalLine."Account No." := "Account No";
+                    GenJournalLine."External Document No." := "ID No";
+                    GenJournalLine.VALIDATE(GenJournalLine."Account No.");
+                    GenJournalLine."Posting Date" := "Transaction Date";
+                    GenJournalLine.Description := TransactionCharges.Description;
+                    GenJournalLine."Currency Code" := "Currency Code";
+                    GenJournalLine.VALIDATE(GenJournalLine."Currency Code");
+                    GenJournalLine.Amount := ChargeAmount;
+                    GenJournalLine.VALIDATE(GenJournalLine.Amount);
+                    GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                    GenJournalLine."Bal. Account No." := TransactionCharges."G/L Account";
+                    GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
+                    GenJournalLine."Shortcut Dimension 1 Code" := "Global Dimension 1 Code";
+                    GenJournalLine."Shortcut Dimension 2 Code" := "Global Dimension 2 Code";
+                    GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
+                    GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
+                    IF GenJournalLine.Amount <> 0 THEN GenJournalLine.INSERT;
+
+                    IF (TransactionCharges.HasExciseDuty) THEN begin
+
+                        //Excise Duty
+                        GenSetup.GET;
+                        LineNumber := LineNumber + 10000;
+                        ExciseDutyAmount := TransactionCharges.ExciseDutyAmount(ChargeAmount);
+
+                        GenJournalLine.INIT;
+                        GenJournalLine."Journal Template Name" := TemplateName;
+                        GenJournalLine."Journal Batch Name" := BatchName;
+                        GenJournalLine."Document No." := No;
+                        GenJournalLine."Line No." := LineNumber;
+                        /* CASE "Account Type" OF
+                            "Account Type"::Account:
+                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::Savings;
+                            "Account Type"::"G/L Account":
+                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
+                            else
+                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account"
+                        END; */
+                        GenJournalLine."Account No." := "Account No";
+                        GenJournalLine.VALIDATE("Account No.");
+                        GenJournalLine."Posting Date" := "Transaction Date";
+                        GenJournalLine.Description := 'Excise Duty';
+                        GenJournalLine."Currency Code" := "Currency Code";
+                        GenJournalLine.VALIDATE(GenJournalLine."Currency Code");
+                        GenJournalLine.Amount := ExciseDutyAmount;
+                        GenJournalLine.VALIDATE(GenJournalLine.Amount);
+                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+                        GenJournalLine."Bal. Account No." := GenSetup."Excise Duty G/L";
+                        GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
+                        GenJournalLine."Shortcut Dimension 1 Code" := "Global Dimension 1 Code";
+                        GenJournalLine."Shortcut Dimension 2 Code" := "Global Dimension 2 Code";
+                        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
+                        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
+                        IF GenJournalLine.Amount <> 0 THEN GenJournalLine.INSERT;
+
+                    end;
+                    TotalChargeAmount += (ExciseDutyAmount + ChargeAmount);
+                end
+
+            until TransactionCharges.Next = 0;
+
+    end;
+
+    /// <summary>
+    /// ClearAll.
+    /// </summary>
+    procedure ClearAll()
+    begin
+        "Account No" := '';
+        "Member No." := '';
+        "Account Name" := '';
+        "Info Base Area" := '';
+        Amount := 0;
+        "Transaction Type" := '';
+        //Type:=Type::" ";
+        "ID No" := '';
+        "Book Balance" := 0;
+        "Available Balance" := 0;
+        "New Account Balance" := 0;
+        Remarks := '';
+        "Signing Instructions" := "Signing Instructions"::"Any Two";
+        "Cheque Date" := 0D;
+        "Cheque No" := '';
+        "Product Type" := '';
+    end;
+
+    /// <summary>
+    /// PostCredit.
+    /// </summary>
+    /// <param name="CashierTrans">Record "Cashier Transactions".</param>
+    /// <param name="JTemplate">Text.</param>
+    /// <param name="JBatch">Text.</param>
+    /// <param name="TillNumber">Text.</param>
+    /// <param name="DBranch">Text.</param>
+    /// <param name="DActivity">Text.</param>
+    /// <param name="Isposted">VAR Boolean.</param>
+    procedure PostCredit(CashierTrans: Record "Cashier Transactions"; JTemplate: Text; JBatch: Text; TillNumber: Text; DBranch: Text; DActivity: Text; var Isposted: Boolean)
+    var
+        CTransLines: Record "Cashier Transaction Lines";
+        GenJournalLine: Record "Gen. Journal Line";
+        TotalCharges: Decimal;
+        LineNo: Integer;
+        TransType: Option " ","Loan","Repayment","Interest Due","Interest Paid","Bills","Appraisal Due","Loan Registration Fee","Appraisal Paid","Pre-Earned Interest","Penalty Due","Penalty Paid","Partial Disbursement";
+
+    begin
+        GenJournalLine.RESET;
+        GenJournalLine.SETRANGE("Journal Batch Name", JBatch);
+        GenJournalLine.SETRANGE("Journal Template Name", JTemplate);
+        IF GenJournalLine.FINDFIRST THEN GenJournalLine.DELETEALL;
+
+        LineNo := LineNo + 10000;
+
+        GenJournalLine.INIT;
+        GenJournalLine."Journal Template Name" := JTemplate;
+        GenJournalLine."Journal Batch Name" := JBatch;
+        GenJournalLine."Document No." := CashierTrans.No;
+        GenJournalLine."External Document No." := CashierTrans."Cheque No";
+        GenJournalLine."Line No." := LineNo;
+
+        GenJournalLine."Account Type" := GenJournalLine."Account Type"::"Bank Account";
+        GenJournalLine."Account No." := TillNumber;
+
+        IF CashierTrans.Type = CashierTrans.Type::"Credit Cheque" THEN BEGIN
+            //GenJournalLine."Account Type" := GenJournalLine."Account Type"::Savings;
+            GenJournalLine."Account No." := CashierTrans."Account No";
+        END;
+
+        GenJournalLine.VALIDATE(GenJournalLine."Account No.");
+        GenJournalLine."Posting Date" := CashierTrans."Transaction Date";
+        GenJournalLine.Description := CashierTrans.Payee;
+        GenJournalLine."Currency Code" := CashierTrans."Currency Code";
+        GenJournalLine.VALIDATE(GenJournalLine."Currency Code");
+        GenJournalLine.Amount := CashierTrans.Amount;
+        GenJournalLine.VALIDATE(GenJournalLine.Amount);
+        GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+        GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
+        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
+        IF GenJournalLine.Amount <> 0 THEN GenJournalLine.INSERT;
+
+        CashierCharges(TotalCharges, JTemplate, JBatch, LineNo);
+
+        CTransLines.RESET;
+        CTransLines.SETRANGE(CTransLines."Transaction No", CashierTrans.No);
+        IF CTransLines.FIND('-') THEN
+            REPEAT
+
+                LineNo := LineNo + 1;
+
+                GenJournalLine.INIT;
+                GenJournalLine."Journal Template Name" := JTemplate;
+                GenJournalLine."Journal Batch Name" := JBatch;
+                GenJournalLine."Line No." := LineNo;
+                GenJournalLine."Document No." := CashierTrans.No;
+                GenJournalLine."External Document No." := CashierTrans."Cheque No";
+                GenJournalLine."Posting Date" := CashierTrans."Transaction Date";
+
+                /*IF CTransLines.Type = CTransLines.Type::Credit THEN
+                    GenJournalLine."Account Type" := GenJournalLine."Account Type"::Credit
+                ELSE
+                    IF CTransLines.Type = CTransLines.Type::Savings THEN
+                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Savings
+                    else
+                        if CTransLines.Type = CTransLines.Type::"G/L Account" then
+                            GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
+
+                GenJournalLine.Description := STRSUBSTNO('%1: %2', Type, CTransLines."Transaction Type");
+
+                GenJournalLine."Account No." := CTransLines."Account No";
+                GenJournalLine.Amount := -CTransLines.Amount;
+                GenJournalLine.VALIDATE(GenJournalLine.Amount);
+                GenJournalLine."Currency Code" := CashierTrans."Currency Code";
+                GenJournalLine.VALIDATE(GenJournalLine."Currency Code");*/
+
+                CASE CTransLines."Transaction Type" OF
+                    CTransLines."Transaction Type"::" ":
+                        TransType := TransType::" ";
+                    CTransLines."Transaction Type"::Repayment:
+                        TransType := TransType::Repayment;
+                    CTransLines."Transaction Type"::"Penalty Paid":
+                        TransType := TransType::"Penalty Paid";
+                    CTransLines."Transaction Type"::"Interest Paid":
+                        TransType := TransType::"Interest Paid";
+                END;
+
+            /* GenJournalLine."Transaction Type" := TransType;
+             GenJournalLine."Loan No" := CTransLines."Loan No";
+             GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
+             GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
+             GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
+             GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
+             IF GenJournalLine.Amount <> 0 THEN GenJournalLine.INSERT;*/
+
+            UNTIL CTransLines.NEXT = 0;
+
+        GenJournalLine.RESET;
+        GenJournalLine.SETRANGE("Journal Template Name", JTemplate);
+        GenJournalLine.SETRANGE("Journal Batch Name", JBatch);
+        IF GenJournalLine.FINDFIRST THEN BEGIN
+
+            //CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post New", GenJournalLine);
+
+            Posted := TRUE;
+            Isposted := true;
+            "Date Posted" := TODAY;
+            "Time Posted" := TIME;
+            "Posted By" := Cashier;
+            MODIFY;
+
+        END;
+
+    end;
+
     local procedure CalcAvailableBal()
     var
         TCharges: Decimal;
@@ -1314,283 +1597,6 @@ table 51532102 "Cashier Transactions"
         end;
 
         //Penalty of maximum amount on transaction
-    end;
-
-    procedure ClearAll()
-    begin
-        "Account No" := '';
-        "Member No." := '';
-        "Account Name" := '';
-        "Info Base Area" := '';
-        Amount := 0;
-        "Transaction Type" := '';
-        //Type:=Type::" ";
-        "ID No" := '';
-        "Book Balance" := 0;
-        "Available Balance" := 0;
-        "New Account Balance" := 0;
-        Remarks := '';
-        "Signing Instructions" := "Signing Instructions"::"Any Two";
-        "Cheque Date" := 0D;
-        "Cheque No" := '';
-        "Product Type" := '';
-    end;
-
-    /// <summary>
-    /// PostCredit.
-    /// </summary>
-    /// <param name="CashierTrans">Record "Cashier Transactions".</param>
-    /// <param name="JTemplate">Text.</param>
-    /// <param name="JBatch">Text.</param>
-    /// <param name="TillNumber">Text.</param>
-    /// <param name="DBranch">Text.</param>
-    /// <param name="DActivity">Text.</param>
-    /// <param name="Isposted">VAR Boolean.</param>
-    procedure PostCredit(CashierTrans: Record "Cashier Transactions"; JTemplate: Text; JBatch: Text; TillNumber: Text; DBranch: Text; DActivity: Text; var Isposted: Boolean)
-    var
-        CTransLines: Record "Cashier Transaction Lines";
-        GenJournalLine: Record "Gen. Journal Line";
-        TotalCharges: Decimal;
-        LineNo: Integer;
-        TransType: Option " ","Loan","Repayment","Interest Due","Interest Paid","Bills","Appraisal Due","Loan Registration Fee","Appraisal Paid","Pre-Earned Interest","Penalty Due","Penalty Paid","Partial Disbursement";
-
-    begin
-        GenJournalLine.RESET;
-        GenJournalLine.SETRANGE("Journal Batch Name", JBatch);
-        GenJournalLine.SETRANGE("Journal Template Name", JTemplate);
-        IF GenJournalLine.FINDFIRST THEN GenJournalLine.DELETEALL;
-
-        LineNo := LineNo + 10000;
-
-        GenJournalLine.INIT;
-        GenJournalLine."Journal Template Name" := JTemplate;
-        GenJournalLine."Journal Batch Name" := JBatch;
-        GenJournalLine."Document No." := CashierTrans.No;
-        GenJournalLine."External Document No." := CashierTrans."Cheque No";
-        GenJournalLine."Line No." := LineNo;
-
-        GenJournalLine."Account Type" := GenJournalLine."Account Type"::"Bank Account";
-        GenJournalLine."Account No." := TillNumber;
-
-        IF CashierTrans.Type = CashierTrans.Type::"Credit Cheque" THEN BEGIN
-            //GenJournalLine."Account Type" := GenJournalLine."Account Type"::Savings;
-            GenJournalLine."Account No." := CashierTrans."Account No";
-        END;
-
-        GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-        GenJournalLine."Posting Date" := CashierTrans."Transaction Date";
-        GenJournalLine.Description := CashierTrans.Payee;
-        GenJournalLine."Currency Code" := CashierTrans."Currency Code";
-        GenJournalLine.VALIDATE(GenJournalLine."Currency Code");
-        GenJournalLine.Amount := CashierTrans.Amount;
-        GenJournalLine.VALIDATE(GenJournalLine.Amount);
-        GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
-        GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
-        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
-        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
-        IF GenJournalLine.Amount <> 0 THEN GenJournalLine.INSERT;
-
-        CashierCharges(TotalCharges, JTemplate, JBatch, LineNo);
-
-        CTransLines.RESET;
-        CTransLines.SETRANGE(CTransLines."Transaction No", CashierTrans.No);
-        IF CTransLines.FIND('-') THEN
-            REPEAT
-
-                LineNo := LineNo + 1;
-
-                GenJournalLine.INIT;
-                GenJournalLine."Journal Template Name" := JTemplate;
-                GenJournalLine."Journal Batch Name" := JBatch;
-                GenJournalLine."Line No." := LineNo;
-                GenJournalLine."Document No." := CashierTrans.No;
-                GenJournalLine."External Document No." := CashierTrans."Cheque No";
-                GenJournalLine."Posting Date" := CashierTrans."Transaction Date";
-
-                /*IF CTransLines.Type = CTransLines.Type::Credit THEN
-                    GenJournalLine."Account Type" := GenJournalLine."Account Type"::Credit
-                ELSE
-                    IF CTransLines.Type = CTransLines.Type::Savings THEN
-                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Savings
-                    else
-                        if CTransLines.Type = CTransLines.Type::"G/L Account" then
-                            GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
-
-                GenJournalLine.Description := STRSUBSTNO('%1: %2', Type, CTransLines."Transaction Type");
-
-                GenJournalLine."Account No." := CTransLines."Account No";
-                GenJournalLine.Amount := -CTransLines.Amount;
-                GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                GenJournalLine."Currency Code" := CashierTrans."Currency Code";
-                GenJournalLine.VALIDATE(GenJournalLine."Currency Code");*/
-
-                CASE CTransLines."Transaction Type" OF
-                    CTransLines."Transaction Type"::" ":
-                        TransType := TransType::" ";
-                    CTransLines."Transaction Type"::Repayment:
-                        TransType := TransType::Repayment;
-                    CTransLines."Transaction Type"::"Penalty Paid":
-                        TransType := TransType::"Penalty Paid";
-                    CTransLines."Transaction Type"::"Interest Paid":
-                        TransType := TransType::"Interest Paid";
-                END;
-
-            /* GenJournalLine."Transaction Type" := TransType;
-             GenJournalLine."Loan No" := CTransLines."Loan No";
-             GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
-             GenJournalLine."Shortcut Dimension 2 Code" := DBranch;
-             GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
-             GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
-             IF GenJournalLine.Amount <> 0 THEN GenJournalLine.INSERT;*/
-
-            UNTIL CTransLines.NEXT = 0;
-
-        GenJournalLine.RESET;
-        GenJournalLine.SETRANGE("Journal Template Name", JTemplate);
-        GenJournalLine.SETRANGE("Journal Batch Name", JBatch);
-        IF GenJournalLine.FINDFIRST THEN BEGIN
-
-            //CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post New", GenJournalLine);
-
-            Posted := TRUE;
-            Isposted := true;
-            "Date Posted" := TODAY;
-            "Time Posted" := TIME;
-            "Posted By" := Cashier;
-            MODIFY;
-
-        END;
-
-    end;
-
-    /// <summary>
-    /// CashierCharges.
-    /// </summary>
-    /// <param name="TotalChargeAmount">VAR Decimal.</param>
-    /// <param name="TemplateName">Text.</param>
-    /// <param name="BatchName">Text.</param>
-    /// <param name="LineNumber">VAR Integer.</param>
-    procedure CashierCharges(var TotalChargeAmount: Decimal; TemplateName: Text; BatchName: Text; var LineNumber: Integer)
-    var
-        TransactionTypes: Record "Transaction Types";
-        TransactionCharges: Record "Transaction Charges";
-        TieredChargesLines: Record "Tiered Charges Lines";
-        ChargeAmount: Decimal;
-        Employer: Record Customer;
-        HasIntervalCharge: Boolean;
-        HasNoticeCharge: Boolean;
-        GenJournalLine: Record "Gen. Journal Line";
-        SavingsAccounts: Record "Savings Accounts";
-        ProductFactory: Record "Product Factory";
-
-        ExciseDutyAmount: Decimal;
-
-    begin
-        Clear(HasIntervalCharge);
-        Clear(HasNoticeCharge);
-
-        TransactionTypes.Get("Transaction Type");
-
-        TransactionCharges.Reset;
-        TransactionCharges.SetRange("Transaction Type", "Transaction Type");
-        if TransactionCharges.FindFirst() then
-            repeat
-
-                ChargeAmount := TransactionCharges.GetChargeAmount(Amount, 0);
-                case TransactionCharges."Transaction Charge Category" of
-                    TransactionCharges."Transaction Charge Category"::"Withdrawal Frequency":
-                        if not HasIntervalCharge then
-                            ChargeAmount := 0;
-                    TransactionCharges."Transaction Charge Category"::"Withdrawn Amount":
-                        if not HasNoticeCharge then
-                            ChargeAmount := 0;
-                end;
-
-                If SavingsAccounts.Get("Account No") then begin
-                    if Employer.Get(SavingsAccounts."Employer Code") then begin
-                        // if Employer."Dont Charge Transactions" then ChargeAmount := 0;
-                    end;
-                end;
-
-                if ChargeAmount > 0 then begin
-                    LineNumber := LineNumber + 10000;
-
-                    GenJournalLine.INIT;
-                    GenJournalLine."Journal Template Name" := TemplateName;
-                    GenJournalLine."Journal Batch Name" := BatchName;
-                    GenJournalLine."Document No." := No;
-                    GenJournalLine."Line No." := LineNumber;
-
-                    /* CASE "Account Type" OF
-                         "Account Type"::Account:
-                             GenJournalLine."Account Type" := GenJournalLine."Account Type"::Savings;
-                         "Account Type"::"G/L Account":
-                             GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
-                         else
-                             GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account"
-                     END; */
-
-                    GenJournalLine."Account No." := "Account No";
-                    GenJournalLine."External Document No." := "ID No";
-                    GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                    GenJournalLine."Posting Date" := "Transaction Date";
-                    GenJournalLine.Description := TransactionCharges.Description;
-                    GenJournalLine."Currency Code" := "Currency Code";
-                    GenJournalLine.VALIDATE(GenJournalLine."Currency Code");
-                    GenJournalLine.Amount := ChargeAmount;
-                    GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                    GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                    GenJournalLine."Bal. Account No." := TransactionCharges."G/L Account";
-                    GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
-                    GenJournalLine."Shortcut Dimension 1 Code" := "Global Dimension 1 Code";
-                    GenJournalLine."Shortcut Dimension 2 Code" := "Global Dimension 2 Code";
-                    GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
-                    GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
-                    IF GenJournalLine.Amount <> 0 THEN GenJournalLine.INSERT;
-
-                    IF (TransactionCharges.HasExciseDuty) THEN begin
-
-                        //Excise Duty
-                        GenSetup.GET;
-                        LineNumber := LineNumber + 10000;
-                        ExciseDutyAmount := TransactionCharges.ExciseDutyAmount(ChargeAmount);
-
-                        GenJournalLine.INIT;
-                        GenJournalLine."Journal Template Name" := TemplateName;
-                        GenJournalLine."Journal Batch Name" := BatchName;
-                        GenJournalLine."Document No." := No;
-                        GenJournalLine."Line No." := LineNumber;
-                        /* CASE "Account Type" OF
-                            "Account Type"::Account:
-                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::Savings;
-                            "Account Type"::"G/L Account":
-                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account";
-                            else
-                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::"G/L Account"
-                        END; */
-                        GenJournalLine."Account No." := "Account No";
-                        GenJournalLine.VALIDATE("Account No.");
-                        GenJournalLine."Posting Date" := "Transaction Date";
-                        GenJournalLine.Description := 'Excise Duty';
-                        GenJournalLine."Currency Code" := "Currency Code";
-                        GenJournalLine.VALIDATE(GenJournalLine."Currency Code");
-                        GenJournalLine.Amount := ExciseDutyAmount;
-                        GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                        GenJournalLine."Bal. Account No." := GenSetup."Excise Duty G/L";
-                        GenJournalLine.VALIDATE(GenJournalLine."Bal. Account No.");
-                        GenJournalLine."Shortcut Dimension 1 Code" := "Global Dimension 1 Code";
-                        GenJournalLine."Shortcut Dimension 2 Code" := "Global Dimension 2 Code";
-                        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 1 Code");
-                        GenJournalLine.VALIDATE(GenJournalLine."Shortcut Dimension 2 Code");
-                        IF GenJournalLine.Amount <> 0 THEN GenJournalLine.INSERT;
-
-                    end;
-                    TotalChargeAmount += (ExciseDutyAmount + ChargeAmount);
-                end
-
-            until TransactionCharges.Next = 0;
-
     end;
 
 }

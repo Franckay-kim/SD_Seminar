@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Credit Ledger Entry (ID 51532059).
+/// </summary>
 table 51532059 "Credit Ledger Entry"
 {
     //DrillDownPageID = "Credit Ledger Entries";
@@ -294,12 +297,19 @@ table 51532059 "Credit Ledger Entry"
         DimMgt: Codeunit DimensionManagement;
 
 
+    /// <summary>
+    /// ShowDimensions.
+    /// </summary>
     procedure ShowDimensions()
     begin
         DimMgt.ShowDimensionSet("Dimension Set ID", StrSubstNo('%1 %2', TableCaption, "Entry No."));
     end;
 
 
+    /// <summary>
+    /// CopyFromGenJnlLine.
+    /// </summary>
+    /// <param name="GenJnlLine">Record "Gen. Journal Line".</param>
     procedure CopyFromGenJnlLine(GenJnlLine: Record "Gen. Journal Line")
     begin
         "Customer No." := GenJnlLine."Account No.";
@@ -337,6 +347,11 @@ table 51532059 "Credit Ledger Entry"
 
     [IntegrationEvent(false, false)]
 
+    /// <summary>
+    /// OnAfterCopyFromGenJnlLine.
+    /// </summary>
+    /// <param name="CreditLedgerEntry">VAR Record "Credit Ledger Entry".</param>
+    /// <param name="GenJournalLine">Record "Gen. Journal Line".</param>
     procedure OnAfterCopyFromGenJnlLine(var CreditLedgerEntry: Record "Credit Ledger Entry"; GenJournalLine: Record "Gen. Journal Line")
     begin
     end;

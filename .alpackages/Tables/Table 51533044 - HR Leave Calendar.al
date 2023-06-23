@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Leave Calendar (ID 51533044).
+/// </summary>
 table 51533044 "HR Leave Calendar"
 {
 
@@ -189,6 +192,10 @@ table 51533044 "HR Leave Calendar"
         end;
     end;
 
+    /// <summary>
+    /// TestNoEntriesExist_PrevRec.
+    /// </summary>
+    /// <param name="CurrentFieldName">Text[100].</param>
     procedure TestNoEntriesExist_PrevRec(CurrentFieldName: Text[100])
     var
         HRLeaveLedgerEntry: Record "HR Leave Ledger Entries";
@@ -202,6 +209,10 @@ table 51533044 "HR Leave Calendar"
               CurrentFieldName);
     end;
 
+    /// <summary>
+    /// TestNoEntriesExist_CurrRec.
+    /// </summary>
+    /// <param name="CurrentFieldName">Text[100].</param>
     procedure TestNoEntriesExist_CurrRec(CurrentFieldName: Text[100])
     var
         HRLeaveLedgerEntry: Record "HR Leave Ledger Entries";

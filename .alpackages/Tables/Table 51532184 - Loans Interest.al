@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Loans Interest (ID 51532184).
+/// </summary>
 table 51532184 "Loans Interest"
 {
 

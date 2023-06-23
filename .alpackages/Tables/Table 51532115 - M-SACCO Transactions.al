@@ -1,3 +1,6 @@
+/// <summary>
+/// Table M-SACCO Transactions (ID 51532115).
+/// </summary>
 table 51532115 "M-SACCO Transactions"
 {
 

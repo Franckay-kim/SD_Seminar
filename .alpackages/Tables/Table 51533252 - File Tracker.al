@@ -1,3 +1,6 @@
+/// <summary>
+/// Table File Tracker (ID 51533252).
+/// </summary>
 table 51533252 "File Tracker"
 {
     //DrillDownPageID = "File Request List";

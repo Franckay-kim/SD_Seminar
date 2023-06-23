@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Member withdrawal Notice (ID 51532152).
+/// </summary>
 table 51532152 "Member withdrawal Notice"
 {
 

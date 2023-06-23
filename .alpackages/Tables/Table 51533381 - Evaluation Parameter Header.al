@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Evaluation Parameter Header (ID 51533381).
+/// </summary>
 table 51533381 "Evaluation Parameter Header"
 {
 

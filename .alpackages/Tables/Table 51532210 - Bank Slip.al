@@ -1,42 +1,28 @@
+/// <summary>
+/// Table Bank Slip (ID 51532210).
+/// </summary>
 table 51532210 "Bank Slip"
 {
-    
+
     fields
     {
-        field(1;No;Code[20])
+        field(1; No; Code[20])
         {
 
             trigger OnValidate()
             begin
 
                 if No <> xRec.No then begin
-                  GenLedgerSetup.Get;
-                  NoSeriesMgt.TestManual(GenLedgerSetup."Bank Deposit No.");
-                  "No. Series" := '';
+                    GenLedgerSetup.Get;
+                    NoSeriesMgt.TestManual(GenLedgerSetup."Bank Deposit No.");
+                    "No. Series" := '';
                 end;
             end;
         }
-        field(2;Date;Date)
+        field(2; Date; Date)
         {
         }
-        field(8;"From Bank Code";Code[20])
-        {
-            TableRelation = "Bank Account"."No.";
-
-            trigger OnValidate()
-            begin
-
-                BankAcc.Reset;
-                if BankAcc.Get("From Bank Code") then
-                  begin
-                    "From Account Name":=BankAcc.Name;
-                  end;
-            end;
-        }
-        field(9;"Received From";Text[100])
-        {
-        }
-        field(13;"To Bank Code";Code[20])
+        field(8; "From Bank Code"; Code[20])
         {
             TableRelation = "Bank Account"."No.";
 
@@ -44,90 +30,59 @@ table 51532210 "Bank Slip"
             begin
 
                 BankAcc.Reset;
-                if BankAcc.Get("To Bank Code") then
-                  begin
-                    "To Account Name":=BankAcc.Name;
-                  end;
+                if BankAcc.Get("From Bank Code") then begin
+                    "From Account Name" := BankAcc.Name;
+                end;
             end;
         }
-        field(14;"No. Series";Code[10])
+        field(9; "Received From"; Text[100])
+        {
+        }
+        field(13; "To Bank Code"; Code[20])
+        {
+            TableRelation = "Bank Account"."No.";
+
+            trigger OnValidate()
+            begin
+
+                BankAcc.Reset;
+                if BankAcc.Get("To Bank Code") then begin
+                    "To Account Name" := BankAcc.Name;
+                end;
+            end;
+        }
+        field(14; "No. Series"; Code[10])
         {
             Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
         }
-        field(15;"From Account Name";Text[50])
+        field(15; "From Account Name"; Text[50])
         {
         }
-        field(16;Posted;Boolean)
+        field(16; Posted; Boolean)
         {
         }
-        field(17;"Date Posted";Date)
+        field(17; "Date Posted"; Date)
         {
         }
-        field(18;"Time Posted";Time)
+        field(18; "Time Posted"; Time)
         {
         }
-        field(19;"Posted By";Code[50])
+        field(19; "Posted By"; Code[50])
         {
         }
-        field(20;Amount;Decimal)
+        field(20; Amount; Decimal)
         {
         }
-        field(21;Remarks;Text[50])
+        field(21; Remarks; Text[50])
         {
         }
-        field(26;"Source Dimension 1 Code";Code[20])
-        {
-            CaptionClass = '1,1,1';
-            Caption = 'Global Dimension 1 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(1));
-
-            trigger OnValidate()
-            begin
-                /*
-                    IF "Bank Pay in Type"="Bank Pay in Type"::" " THEN
-                     ERROR('Bank Pay in Type should NOT be blank');
-                */
-                      DimVal.Reset;
-                      DimVal.SetRange(DimVal.Code,"Source Dimension 1 Code");
-                      if DimVal.Find('-') then
-                           "Source Dimension 1 Name":=DimVal.Name;
-
-            end;
-        }
-        field(27;"Source Dimension 2 Code";Code[20])
-        {
-            CaptionClass = '1,2,2';
-            Caption = 'Shortcut Dimension 2 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(2));
-
-            trigger OnValidate()
-            begin
-                /*
-                    IF "Bank Pay in Type"="Bank Pay in Type"::" " THEN
-                     ERROR('Bank Pay in Type should NOT be blank');
-                */
-                      DimVal.Reset;
-                      DimVal.SetRange(DimVal.Code,"Source Dimension 2 Code");
-                      if DimVal.Find('-') then
-                           "Source Dimension 2 Name":=DimVal.Name;
-
-            end;
-        }
-        field(28;"Source Dimension 1 Name";Text[60])
-        {
-            Editable = false;
-        }
-        field(29;"Source Dimension 2 Name";Text[60])
-        {
-            Editable = false;
-        }
-        field(30;"Destination Dimension 1 Code";Code[20])
+        field(26; "Source Dimension 1 Code"; Code[20])
         {
             CaptionClass = '1,1,1';
             Caption = 'Global Dimension 1 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(1));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
 
             trigger OnValidate()
             begin
@@ -135,18 +90,18 @@ table 51532210 "Bank Slip"
                     IF "Bank Pay in Type"="Bank Pay in Type"::" " THEN
                      ERROR('Bank Pay in Type should NOT be blank');
                 */
-                      DimVal.Reset;
-                      DimVal.SetRange(DimVal.Code,"Source Dimension 1 Code");
-                      if DimVal.Find('-') then
-                           "Source Dimension 1 Name":=DimVal.Name;
+                DimVal.Reset;
+                DimVal.SetRange(DimVal.Code, "Source Dimension 1 Code");
+                if DimVal.Find('-') then
+                    "Source Dimension 1 Name" := DimVal.Name;
 
             end;
         }
-        field(31;"Destination Dimension 2 Code";Code[20])
+        field(27; "Source Dimension 2 Code"; Code[20])
         {
             CaptionClass = '1,2,2';
             Caption = 'Shortcut Dimension 2 Code';
-            TableRelation = "Dimension Value".Code WHERE ("Global Dimension No."=CONST(2));
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
 
             trigger OnValidate()
             begin
@@ -154,88 +109,134 @@ table 51532210 "Bank Slip"
                     IF "Bank Pay in Type"="Bank Pay in Type"::" " THEN
                      ERROR('Bank Pay in Type should NOT be blank');
                 */
-                      DimVal.Reset;
-                      DimVal.SetRange(DimVal.Code,"Source Dimension 2 Code");
-                      if DimVal.Find('-') then
-                           "Source Dimension 2 Name":=DimVal.Name;
+                DimVal.Reset;
+                DimVal.SetRange(DimVal.Code, "Source Dimension 2 Code");
+                if DimVal.Find('-') then
+                    "Source Dimension 2 Name" := DimVal.Name;
 
             end;
         }
-        field(32;"Destination Dimension 1 Name";Text[60])
+        field(28; "Source Dimension 1 Name"; Text[60])
         {
             Editable = false;
         }
-        field(33;"Destination Dimension 2 Name";Text[60])
+        field(29; "Source Dimension 2 Name"; Text[60])
         {
             Editable = false;
         }
-        field(34;"To Account Name";Text[50])
+        field(30; "Destination Dimension 1 Code"; Code[20])
+        {
+            CaptionClass = '1,1,1';
+            Caption = 'Global Dimension 1 Code';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
+
+            trigger OnValidate()
+            begin
+                /*
+                    IF "Bank Pay in Type"="Bank Pay in Type"::" " THEN
+                     ERROR('Bank Pay in Type should NOT be blank');
+                */
+                DimVal.Reset;
+                DimVal.SetRange(DimVal.Code, "Source Dimension 1 Code");
+                if DimVal.Find('-') then
+                    "Source Dimension 1 Name" := DimVal.Name;
+
+            end;
+        }
+        field(31; "Destination Dimension 2 Code"; Code[20])
+        {
+            CaptionClass = '1,2,2';
+            Caption = 'Shortcut Dimension 2 Code';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2));
+
+            trigger OnValidate()
+            begin
+                /*
+                    IF "Bank Pay in Type"="Bank Pay in Type"::" " THEN
+                     ERROR('Bank Pay in Type should NOT be blank');
+                */
+                DimVal.Reset;
+                DimVal.SetRange(DimVal.Code, "Source Dimension 2 Code");
+                if DimVal.Find('-') then
+                    "Source Dimension 2 Name" := DimVal.Name;
+
+            end;
+        }
+        field(32; "Destination Dimension 1 Name"; Text[60])
+        {
+            Editable = false;
+        }
+        field(33; "Destination Dimension 2 Name"; Text[60])
+        {
+            Editable = false;
+        }
+        field(34; "To Account Name"; Text[50])
         {
         }
-        field(35;"Pay In Bank Template Name";Code[10])
+        field(35; "Pay In Bank Template Name"; Code[10])
         {
             Caption = 'Inter Bank Template Name';
             NotBlank = true;
             TableRelation = "Gen. Journal Template";
         }
-        field(36;"Pay In Bank Journal Batch";Code[10])
+        field(36; "Pay In Bank Journal Batch"; Code[10])
         {
             Caption = 'Inter Bank Journal Batch';
             NotBlank = true;
-            TableRelation = "Gen. Journal Batch".Name WHERE ("Journal Template Name"=FIELD("Pay In Bank Template Name"));
+            TableRelation = "Gen. Journal Batch".Name WHERE("Journal Template Name" = FIELD("Pay In Bank Template Name"));
         }
-        field(37;"Bank Pay in Type";Option)
+        field(37; "Bank Pay in Type"; Option)
         {
             OptionMembers = " ",Cash,Cheque;
         }
-        field(38;"Bank Slip No.";Code[20])
+        field(38; "Bank Slip No."; Code[20])
         {
             Description = 'Stores the reference of the bank pay in slip no in the database';
         }
-        field(39;"Confirmed Amount";Decimal)
+        field(39; "Confirmed Amount"; Decimal)
         {
-            CalcFormula = Sum("Bank Slip Line".Amount WHERE (No=FIELD(No),
-                                                             Select=CONST(true)));
+            CalcFormula = Sum("Bank Slip Line".Amount WHERE(No = FIELD(No),
+                                                             Select = CONST(true)));
             FieldClass = FlowField;
         }
-        field(40;Status;Option)
+        field(40; Status; Option)
         {
             OptionMembers = New,Confirmation,Posted;
         }
-        field(41;Vaulted;Boolean)
+        field(41; Vaulted; Boolean)
         {
         }
-        field(42;"Return Remarks";Text[250])
+        field(42; "Return Remarks"; Text[250])
         {
         }
-        field(43;"Created By";Code[50])
+        field(43; "Created By"; Code[50])
         {
         }
-        field(44;"Created Date";Date)
+        field(44; "Created Date"; Date)
         {
         }
-        field(45;"Created Time";Time)
+        field(45; "Created Time"; Time)
         {
         }
-        field(46;"Created Machine";Text[100])
+        field(46; "Created Machine"; Text[100])
         {
         }
-        field(47;"Current Source A/C Bal.";Decimal)
+        field(47; "Current Source A/C Bal."; Decimal)
         {
         }
-        field(48;"Register Number";Integer)
+        field(48; "Register Number"; Integer)
         {
         }
-        field(49;"From Entry No.";Integer)
+        field(49; "From Entry No."; Integer)
         {
         }
-        field(50;"To Entry No.";Integer)
+        field(50; "To Entry No."; Integer)
         {
         }
-        field(51;"Document Date";Date)
+        field(51; "Document Date"; Date)
         {
         }
-        field(85;"Responsibility Center";Code[10])
+        field(85; "Responsibility Center"; Code[10])
         {
             Caption = 'Responsibility Center';
             TableRelation = "Responsibility CenterBR";
@@ -287,7 +288,7 @@ table 51532210 "Bank Slip"
 
             end;
         }
-        field(86;"Currency Code";Code[10])
+        field(86; "Currency Code"; Code[10])
         {
             TableRelation = Currency;
         }
@@ -295,7 +296,7 @@ table 51532210 "Bank Slip"
 
     keys
     {
-        key(Key1;No)
+        key(Key1; No)
         {
         }
     }
@@ -307,15 +308,15 @@ table 51532210 "Bank Slip"
     trigger OnInsert()
     begin
         if No = '' then begin
-          GenLedgerSetup.Get;
-          GenLedgerSetup.TestField(GenLedgerSetup."Bank Deposit No.");
-          NoSeriesMgt.InitSeries(GenLedgerSetup."Bank Deposit No.",xRec."No. Series",0D,No,"No. Series");
+            GenLedgerSetup.Get;
+            GenLedgerSetup.TestField(GenLedgerSetup."Bank Deposit No.");
+            NoSeriesMgt.InitSeries(GenLedgerSetup."Bank Deposit No.", xRec."No. Series", 0D, No, "No. Series");
 
-          //get the creation details
-            "Created By":=UserId;
-            "Created Date":=Today;
-            "Created Time":=Time;
-        //    "Created Machine":=ENVIRON('COMPUTERNAME');
+            //get the creation details
+            "Created By" := UserId;
+            "Created Date" := Today;
+            "Created Time" := Time;
+            //    "Created Machine":=ENVIRON('COMPUTERNAME');
         end;
     end;
 

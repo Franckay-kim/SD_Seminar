@@ -3,16 +3,16 @@ table 51533047 "HR Non Working Days & Dates"
 
     fields
     {
-        field(1;Date;Date)
+        field(1; Date; Date)
         {
         }
-        field(2;Reason;Text[100])
+        field(2; Reason; Text[100])
         {
         }
-        field(3;Recurring;Boolean)
+        field(3; Recurring; Boolean)
         {
         }
-        field(4;"Non-Working";Boolean)
+        field(4; "Non-Working"; Boolean)
         {
             DataClassification = ToBeClassified;
 
@@ -20,12 +20,12 @@ table 51533047 "HR Non Working Days & Dates"
             begin
 
                 if not "Non-Working" then
-                  Reason := ''
+                    Reason := ''
                 else
-                  TestField(Reason);
+                    TestField(Reason);
 
                 HRCalendarList.Reset;
-                HRCalendarList.SetRange(Date,Date);
+                HRCalendarList.SetRange(Date, Date);
                 if HRCalendarList.FindFirst then begin
                     HRCalendarList."Non Working" := "Non-Working";
                     HRCalendarList.Reason := Reason;
@@ -37,7 +37,7 @@ table 51533047 "HR Non Working Days & Dates"
 
     keys
     {
-        key(Key1;Date)
+        key(Key1; Date)
         {
         }
     }

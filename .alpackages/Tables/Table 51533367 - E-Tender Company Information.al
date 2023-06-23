@@ -1,3 +1,6 @@
+/// <summary>
+/// Table E-Tender Company Information (ID 51533367).
+/// </summary>
 table 51533367 "E-Tender Company Information"
 {
 

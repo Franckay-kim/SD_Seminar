@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Securities Register (ID 51532166).
+/// </summary>
 table 51532166 "Securities Register"
 {
     //DrillDownPageID = "Collateral Register - List";

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Purch. Inspection Line (ID 51533372).
+/// </summary>
 table 51533372 "Purch. Inspection Line"
 {
 

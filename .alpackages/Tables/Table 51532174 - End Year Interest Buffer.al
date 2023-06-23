@@ -1,3 +1,6 @@
+/// <summary>
+/// Table End Year Interest Buffer (ID 51532174).
+/// </summary>
 table 51532174 "End Year Interest Buffer"
 {
 

@@ -1,3 +1,6 @@
+/// <summary>
+/// Table Payment Methods Application (ID 51532416).
+/// </summary>
 table 51532416 "Payment Methods Application"
 {
 

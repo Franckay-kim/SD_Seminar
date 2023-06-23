@@ -1,3 +1,6 @@
+/// <summary>
+/// Table STO Recovery Modes (ID 51532366).
+/// </summary>
 table 51532366 "STO Recovery Modes"
 {
     //DrillDownPageID = "STO Recovery Modes";

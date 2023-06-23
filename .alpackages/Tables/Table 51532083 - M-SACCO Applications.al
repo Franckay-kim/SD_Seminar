@@ -1,3 +1,6 @@
+/// <summary>
+/// Table M-SACCO Applications (ID 51532083).
+/// </summary>
 table 51532083 "M-SACCO Applications"
 {
     //DrillDownPageID = "Mpesa Applications List";
@@ -333,12 +336,22 @@ table 51532083 "M-SACCO Applications"
         MPESAAppDet2: Record "M-SACCO Application Details";
         ValidateID: Boolean;
 
+    /// <summary>
+    /// SetValidateID.
+    /// </summary>
+    /// <param name="Val">Boolean.</param>
     procedure SetValidateID(Val: Boolean)
     begin
 
         ValidateID := Val;
     end;
 
+    /// <summary>
+    /// FieldLength.
+    /// </summary>
+    /// <param name="VarVariant">Text.</param>
+    /// <param name="FldLength">Integer.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure FieldLength(VarVariant: Text; FldLength: Integer): Text
     var
         FieldLengthError: Label 'Field cannot be more than %1 Characters.';
@@ -347,6 +360,10 @@ table 51532083 "M-SACCO Applications"
             Error(FieldLengthError, FldLength);
     end;
 
+    /// <summary>
+    /// ValidateApproval.
+    /// </summary>
+    /// <returns>Return value of type Boolean.</returns>
     procedure ValidateApproval(): Boolean
     var
         DocMustbeOpen: Label 'This application must be open';
