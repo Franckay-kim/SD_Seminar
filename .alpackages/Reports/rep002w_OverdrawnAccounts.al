@@ -50,16 +50,6 @@ report 50104 "Overdrawn Accounts"
                 IncludeCaption = true;
             }
 
-            trigger OnPreDataItem()
-            begin
-                //get company info for the header.
-                CompInfo.Get;
-                CompInfo.Get(CompInfo.Name);
-                CompInfo.Get(CompInfo."E-Mail");
-                CompInfo.Get(CompInfo."Post Code");
-                CompInfo.Get(CompInfo."Phone No.");
-            end;
-
             trigger OnAfterGetRecord()
             begin
                 if Balance < 0 then
@@ -68,6 +58,28 @@ report 50104 "Overdrawn Accounts"
             end;
 
         }
+
+        dataitem("Company Information"; "Company Information")
+        {
+            column(CompanyName; Name)
+            {
+
+            }
+            column(E_Mail; "E-Mail")
+            {
+
+            }
+            column(Post_Code; "Post Code")
+            {
+
+            }
+            column(Phone_No_; "Phone No.")
+            {
+
+            }
+        }
+
+
     }
 
     requestpage
@@ -107,5 +119,5 @@ report 50104 "Overdrawn Accounts"
 
     var
         SavingsAcc: Record "Savings Accounts";
-        CompInfo: Record "Company Information";
+
 }

@@ -58,19 +58,6 @@ report 50103 "Reversed Journals"
                 IncludeCaption = true;
             }
 
-            trigger OnPreDataItem()
-            begin
-                //get company information for the report header
-                CompInfo.Get;
-                CompInfo.Get(CompInfo.Name);
-                CompInfo.Get(CompInfo."E-Mail");
-                CompInfo.Get(CompInfo."Post Code");
-                CompInfo.Get(CompInfo."Phone No.");
-
-
-            end;
-
-
             trigger OnAfterGetRecord()
             begin
                 //getting records where  reversed is true.
@@ -100,6 +87,26 @@ report 50103 "Reversed Journals"
                     CurrReport.Skip();
 
             end;
+        }
+
+        dataitem("Company Information"; "Company Information")
+        {
+            column(CompanyName; Name)
+            {
+
+            }
+            column(E_Mail; "E-Mail")
+            {
+
+            }
+            column(Post_Code; "Post Code")
+            {
+
+            }
+            column(Phone_No_; "Phone No.")
+            {
+
+            }
         }
 
     }
@@ -143,5 +150,5 @@ report 50103 "Reversed Journals"
         GLEntry: Record "G/L Entry";
         SavingsLedgerEntry: Record "Savings Ledger Entry";
         SavAcc: Record "Savings Accounts";
-        CompInfo: Record "Company Information";
+
 }
