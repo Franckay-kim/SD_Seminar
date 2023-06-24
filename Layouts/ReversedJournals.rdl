@@ -11,64 +11,6 @@
       <rd:DataSourceID>64d87dcf-7a48-4469-9bf4-f8515eb3a2bd</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Entry_No_">
-          <DataField>Entry_No_</DataField>
-        </Field>
-        <Field Name="GL_Account_No">
-          <DataField>GL_Account_No</DataField>
-        </Field>
-        <Field Name="G_L_Account_Name">
-          <DataField>G_L_Account_Name</DataField>
-        </Field>
-        <Field Name="Amount">
-          <DataField>Amount</DataField>
-        </Field>
-        <Field Name="AmountFormat">
-          <DataField>AmountFormat</DataField>
-        </Field>
-        <Field Name="Reversed_Entry_No_">
-          <DataField>Reversed_Entry_No_</DataField>
-        </Field>
-        <Field Name="Transaction_No_">
-          <DataField>Transaction_No_</DataField>
-        </Field>
-        <Field Name="Posting_Date">
-          <DataField>Posting_Date</DataField>
-        </Field>
-        <Field Name="Document_Type">
-          <DataField>Document_Type</DataField>
-        </Field>
-        <Field Name="Document_No_">
-          <DataField>Document_No_</DataField>
-        </Field>
-        <Field Name="User_ID">
-          <DataField>User_ID</DataField>
-        </Field>
-        <Field Name="Customer_No_">
-          <DataField>Customer_No_</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="E_Mail">
-          <DataField>E_Mail</DataField>
-        </Field>
-        <Field Name="Post_Code">
-          <DataField>Post_Code</DataField>
-        </Field>
-        <Field Name="Phone_No_">
-          <DataField>Phone_No_</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -790,7 +732,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>9.96056in</Width>
+      <Width>10.01264in</Width>
       <Page>
         <PageHeader>
           <Height>1.97916in</Height>
@@ -849,7 +791,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox44</rd:DefaultName>
               <Top>0.43626in</Top>
-              <Left>7.67583in</Left>
+              <Left>7.39458in</Left>
               <Height>0.33333in</Height>
               <Width>2.04167in</Width>
               <ZIndex>1</ZIndex>
@@ -923,7 +865,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox46</rd:DefaultName>
               <Top>1.29375in</Top>
-              <Left>7.74874in</Left>
+              <Left>7.39458in</Left>
               <Height>0.30681in</Height>
               <Width>1.96875in</Width>
               <ZIndex>3</ZIndex>
@@ -1283,4 +1225,62 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Entry_No_">
+          <DataField>Entry_No_</DataField>
+        </Field>
+        <Field Name="GL_Account_No">
+          <DataField>GL_Account_No</DataField>
+        </Field>
+        <Field Name="G_L_Account_Name">
+          <DataField>G_L_Account_Name</DataField>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+        </Field>
+        <Field Name="AmountFormat">
+          <DataField>AmountFormat</DataField>
+        </Field>
+        <Field Name="Reversed_Entry_No_">
+          <DataField>Reversed_Entry_No_</DataField>
+        </Field>
+        <Field Name="Transaction_No_">
+          <DataField>Transaction_No_</DataField>
+        </Field>
+        <Field Name="Posting_Date">
+          <DataField>Posting_Date</DataField>
+        </Field>
+        <Field Name="Document_Type">
+          <DataField>Document_Type</DataField>
+        </Field>
+        <Field Name="Document_No_">
+          <DataField>Document_No_</DataField>
+        </Field>
+        <Field Name="User_ID">
+          <DataField>User_ID</DataField>
+        </Field>
+        <Field Name="Customer_No_">
+          <DataField>Customer_No_</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="E_Mail">
+          <DataField>E_Mail</DataField>
+        </Field>
+        <Field Name="Post_Code">
+          <DataField>Post_Code</DataField>
+        </Field>
+        <Field Name="Phone_No_">
+          <DataField>Phone_No_</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
