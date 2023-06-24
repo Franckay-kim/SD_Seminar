@@ -13,7 +13,8 @@ report 50103 "Reversed Journals"
     {
         dataitem("G/L Entry"; "G/L Entry")
         {
-            //DataItemTableView = sorting("Entry No.") where(Reversed = const(true));
+            //sort the records using Entry No., for records where reversed is true.
+            DataItemTableView = sorting("Entry No.") where(Reversed = const(true));
             RequestFilterFields = "Entry No.", "G/L Account No.";
 
             column(Entry_No_; "Entry No.")
@@ -57,38 +58,50 @@ report 50103 "Reversed Journals"
                 IncludeCaption = true;
             }
 
+            trigger OnPreDataItem()
+            begin
+                //get company information for the report header
+                CompInfo.Get;
+                CompInfo.Get(CompInfo.Name);
+                CompInfo.Get(CompInfo."E-Mail");
+                CompInfo.Get(CompInfo."Post Code");
+                CompInfo.Get(CompInfo."Phone No.");
+
+
+            end;
+
 
             trigger OnAfterGetRecord()
             begin
-
+                //getting records where  reversed is true.
                 if Reversed = true then
                     GLEntry.Get("Entry No.");
-
-
-                /* if SavingsLedgerEntry."Customer No." = '' then
-                     SavingsLedgerEntry.Get(SavingsLedgerEntry."Customer No.");
-                 SavingsLedgerEntry.Get(SavingsLedgerEntry."Entry No.");
-                 SavingsLedgerEntry.Get(SavingsLedgerEntry."Document No."); */
-
-
-
-
-
-
-
 
 
             end;
 
         }
 
-
-        /*dataitem("Company Information"; "Company Information")
+        dataitem("Savings Ledger Entry"; "Savings Ledger Entry")
         {
-            column(Company_Name; Name)
+            column(Customer_No_; "Customer No.")
             {
+
             }
-        } */
+
+            trigger OnAfterGetRecord()
+            begin
+
+                SavAcc.get(SavingsLedgerEntry."Customer No.");
+
+                //Checking product category and skiping if its not Prime
+                if (SavAcc."Product Category" <> SavAcc."Product Category"::Prime)
+                then
+                    CurrReport.Skip();
+
+            end;
+        }
+
     }
 
     requestpage
@@ -129,4 +142,6 @@ report 50103 "Reversed Journals"
     var
         GLEntry: Record "G/L Entry";
         SavingsLedgerEntry: Record "Savings Ledger Entry";
+        SavAcc: Record "Savings Accounts";
+        CompInfo: Record "Company Information";
 }

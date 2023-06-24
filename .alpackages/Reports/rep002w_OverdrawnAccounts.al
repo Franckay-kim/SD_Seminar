@@ -13,8 +13,8 @@ report 50104 "Overdrawn Accounts"
     {
         dataitem("Savings Accounts"; "Savings Accounts")
         {
-
-            //DataItemTableView = sorting("No.") where(Balance = filter('<0'));
+            //sort using NO. field, for accounts with a balance less than 0
+            DataItemTableView = sorting("No.") where(Balance = filter('<0'));
             RequestFilterFields = "No.", "Savings Account No.";
 
             column(No; "No.")
@@ -49,6 +49,16 @@ report 50104 "Overdrawn Accounts"
             {
                 IncludeCaption = true;
             }
+
+            trigger OnPreDataItem()
+            begin
+                //get company info for the header.
+                CompInfo.Get;
+                CompInfo.Get(CompInfo.Name);
+                CompInfo.Get(CompInfo."E-Mail");
+                CompInfo.Get(CompInfo."Post Code");
+                CompInfo.Get(CompInfo."Phone No.");
+            end;
 
             trigger OnAfterGetRecord()
             begin
@@ -97,4 +107,5 @@ report 50104 "Overdrawn Accounts"
 
     var
         SavingsAcc: Record "Savings Accounts";
+        CompInfo: Record "Company Information";
 }

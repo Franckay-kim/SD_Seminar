@@ -1123,6 +1123,9 @@ End Function
         <Field Name="User_ID">
           <DataField>User_ID</DataField>
         </Field>
+        <Field Name="Customer_No_">
+          <DataField>Customer_No_</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
