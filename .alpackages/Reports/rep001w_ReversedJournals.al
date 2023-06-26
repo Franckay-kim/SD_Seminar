@@ -150,5 +150,5 @@ report 50103 "Reversed Journals"
         GLEntry: Record "G/L Entry";
         SavingsLedgerEntry: Record "Savings Ledger Entry";
         SavAcc: Record "Savings Accounts";
-
+        CompInfo: Record "Company Information";
 }
