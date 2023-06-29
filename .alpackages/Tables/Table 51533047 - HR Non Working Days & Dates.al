@@ -1,3 +1,6 @@
+/// <summary>
+/// Table HR Non Working Days_Dates (ID 51533047).
+/// </summary>
 table 51533047 "HR Non Working Days & Dates"
 {
 
